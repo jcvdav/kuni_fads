@@ -13,8 +13,96 @@ knitr::opts_chunk$set(echo = FALSE,
                       message = FALSE,
                       warning = FALSE)
 
-library(startR)
-usual_suspects()
+suppressPackageStartupMessages({
+  library(startR)
+  library(here)
+  library(tidyverse)
+})
+
 ```
+
+
+```{r}
+cl <- read.csv(here("raw_data", "Country_level_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
+  janitor::clean_names() %>% 
+  mutate(year = str_extract(year, pattern = "[:digit:]+"),
+         year = as.numeric(year),
+         n_fads = str_extract(n_fa_ds, pattern = "[:digit:]+"),
+         n_fads = as.numeric(n_fads))
+```
+
+```{r}
+cl %>% 
+  drop_na(year) %>% 
+  ggplot( aes(x = year, y = n_fads, color = country)) +
+  geom_point() +
+  geom_line() +
+  theme(legend.position = "none") +
+  ggtheme_plot()
+```
+
+```{r}
+cl %>% 
+  drop_na(year) %>% 
+  group_by(year) %>% 
+  summarize(n_fads = sum(n_fads, na.rm = T)) %>% 
+  ungroup() %>% 
+  mutate(n_fads = cumsum(n_fads)) %>% 
+  ggplot( aes(x = year, y = n_fads)) +
+  geom_smooth(color = "black") +
+  geom_point() +
+  theme_minimal() +
+  xlab("Year") +
+  ylab("Cumulative number of FADs")
+```
+
+
+```{r}
+cl %>% 
+  drop_na(year, x_event) %>% 
+  filter(!x_event == "") %>% 
+  mutate(x_event = case_when(x_event == "Average adoption" ~ "Adoption",
+                             x_event == "Initial adoption" ~ "Adoption",
+                             x_event == "Proposed public FAD" ~ "Proposed",
+                             T ~ x_event),
+         event = fct_relevel(x_event, c("Proposed", "Introduction", "Adoption", "Re-introduction", "Legislation")),
+         country = fct_rev(country)) %>% 
+  ggplot(aes(x = year, y = country, shape = event)) +
+  geom_point(size = 4) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  xlab("Year") +
+  ylab("Country")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
