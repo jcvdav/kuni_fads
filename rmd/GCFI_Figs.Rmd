@@ -1,0 +1,148 @@
+---
+title: "FAD Figures GCFI"
+author: "Villaseñor-Derbez, J.C."
+date: "Compiled on `r date()` by `r Sys.info()['user']`"
+output:
+  bookdown::html_document2:
+    toc: yes
+    toc_float: yes
+    toc_depth: 4
+---
+
+```{r}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+
+suppressPackageStartupMessages({
+  library(startR)
+  library(here)
+  library(tidyverse)
+})
+
+```
+
+Figures for GCFI. Files exported as TIF are in the img folder of the GitHub repo.
+
+
+```{r}
+cl <- read.csv(here("raw_data", "Country_level_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
+  janitor::clean_names() %>% 
+  mutate(year = str_extract(year, pattern = "[:digit:]+"),
+         year = as.numeric(year),
+         n_fads = str_extract(n_fa_ds, pattern = "[:digit:]+"),
+         n_fads = as.numeric(n_fads)) %>% 
+  filter(!(reference == "Mathieu et al., 2014" & n_fads == 400),
+         !str_detect(x_event, "\\*"))
+```
+
+```{r, fig.cap = "Cumulative number of FADs based on lit review, excluding the DM in 2018"}
+(bef <- cl %>% 
+   drop_na(year) %>% 
+   filter(year < 2018) %>% 
+   group_by(year) %>% 
+    group_by(year) %>% 
+    summarize(n_fads = sum(n_fads, na.rm = T)) %>% 
+    ungroup() %>% 
+    mutate(n_fads = cumsum(n_fads),
+           color = year < 2018) %>%
+    ggplot(aes(x = year, y = n_fads)) +
+    geom_smooth(method = "loess", color = "black", fill = "transparent", linetype = "dashed") +
+    geom_point(size = 3, color = "steelblue") +
+    theme_minimal() +
+    xlab("Year") +
+    ylab("Cumulative number of FADs")+
+    theme(legend.position = "none"))
+
+ggsave(plot = bef, filename = here("img/bef.tiff"), width = 6, height = 4.5)
+```
+
+```{r, fig.cap = "Cumulative number of FADs based on lit review"}
+(aft <- cl %>% 
+    drop_na(year) %>% 
+    group_by(year) %>% 
+    summarize(n_fads = sum(n_fads, na.rm = T)) %>% 
+    ungroup() %>% 
+    mutate(n_fads = cumsum(n_fads),
+           color = year < 2018) %>%
+    ggplot(aes(x = year, y = n_fads)) +
+    geom_smooth(method = "loess", color = "black", fill = "transparent", linetype = "dashed") +
+    geom_point(size = 3, aes(color = color)) + 
+    # transition_reveal(id = year, along = year) +
+    theme_minimal() +
+    xlab("Year") +
+    ylab("Cumulative number of FADs")+
+    scale_color_manual(values = c("red", "Steelblue")) +
+    theme(legend.position = "none"))
+
+ggsave(plot = aft, filename = here("img/aft.tiff"), width = 6, height = 4.5)
+```
+
+
+```{r, fig.height = 6.75, fig.width = 4.5, fig.cap = "Cumulative number of FADs based on lit review, (A) excluding the DM in 2018 and (B) all data"}
+(panel <- cowplot::plot_grid(bef, aft, labels = "AUTO", ncol = 1))
+
+ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.75)
+
+```
+
+
+```{r, fig.height = 6, fig.width = 8, fig.cap = "Timeline of introduction, adoption, and re-introduction of FADs for Caribbean Countries"}
+(timeline <- cl %>% 
+  drop_na(year, x_event) %>% 
+  filter(!x_event %in% c("", "Cont. funding", "Legislation")) %>% 
+  mutate(x_event = case_when(x_event == "Average adoption" ~ "Adoption",
+                             x_event == "Initial adoption" ~ "Adoption",
+                             x_event == "Proposed public FAD" ~ "Introduction",
+                             T ~ x_event),
+         event = fct_relevel(x_event, c("Introduction", "Adoption")),
+         country = fct_rev(country),
+         n_fads = ifelse(is.na(n_fads), 1, n_fads)) %>% 
+  ggplot(aes(x = year, y = country, group = country)) +
+  geom_line() +
+  geom_jitter(aes(fill = event, size = n_fads), height = 0, width = 0.5, shape = 21, alpha = 0.5) +
+  theme_bw() +
+  xlab("Year") +
+  ylab("Country") +
+  guides(fill = guide_legend(title = "Event",
+                             override.aes = list(size = 4)),
+         size = guide_legend(title = "# FADs")) +
+  scale_fill_brewer(palette = "Set1") +
+  scale_size(trans = "log10", range = c(2, 6)) +
+  theme(axis.text = element_text(size = 12)))
+
+ggsave(plot = timeline, filename = here("img/timeline.tiff"), width = 8, height = 6)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
