@@ -1,4 +1,4 @@
-# Repository
+# KUNI FADs
 
 
 ## Repository structure 
@@ -6,10 +6,19 @@
 ```
 -- data
 -- docs
+   |__GCFI_Figs.html
+   |__manuscript.html
+-- img
+   |__aft.tiff
+   |__bef.tiff
+   |__panel.tiff
+   |__timeline.tiff
 -- kuni_fads.Rproj
 -- raw_data
+   |__Country_level_data.csv
 -- README.md
 -- rmd
+   |__GCFI_Figs.Rmd
 -- scripts
 ```
 
