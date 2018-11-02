@@ -27,13 +27,15 @@ Figures for GCFI. Files exported as TIF are in the img folder of the GitHub repo
 
 ```{r}
 cl <- read.csv(here("raw_data", "Country_level_data.csv"), strip.white = T, stringsAsFactors = F) %>% 
-  janitor::clean_names() %>% 
+  janitor::clean_names(case="old_janitor") %>% 
+  select(country,subregion,year,event,n_fads) %>%
   mutate(year = str_extract(year, pattern = "[:digit:]+"),
          year = as.numeric(year),
-         n_fads = str_extract(n_fa_ds, pattern = "[:digit:]+"),
-         n_fads = as.numeric(n_fads)) %>% 
-  filter(!(reference == "Mathieu et al., 2014" & n_fads == 400),
-         !str_detect(x_event, "\\*"))
+         n_fads = str_extract(n_fads, pattern = "[:digit:]+"),
+         n_fads = as.numeric(n_fads),
+         event= as.character(event)) %>% 
+  filter(subregion == "" & event %in% c("Adoption","Active","Introduction"))
+
 ```
 
 ```{r, fig.cap = "Cumulative number of FADs based on lit review, excluding the DM in 2018"}
@@ -87,15 +89,36 @@ ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.
 ```
 
 
+# ```{r, fig.height = 6, fig.width = 8, fig.cap = "Timeline of introduction, adoption, and re-introduction of FADs for Caribbean Countries"}
+# (timeline <- cl %>% 
+#   drop_na(year, event) %>% 
+#   filter(!x_event %in% c("", "Cont. funding", "Legislation")) %>% 
+#   mutate(x_event = case_when(event == "Average adoption" ~ "Adoption",
+#                              event == "Initial adoption" ~ "Adoption",
+#                              event == "Proposed public FAD" ~ "Introduction",
+#                              T ~ event),
+#          event = fct_relevel(event, c("Introduction", "Adoption")),
+#          country = fct_rev(country),
+#          n_fads = ifelse(is.na(n_fads), 1, n_fads)) %>% 
+#   ggplot(aes(x = year, y = country, group = country)) +
+#   geom_line() +
+#   geom_jitter(aes(fill = event, size = n_fads), height = 0, width = 0.5, shape = 21, alpha = 0.5) +
+#   theme_bw() +
+#   xlab("Year") +
+#   ylab("Country") +
+#   guides(fill = guide_legend(title = "Event",
+#                              override.aes = list(size = 4)),
+#          size = guide_legend(title = "# FADs")) +
+#   scale_fill_brewer(palette = "Set1") +
+#   scale_size(trans = "log10", range = c(2, 6)) +
+#   theme(axis.text = element_text(size = 12)))
+# 
+# ggsave(plot = timeline, filename = here("img/timeline.tiff"), width = 8, height = 6)
+# ```
+
 ```{r, fig.height = 6, fig.width = 8, fig.cap = "Timeline of introduction, adoption, and re-introduction of FADs for Caribbean Countries"}
 (timeline <- cl %>% 
-  drop_na(year, x_event) %>% 
-  filter(!x_event %in% c("", "Cont. funding", "Legislation")) %>% 
-  mutate(x_event = case_when(x_event == "Average adoption" ~ "Adoption",
-                             x_event == "Initial adoption" ~ "Adoption",
-                             x_event == "Proposed public FAD" ~ "Introduction",
-                             T ~ x_event),
-         event = fct_relevel(x_event, c("Introduction", "Adoption")),
+  mutate(event = fct_rev(event),
          country = fct_rev(country),
          n_fads = ifelse(is.na(n_fads), 1, n_fads)) %>% 
   ggplot(aes(x = year, y = country, group = country)) +
