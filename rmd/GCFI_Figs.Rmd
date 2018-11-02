@@ -89,33 +89,6 @@ ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.
 ```
 
 
-# ```{r, fig.height = 6, fig.width = 8, fig.cap = "Timeline of introduction, adoption, and re-introduction of FADs for Caribbean Countries"}
-# (timeline <- cl %>% 
-#   drop_na(year, event) %>% 
-#   filter(!x_event %in% c("", "Cont. funding", "Legislation")) %>% 
-#   mutate(x_event = case_when(event == "Average adoption" ~ "Adoption",
-#                              event == "Initial adoption" ~ "Adoption",
-#                              event == "Proposed public FAD" ~ "Introduction",
-#                              T ~ event),
-#          event = fct_relevel(event, c("Introduction", "Adoption")),
-#          country = fct_rev(country),
-#          n_fads = ifelse(is.na(n_fads), 1, n_fads)) %>% 
-#   ggplot(aes(x = year, y = country, group = country)) +
-#   geom_line() +
-#   geom_jitter(aes(fill = event, size = n_fads), height = 0, width = 0.5, shape = 21, alpha = 0.5) +
-#   theme_bw() +
-#   xlab("Year") +
-#   ylab("Country") +
-#   guides(fill = guide_legend(title = "Event",
-#                              override.aes = list(size = 4)),
-#          size = guide_legend(title = "# FADs")) +
-#   scale_fill_brewer(palette = "Set1") +
-#   scale_size(trans = "log10", range = c(2, 6)) +
-#   theme(axis.text = element_text(size = 12)))
-# 
-# ggsave(plot = timeline, filename = here("img/timeline.tiff"), width = 8, height = 6)
-# ```
-
 ```{r, fig.height = 6, fig.width = 8, fig.cap = "Timeline of introduction, adoption, and re-introduction of FADs for Caribbean Countries"}
 (timeline <- cl %>% 
   mutate(event = fct_rev(event),
