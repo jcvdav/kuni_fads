@@ -15,6 +15,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       warning = FALSE)
 
 suppressPackageStartupMessages({
+  library(ggmap)
   library(startR)
   library(here)
   library(tidyverse)
@@ -111,7 +112,50 @@ ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.
 ggsave(plot = timeline, filename = here("img/timeline.tiff"), width = 8, height = 6)
 ```
 
+```{r}
+fadlist <- read_csv(here::here("raw_data", "faddata.csv"))
+map.world <- map_data("world")
 
+map.world_joined_fad <- left_join(map.world, fadlist, by = c('region' = 'region'))
+
+unknown <- c("Aruba","Bahamas")
+ll.unknown <- geocode(unknown, source="dsk")
+unknown.x <- ll.unknown$lon
+unknown.y <- ll.unknown$lat
+#Absent
+absent <- c("Barbados","Bonaire","Cayman Islands","Cuba","Jamaica","Montserrat","Turks and Caicos Islands")
+ll.absent <- geocode(absent, source="dsk")
+absent.x <- ll.absent$lon
+absent.y <- ll.absent$lat
+#Present
+present <- c("Anguilla","Antigua","Virgin Islands","Curacao","Dominica","Dominican Republic","Grenada","Guadeloupe","Haiti","Martinique","Puerto Rico","Saba","Saint Barthelemy","Nevis","Saint Lucia","Saint Martin","Saint Vincent","Tobago")
+ll.present <- geocode(present, source="dsk")
+present.x <- ll.present$lon
+present.y <- ll.present$lat
+
+ggplot() +
+  theme_bw() +
+  geom_polygon(data = map.world_joined_fad, aes(x = long, y = lat, group = group))+
+  coord_equal(xlim = c(-100, -60),ylim = c(27,10)) +
+  geom_point(aes(x=present.x, y=present.y), color="#f24db3", size=5) +
+  geom_point(aes(x=unknown.x, y=unknown.y), color="#43b5d8", size=5) +
+  geom_point(aes(x=absent.x, y=absent.y), color="#f4d742", size=5) +
+  labs(x = "", y="",title = "")
+```
+
+```{r}
+map.world_joined_fad_centroids <- map.world_joined_fad %>% 
+  group_by(region, fad.number, fad.presence) %>% 
+  summarize(long = mean(long),
+            lat = mean(lat)) %>% 
+  ungroup()
+
+ggplot() +
+  theme_bw() +
+  geom_polygon(data = map.world_joined_fad, aes(x = long, y = lat, group = group))+
+  coord_equal(xlim = c(-100, -60),ylim = c(27,10)) +
+  geom_point(data = map.world_joined_fad_centroids, aes(x = long, y = lat, size = fad.number), fill = "steelblue", color = "black", shape = 21)
+```
 
 
 
