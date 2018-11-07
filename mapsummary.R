@@ -14,6 +14,8 @@ library(ggplot2)
 
 setwd("/Users/jmlawson/github/kuni_fads")
 
+fadlist <- read_csv('faddata.csv')
+
 map.world<-map_data("world")
 
 map.world_joined_fad <- left_join(map.world, fadlist, by = c('region' = 'region'))
