@@ -19,6 +19,7 @@ suppressPackageStartupMessages({
   library(startR)
   library(here)
   library(tidyverse)
+  library(ggrepel)
 })
 
 ```
@@ -150,12 +151,14 @@ map.world_joined_fad_centroids <- map.world_joined_fad %>%
             lat = mean(lat)) %>% 
   ungroup()
 
-ggplot() +
+p <- ggplot() +
   theme_bw() +
   geom_polygon(data = map.world_joined_fad, aes(x = long, y = lat, group = group))+
   coord_equal(xlim = c(-74, -60),ylim = c(21,10)) +
-  geom_jitter(data = map.world_joined_fad_centroids, aes(x = long, y = lat, size = fad.number), fill = "red", color = "black", shape = 21) +
+  geom_point(data = map.world_joined_fad_centroids, aes(x = long, y = lat, size = fad.number), fill = "red", color = "black", shape = 21) +
   scale_size_continuous(range = c(2,6))
+
+p + geom_text_repel(data = map.world_joined_fad_centroids, aes(x = long, y = lat, label = fad.number))
 ```
 
 
