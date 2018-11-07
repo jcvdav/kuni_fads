@@ -62,5 +62,5 @@ map.world_joined_fad_centroids <- map.world_joined_fad %>%
 ggplot() +
   theme_bw() +
   geom_polygon(data = map.world_joined_fad, aes(x = long, y = lat, group = group))+
-  coord_cartesian(xlim = c(-100, -60),ylim = c(27,10)) +
-  geom_point(data = map.world_joined_fad, aes(x = long, y = lat, size = fad.number))
+  coord_equal(xlim = c(-100, -60),ylim = c(27,10)) +
+  geom_point(data = map.world_joined_fad_centroids, aes(x = long, y = lat, size = fad.number), fill = "steelblue", color = "black", shape = 21)
