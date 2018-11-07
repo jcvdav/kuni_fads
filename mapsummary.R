@@ -53,6 +53,12 @@ ggplot() +
 ##Attempt to add scaled FAD numbers##
 #problem is that it is scaling every single perimeter point around each country - rather than creating an overall number for each country#
 
+map.world_joined_fad_centroids <- map.world_joined_fad %>% 
+  group_by(region, fad.number, fad.presence) %>% 
+  summarize(long = mean(long),
+            lat = mean(lat)) %>% 
+  ungroup()
+
 ggplot() +
   theme_bw() +
   geom_polygon(data = map.world_joined_fad, aes(x = long, y = lat, group = group))+
