@@ -104,7 +104,8 @@ ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.
                              override.aes = list(size = 4)),
          size = guide_legend(title = "# FADs")) +
   scale_fill_brewer(palette = "Set1") +
-  scale_size(trans = "log10", range = c(2, 6)) +
+  #scale_size(trans = "log10", range = c(2, 6)) +
+  scale_size_continuous(range = c(2,10)) +
   theme(axis.text = element_text(size = 12)))
 
 ggsave(plot = timeline, filename = here("img/timeline.tiff"), width = 8, height = 6)
