@@ -44,7 +44,7 @@ present.y <- ll.present$lat
 ggplot() +
   theme_bw() +
   geom_polygon(data = map.world_joined_fad, aes(x = long, y = lat, group = group))+
-  coord_cartesian(xlim = c(-100, -60),ylim = c(27,10)) +
+  coord_equal(xlim = c(-100, -60),ylim = c(27,10)) +
   geom_point(aes(x=present.x, y=present.y), color="#f24db3", size=5) +
   geom_point(aes(x=unknown.x, y=unknown.y), color="#43b5d8", size=5) +
   geom_point(aes(x=absent.x, y=absent.y), color="#f4d742", size=5) +
