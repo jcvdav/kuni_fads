@@ -95,9 +95,10 @@ ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.
 (timeline <- cl %>% 
   mutate(event = fct_rev(event),
          country = fct_rev(country),
-         n_fads = ifelse(is.na(n_fads), 1, n_fads)) %>% 
+         n_fads = ifelse(is.na(n_fads), 1, n_fads),
+         event = replace(event, event == "Adoption", "Active")) %>% 
   ggplot(aes(x = year, y = country, group = country)) +
-  geom_line() +
+  #geom_line() +
   geom_jitter(aes(fill = event, size = n_fads), height = 0, width = 0.5, shape = 21, alpha = 0.5) +
   theme_bw() +
   xlab("Year") +
@@ -106,8 +107,8 @@ ggsave(plot = panel, filename = here("img/panel.tiff"), width = 4.5, height = 6.
                              override.aes = list(size = 4)),
          size = guide_legend(title = "# FADs")) +
   scale_fill_brewer(palette = "Set1") +
-  #scale_size(trans = "log10", range = c(2, 6)) +
-  scale_size_continuous(range = c(2,10)) +
+  #scale_size(trans = "log10", range = c(1, 7)) +
+  scale_size_continuous(range = c(1,10)) +
   theme(axis.text = element_text(size = 12)))
 
 ggsave(plot = timeline, filename = here("img/timeline.tiff"), width = 8, height = 6)
