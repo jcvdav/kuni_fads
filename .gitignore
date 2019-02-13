@@ -2,4 +2,4 @@
 .Rhistory
 .RData
 .Ruserdata
-raw_data/landdistance/landdistance.asc raw_data/landdistance/landdistance.asc.xml raw_data/landdistance/landdistance.prj raw_data/landdistance/readme.txt
+raw_data/landdistance/*
