@@ -1,0 +1,505 @@
+﻿Domain Code,Domain,Country Code,Country,Element Code,Element,Item Code,Item,Year Code,Year,Unit,Value,Flag,Flag Description
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,10,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,10,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,2.02,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,1.99,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.18,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.18,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,23,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,22,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,2.75,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,2.72,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.15,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.14,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,33,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,33,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,5.83,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,5.76,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.87,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.86,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,7,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,7,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,1.46,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,1.44,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.13,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.7,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.69,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,8,Antigua and Barbuda,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,4,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,4,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.74,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.81,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,33,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,34,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,3.77,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,3.86,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.8,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.86,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.47,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.3,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,11,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,8,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,2.17,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,1.66,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.09,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.15,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.13,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,12,Bahamas,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,4,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,1.06,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.88,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.05,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,49,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,56,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,6.2,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,7.33,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,2.38,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,2.7,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,19,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,17,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,3.33,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,2.95,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.56,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.51,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.39,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.42,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.13,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.05,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.04,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,14,Barbados,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.21,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.17,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.37,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.36,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.14,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.13,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.09,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.17,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,49,Cuba,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,6,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,7,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,1.15,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,1.33,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,29,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,27,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,3.95,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,3.88,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.28,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.08,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,7,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,6,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,1.11,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.94,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.24,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.2,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,55,Dominica,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.97,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.96,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,8,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,7,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.92,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.91,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.38,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.38,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.16,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.16,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.04,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.04,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,56,Dominican Republic,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,11,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,11,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,2.16,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,2.14,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.15,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.15,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,42,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,42,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,5.77,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,5.71,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.9,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.88,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.95,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.94,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,86,Grenada,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.1,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.1,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.73,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.72,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.2,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.2,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.47,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.46,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.11,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.1,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,93,Haiti,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,21,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,21,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,2.49,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,2.48,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.15,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.14,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,22,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,22,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,3.81,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,3.79,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.62,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.62,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.08,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.08,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.09,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.09,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,109,Jamaica,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,5,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,1.07,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,1.07,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.09,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.09,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,17,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,17,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.86,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.86,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,29,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,29,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,5.1,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,5.1,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.82,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.82,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.53,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.53,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.38,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.38,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.04,Fc,Calculated data
+FBS,Food Balance Sheets,188,Saint Kitts and Nevis,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.04,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.5,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.5,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,27,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,27,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,3.55,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,3.53,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.29,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.28,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,12,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,12,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,2.17,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,2.16,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.34,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.34,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.27,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.27,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.06,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,189,Saint Lucia,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.43,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.54,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.04,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.05,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,12,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,13,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,1.53,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,1.65,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.59,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.62,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,18,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,17,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,3.13,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,2.88,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.48,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.46,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.13,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.1,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.02,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,191,Saint Vincent and the Grenadines,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.49,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.49,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.05,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.05,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,17,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,17,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,2.24,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,2.23,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.77,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.77,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,19,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,19,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,3.27,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,3.26,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.52,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.52,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,3,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.55,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.55,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.22,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.22,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.07,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,220,Trinidad and Tobago,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2762,Demersal Fish,2012,2012,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2762,Demersal Fish,2013,2013,kcal/capita/day,2,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.41,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.4,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2012,2012,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2762,Demersal Fish,2013,2013,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2012,2012,kcal/capita/day,8,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2763,Pelagic Fish,2013,2013,kcal/capita/day,8,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.97,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.97,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2012,2012,g/capita/day,0.37,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2763,Pelagic Fish,2013,2013,g/capita/day,0.37,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2012,2012,kcal/capita/day,4,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2764,"Marine Fish, Other",2013,2013,kcal/capita/day,4,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.67,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.66,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2012,2012,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2764,"Marine Fish, Other",2013,2013,g/capita/day,0.12,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2765,Crustaceans,2012,2012,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2765,Crustaceans,2013,2013,kcal/capita/day,1,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.14,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.15,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2012,2012,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2765,Crustaceans,2013,2013,g/capita/day,0.01,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2766,Cephalopods,2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2766,Cephalopods,2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2766,Cephalopods,2013,2013,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2012,2012,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,664,Food supply (kcal/capita/day),2767,"Molluscs, Other",2013,2013,kcal/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,674,Protein supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0.03,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2012,2012,g/capita/day,0,Fc,Calculated data
+FBS,Food Balance Sheets,5206,Caribbean,684,Fat supply quantity (g/capita/day),2767,"Molluscs, Other",2013,2013,g/capita/day,0,Fc,Calculated data

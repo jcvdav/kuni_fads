@@ -1,0 +1,127 @@
+﻿Domain Code,Domain,Area Code,Area,Element Code,Element,Item Code,Item,Year Code,Year,Unit,Value,Flag,Flag Description
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,95,F,FAO estimate
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,21013,X,International reliable sources
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,,NV,Data not available
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,,NV,Data not available
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,1.01,X,International reliable sources
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,2.1,F,FAO estimate
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,19.1,X,International reliable sources
+FS,Suite of Food Security Indicators,8,Antigua and Barbuda,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,22.1,X,International reliable sources
+FS,Suite of Food Security Indicators,12,Bahamas,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,109,F,FAO estimate
+FS,Suite of Food Security Indicators,12,Bahamas,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,27613.5,X,International reliable sources
+FS,Suite of Food Security Indicators,12,Bahamas,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,,NV,Data not available
+FS,Suite of Food Security Indicators,12,Bahamas,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,,NV,Data not available
+FS,Suite of Food Security Indicators,12,Bahamas,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.9,X,International reliable sources
+FS,Suite of Food Security Indicators,12,Bahamas,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,1.9,F,FAO estimate
+FS,Suite of Food Security Indicators,12,Bahamas,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,32.1,X,International reliable sources
+FS,Suite of Food Security Indicators,12,Bahamas,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,23.1,X,International reliable sources
+FS,Suite of Food Security Indicators,14,Barbados,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,121,F,FAO estimate
+FS,Suite of Food Security Indicators,14,Barbados,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,16741.4,X,International reliable sources
+FS,Suite of Food Security Indicators,14,Barbados,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,3.7,F,FAO estimate
+FS,Suite of Food Security Indicators,14,Barbados,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,<0.1,F,FAO estimate
+FS,Suite of Food Security Indicators,14,Barbados,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.96,X,International reliable sources
+FS,Suite of Food Security Indicators,14,Barbados,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,2.8,F,FAO estimate
+FS,Suite of Food Security Indicators,14,Barbados,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,24.8,X,International reliable sources
+FS,Suite of Food Security Indicators,14,Barbados,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,21.6,X,International reliable sources
+FS,Suite of Food Security Indicators,49,Cuba,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,147,F,FAO estimate
+FS,Suite of Food Security Indicators,49,Cuba,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,<2.5,F,FAO estimate
+FS,Suite of Food Security Indicators,49,Cuba,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,36586.04167,F,FAO estimate
+FS,Suite of Food Security Indicators,49,Cuba,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.62,X,International reliable sources
+FS,Suite of Food Security Indicators,49,Cuba,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,9.9,F,FAO estimate
+FS,Suite of Food Security Indicators,49,Cuba,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,26.7,X,International reliable sources
+FS,Suite of Food Security Indicators,49,Cuba,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,25.1,X,International reliable sources
+FS,Suite of Food Security Indicators,55,Dominica,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,122,F,FAO estimate
+FS,Suite of Food Security Indicators,55,Dominica,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,10151.3,X,International reliable sources
+FS,Suite of Food Security Indicators,55,Dominica,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,5.2,F,FAO estimate
+FS,Suite of Food Security Indicators,55,Dominica,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,<0.1,F,FAO estimate
+FS,Suite of Food Security Indicators,55,Dominica,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,1.13,X,International reliable sources
+FS,Suite of Food Security Indicators,55,Dominica,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,13.9,F,FAO estimate
+FS,Suite of Food Security Indicators,55,Dominica,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,28.2,X,International reliable sources
+FS,Suite of Food Security Indicators,55,Dominica,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,24.4,X,International reliable sources
+FS,Suite of Food Security Indicators,56,Dominican Republic,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,114,F,FAO estimate
+FS,Suite of Food Security Indicators,56,Dominican Republic,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,14120.2,X,International reliable sources
+FS,Suite of Food Security Indicators,56,Dominican Republic,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,10.4,F,FAO estimate
+FS,Suite of Food Security Indicators,56,Dominican Republic,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,1.1,F,FAO estimate
+FS,Suite of Food Security Indicators,56,Dominican Republic,6121,Value,210401,Prevalence of severe food insecurity in the total population (percent) (3-year average),20152017,2015-2017,0,,NR,Not reported
+FS,Suite of Food Security Indicators,56,Dominican Republic,6132,Value,210071,Number of severely food insecure people (million) (3-year average),20152017,2015-2017,millions,,NR,Not reported
+FS,Suite of Food Security Indicators,56,Dominican Republic,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.29,X,International reliable sources
+FS,Suite of Food Security Indicators,56,Dominican Republic,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,4.2,F,FAO estimate
+FS,Suite of Food Security Indicators,56,Dominican Republic,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,26.9,X,International reliable sources
+FS,Suite of Food Security Indicators,56,Dominican Republic,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,29.7,X,International reliable sources
+FS,Suite of Food Security Indicators,86,Grenada,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,100,F,FAO estimate
+FS,Suite of Food Security Indicators,86,Grenada,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,13167.1,X,International reliable sources
+FS,Suite of Food Security Indicators,86,Grenada,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,,NV,Data not available
+FS,Suite of Food Security Indicators,86,Grenada,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,,NV,Data not available
+FS,Suite of Food Security Indicators,86,Grenada,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,1.01,X,International reliable sources
+FS,Suite of Food Security Indicators,86,Grenada,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,18,F,FAO estimate
+FS,Suite of Food Security Indicators,86,Grenada,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,20.2,X,International reliable sources
+FS,Suite of Food Security Indicators,86,Grenada,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,23.5,X,International reliable sources
+FS,Suite of Food Security Indicators,93,Haiti,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,96,F,FAO estimate
+FS,Suite of Food Security Indicators,93,Haiti,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,1654.2,X,International reliable sources
+FS,Suite of Food Security Indicators,93,Haiti,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,45.8,F,FAO estimate
+FS,Suite of Food Security Indicators,93,Haiti,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,5,F,FAO estimate
+FS,Suite of Food Security Indicators,93,Haiti,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,-0.67,X,International reliable sources
+FS,Suite of Food Security Indicators,93,Haiti,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,2.3,F,FAO estimate
+FS,Suite of Food Security Indicators,93,Haiti,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,20.5,X,International reliable sources
+FS,Suite of Food Security Indicators,93,Haiti,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,46.2,X,International reliable sources
+FS,Suite of Food Security Indicators,109,Jamaica,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,113,F,FAO estimate
+FS,Suite of Food Security Indicators,109,Jamaica,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,8179.6,X,International reliable sources
+FS,Suite of Food Security Indicators,109,Jamaica,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,8.9,F,FAO estimate
+FS,Suite of Food Security Indicators,109,Jamaica,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,0.3,F,FAO estimate
+FS,Suite of Food Security Indicators,109,Jamaica,6121,Value,210401,Prevalence of severe food insecurity in the total population (percent) (3-year average),20152017,2015-2017,0,,NR,Not reported
+FS,Suite of Food Security Indicators,109,Jamaica,6132,Value,210071,Number of severely food insecure people (million) (3-year average),20152017,2015-2017,millions,,NR,Not reported
+FS,Suite of Food Security Indicators,109,Jamaica,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.24,X,International reliable sources
+FS,Suite of Food Security Indicators,109,Jamaica,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,3.8,F,FAO estimate
+FS,Suite of Food Security Indicators,109,Jamaica,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,24.4,X,International reliable sources
+FS,Suite of Food Security Indicators,109,Jamaica,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,22.5,X,International reliable sources
+FS,Suite of Food Security Indicators,177,Puerto Rico,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,35044.7,X,International reliable sources
+FS,Suite of Food Security Indicators,177,Puerto Rico,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,,NV,Data not available
+FS,Suite of Food Security Indicators,177,Puerto Rico,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,,NV,Data not available
+FS,Suite of Food Security Indicators,177,Puerto Rico,6121,Value,210401,Prevalence of severe food insecurity in the total population (percent) (3-year average),20152017,2015-2017,0,,NR,Not reported
+FS,Suite of Food Security Indicators,177,Puerto Rico,6132,Value,210071,Number of severely food insecure people (million) (3-year average),20152017,2015-2017,millions,,NR,Not reported
+FS,Suite of Food Security Indicators,177,Puerto Rico,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.81,X,International reliable sources
+FS,Suite of Food Security Indicators,177,Puerto Rico,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,4.8,F,FAO estimate
+FS,Suite of Food Security Indicators,177,Puerto Rico,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,20.8,X,International reliable sources
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,102,F,FAO estimate
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,24463.6,X,International reliable sources
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,,NV,Data not available
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,,NV,Data not available
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.62,X,International reliable sources
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,8.4,F,FAO estimate
+FS,Suite of Food Security Indicators,188,Saint Kitts and Nevis,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,23.1,X,International reliable sources
+FS,Suite of Food Security Indicators,189,Saint Lucia,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,104,F,FAO estimate
+FS,Suite of Food Security Indicators,189,Saint Lucia,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,12671.3,X,International reliable sources
+FS,Suite of Food Security Indicators,189,Saint Lucia,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,,NV,Data not available
+FS,Suite of Food Security Indicators,189,Saint Lucia,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,,NV,Data not available
+FS,Suite of Food Security Indicators,189,Saint Lucia,6121,Value,210401,Prevalence of severe food insecurity in the total population (percent) (3-year average),20152017,2015-2017,0,4.5,,Official data
+FS,Suite of Food Security Indicators,189,Saint Lucia,6132,Value,210071,Number of severely food insecure people (million) (3-year average),20152017,2015-2017,millions,<0.1,,Official data
+FS,Suite of Food Security Indicators,189,Saint Lucia,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.86,X,International reliable sources
+FS,Suite of Food Security Indicators,189,Saint Lucia,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,17,F,FAO estimate
+FS,Suite of Food Security Indicators,189,Saint Lucia,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,19.8,X,International reliable sources
+FS,Suite of Food Security Indicators,189,Saint Lucia,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,21.9,X,International reliable sources
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,121,F,FAO estimate
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,10583.1,X,International reliable sources
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,5.7,F,FAO estimate
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,<0.1,F,FAO estimate
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,1.01,X,International reliable sources
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,9.2,F,FAO estimate
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,23.8,X,International reliable sources
+FS,Suite of Food Security Indicators,191,Saint Vincent and the Grenadines,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,24.5,X,International reliable sources
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,129,F,FAO estimate
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,29540.9,X,International reliable sources
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,4.9,F,FAO estimate
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,<0.1,F,FAO estimate
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6125,Value,21032,Political stability and absence of violence/terrorism (index),2016,2016,index,0.28,X,International reliable sources
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,2.7,F,FAO estimate
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,19.7,X,International reliable sources
+FS,Suite of Food Security Indicators,220,Trinidad and Tobago,6121,Value,21043,Prevalence of anemia among women of reproductive age (15-49 years),2016,2016,0,23.6,X,International reliable sources
+FS,Suite of Food Security Indicators,5206,Caribbean,6121,Value,21010,Average dietary energy supply adequacy (percent) (3-year average),20152017,2015-2017,0,105,F,FAO estimate
+FS,Suite of Food Security Indicators,5206,Caribbean,6126,Value,22013,"Gross domestic product per capita, PPP, dissemination (constant 2011 international $)",2016,2016,I$,12547.7,X,International reliable sources
+FS,Suite of Food Security Indicators,5206,Caribbean,6121,Value,210041,Prevalence of undernourishment (percent) (3-year average),20152017,2015-2017,0,17.2,F,FAO estimate
+FS,Suite of Food Security Indicators,5206,Caribbean,6121,Value,210040,Prevalence of undernourishment (percent) (annual value),2016,2016,0,17.1,F,FAO estimate
+FS,Suite of Food Security Indicators,5206,Caribbean,6132,Value,210011,Number of people undernourished (million) (3-year average),20152017,2015-2017,millions,7.2,F,FAO estimate
+FS,Suite of Food Security Indicators,5206,Caribbean,6132,Value,210010,Number of people undernourished (million) (annual value),2016,2016,millions,7.2,F,FAO estimate
+FS,Suite of Food Security Indicators,5206,Caribbean,6127,Value,21030,Per capita food production variability (constant 2004-2006 thousand int$ per capita),2016,2016,1000 I$,1.8,F,FAO estimate
+FS,Suite of Food Security Indicators,5206,Caribbean,6121,Value,21025,Percentage of children under 5 years of age who are stunted (percent),2016,2016,0,8.3,X,International reliable sources
+FS,Suite of Food Security Indicators,5206,Caribbean,6121,Value,21041,Percentage of children under 5 years of age who are overweight (percent),2016,2016,0,7.1,X,International reliable sources
+FS,Suite of Food Security Indicators,5206,Caribbean,6121,Value,21042,Prevalence of obesity in the adult population (18 years and older),2016,2016,0,24.8,X,International reliable sources
