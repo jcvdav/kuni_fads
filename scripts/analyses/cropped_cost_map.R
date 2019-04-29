@@ -1,5 +1,11 @@
 # cropped_cost_map
 
+# Load packages
+library(startR)
+library(here)
+library(raster)
+library(tidyverse)
+
 # Load rasters
 depth <- raster(here("data", "spatial", "raster", "depth.tif"))
 land_distance <- raster(here("data", "spatial", "raster", "landdistance.tif"))
@@ -8,13 +14,6 @@ sst <- raster(here("data", "spatial", "raster", "sstmean.tif"))
 surface_current <- abs(raster(here("data", "spatial", "raster", "surface_current.tif")))
 wind_speed <- raster(here("data", "spatial", "raster", "windspeed.tif"))
 mahi_mahi <- raster(here("data", "spatial", "raster", "Coryphaena_hippurus.tif"))
-
-
-files <- list.files(path = here("data", "spatial", "raster"), pattern = "*.tif")
-paths <- here("data", "spatial", "raster", files)
-
-r <- stack(paths)
-
 
 # Custom cutoffs that make no sense for now
 max_depth <- -3000
