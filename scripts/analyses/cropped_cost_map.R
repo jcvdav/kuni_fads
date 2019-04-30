@@ -77,7 +77,7 @@ price_per_meter <- 0.3 # $106-160 per 500m coil = ~$0.30/m
 
 current_factor <- 1.7 * (surface_current / max_surface_current)
 
-cost <- -1 * depth * 7 * price_per_meter * current_factor
+cost <- -1 * depth * 8 * price_per_meter * current_factor
 
 cost_df_full <- as.data.frame(cost, xy = T)
 
