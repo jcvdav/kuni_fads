@@ -18,16 +18,18 @@ wind_speed <- raster(here("data", "spatial", "raster", "windspeed.tif"))
 mahi_mahi <- raster(here("data", "spatial", "raster", "Coryphaena_hippurus.tif"))
 
 # Custom cutoffs that make no sense for now
-max_depth <- -5000
+max_depth <- -4000
+min_depth <- -200
 max_land_distance <- 1
-max_port_distance <- 3
+max_port_distance <- 1.5
 min_sst <- 24
 max_sst <- 31
-max_surface_current <- 0.6 # about 1kn
-max_wind_speed <- 8 # about 16kn
+max_surface_current <- 4 # m/s
+max_wind_speed <- 9 # m/s, about 16kn
 
 # Create masks
-depth_mask <- depth > max_depth
+depth_max_mask <- depth > max_depth
+depth_min_mask <- depth < min_depth
 land_distance_mask <- land_distance < max_land_distance
 port_distance_mask <- port_distance < max_port_distance
 sst_min_mask <- sst > min_sst
@@ -36,7 +38,8 @@ surface_current_mask <- surface_current < max_surface_current
 wind_speed_mask <- wind_speed < max_wind_speed
 mahi_mahi_mask <- mahi_mahi > 0.1
 
-stacked_masks <- stack(depth_mask,
+stacked_masks <- stack(depth_max_mask,
+                       depth_min_mask,
                        land_distance_mask,
                        port_distance_mask,
                        sst_min_mask,
@@ -47,6 +50,10 @@ stacked_masks <- stack(depth_mask,
 # Mask rasters
 masked_depth <- mask(x = depth,
                      mask = depth_mask,
+                     maskvalue = F)
+
+masked_min_depth <- mask(x = depth,
+                     mask = depth_min_mask,
                      maskvalue = F)
 
 masked_land_distance <- mask(x = land_distance,
@@ -73,18 +80,19 @@ masked_wind_speed <- mask(x = wind_speed,
                           mask = wind_speed_mask,
                           maskvalue = F)
 
-price_per_meter <- 0.3 # $106-160 per 500m coil = ~$0.30/m
+price_per_meter <- 0.3 # $106-160 per 500m coil = ~$0.30/m in Guadeloupe
 
 current_factor <- 1.7 * (surface_current / max_surface_current)
 
-cost <- -1 * depth * 8 * price_per_meter * current_factor
+cost <- -1 * depth * 8 * port_distance * price_per_meter * current_factor
 
 cost_df_full <- as.data.frame(cost, xy = T)
 
 
 data <- cost %>% 
   # mask(x = ., mask = mahi_mahi_mask, maskvalue = F) %>% 
-  mask(x = ., mask = depth_mask, maskvalue = F) %>% 
+  mask(x = ., mask = depth_max_mask, maskvalue = F) %>% 
+  mask(x = ., mask = depth_min_mask, maskvalue = F) %>%
   mask(x = ., mask = land_distance_mask, maskvalue = F) %>% 
   mask(x = ., mask = port_distance_mask, maskvalue = F) %>%
   mask(x = ., mask = sst_min_mask, maskvalue = F) %>% 
@@ -108,13 +116,15 @@ ggplot() +
   theme(legend.justification = c(1, 1),
         legend.position = c(1, 1))
 
+
 ggplot() +
   geom_raster(data = data,
               mapping = aes(x = x, y = y, fill = layer),
               interpolate = T) +
   scale_fill_gradientn(colours = colorRamps::matlab.like(50),
                        na.value = "transparent",
-                       trans = "log10") +
+                       trans = "sqrt"
+                       ) +
   geom_sf(data = coast) +
   ggtheme_map() +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
