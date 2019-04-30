@@ -112,7 +112,9 @@ ggplot() +
   geom_raster(data = data,
               mapping = aes(x = x, y = y, fill = layer),
               interpolate = T) +
-  scale_fill_gradientn(colours = colorRamps::matlab.like(50), na.value = "transparent") +
+  scale_fill_gradientn(colours = colorRamps::matlab.like(50),
+                       na.value = "transparent",
+                       trans = "log10") +
   geom_sf(data = coast) +
   ggtheme_map() +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
