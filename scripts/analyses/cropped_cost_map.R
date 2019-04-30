@@ -121,7 +121,8 @@ ggplot() +
                                ticks.colour = "black",
                                frame.colour = "black")) +
   theme(legend.justification = c(1, 1),
-        legend.position = c(1, 1))
+        legend.position = c(1, 1),
+        text = element_text(size = 15))
 
 
 
