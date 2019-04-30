@@ -5,6 +5,8 @@ library(startR)
 library(here)
 library(raster)
 library(tidyverse)
+library(rnaturalearth)
+# library(rnaturalearthdata)
 
 # Load rasters
 depth <- raster(here("data", "spatial", "raster", "depth.tif"))
@@ -16,13 +18,13 @@ wind_speed <- raster(here("data", "spatial", "raster", "windspeed.tif"))
 mahi_mahi <- raster(here("data", "spatial", "raster", "Coryphaena_hippurus.tif"))
 
 # Custom cutoffs that make no sense for now
-max_depth <- -3000
-max_land_distance <- 2
+max_depth <- -5000
+max_land_distance <- 1
 max_port_distance <- 3
 min_sst <- 24
 max_sst <- 31
-max_surface_current <- 0.1
-max_wind_speed <- 7
+max_surface_current <- 0.6 # about 1kn
+max_wind_speed <- 8 # about 16kn
 
 # Create masks
 depth_mask <- depth > max_depth
@@ -71,7 +73,7 @@ masked_wind_speed <- mask(x = wind_speed,
                           mask = wind_speed_mask,
                           maskvalue = F)
 
-price_per_meter <- 1.2
+price_per_meter <- 0.3 # $106-160 per 500m coil = ~$0.30/m
 
 current_factor <- 1.7 * (surface_current / max_surface_current)
 
