@@ -1,6 +1,7 @@
 library(tidyverse)
+library(here)
 
-#All Marine Fish
+# All Marine Fish (data base from Julia's laptop)
 
 AllMarineFish <- read.csv("raw_data/trade/FAO_species_allmarinefish_1976_2016.csv", header = T, stringsAsFactors = F)
 
@@ -16,6 +17,15 @@ AllMarineFish.tidy <- AllMarineFish %>%
   filter(Year == "2014" | Year == "2015" | Year == "2016")
 
 write.csv(AllMarineFish.tidy, file = "raw_data/trade/AllMarineFish.tidy.csv")
-  
-#FAD Species
+
+# Using only years 2014 - 2016
+
+## Defining FAD fisheries
+fad_fished <- c()
+
+trade_fish <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T, stringsAsFactors = F) %>% 
+  filter(Country != 'Totals') %>% 
+  mutate(fad_fished  = ifelse(Commodity %in% fad_fished, 1, 0))
+
+
 
