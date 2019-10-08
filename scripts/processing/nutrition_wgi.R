@@ -37,7 +37,8 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
   rename("value" = x2018_yr2018) %>%
   select(country_name, country_code, series_name, value) %>%
   spread(series_name, value) %>%
-  set_names("country","alpha_3","corruption","gov_eff","pol_stab","reg_qual","rule_law","accountability")
+  set_names("country","alpha_3","corruption","gov_eff","pol_stab","reg_qual","rule_law","accountability") %>%
+  mutate(wgi_mean = mean(corruption, gov_eff, pol_stab, reg_qual, rule_law, accountability))
 
 
 

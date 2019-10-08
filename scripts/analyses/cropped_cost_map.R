@@ -15,16 +15,18 @@ port_distance <- raster(here("data", "spatial", "raster", "port_distance.tif"))
 sst <- raster(here("data", "spatial", "raster", "sstmean.tif"))
 surface_current <- abs(raster(here("data", "spatial", "raster", "surface_current.tif")))
 wind_speed <- raster(here("data", "spatial", "raster", "windspeed.tif"))
-mahi_mahi <- raster(here("data", "spatial", "raster", "Coryphaena_hippurus.tif"))
+mahi_mahi <- raster(here("data", "spatial", "raster", "Coryphaena_hippurus.tif")) %>% 
+  projectRaster(to = depth)
+shipping <- raster(here("data", "spatial", "raster", "shipping_lanes.tif"))
 
 # Custom cutoffs that make no sense for now
-max_depth <- -4000
-min_depth <- -200
-max_land_distance <- 1
-max_port_distance <- 1.5
+max_depth <- -5000
+min_depth <- -30
+max_land_distance <- 10
+max_port_distance <- 10
 min_sst <- 24
 max_sst <- 31
-max_surface_current <- 4 # m/s
+max_surface_current <- 1.45 # m/s
 max_wind_speed <- 9 # m/s, about 16kn
 
 # Create masks
@@ -37,6 +39,7 @@ sst_max_mask <- sst < max_sst
 surface_current_mask <- surface_current < max_surface_current
 wind_speed_mask <- wind_speed < max_wind_speed
 mahi_mahi_mask <- mahi_mahi > 0.1
+shipping_mask <- shipping == 0
 
 stacked_masks <- stack(depth_max_mask,
                        depth_min_mask,
@@ -53,8 +56,8 @@ masked_depth <- mask(x = depth,
                      maskvalue = F)
 
 masked_min_depth <- mask(x = depth,
-                     mask = depth_min_mask,
-                     maskvalue = F)
+                         mask = depth_min_mask,
+                         maskvalue = F)
 
 masked_land_distance <- mask(x = land_distance,
                              mask = land_distance_mask,
@@ -80,25 +83,30 @@ masked_wind_speed <- mask(x = wind_speed,
                           mask = wind_speed_mask,
                           maskvalue = F)
 
-price_per_meter <- 0.3 # $106-160 per 500m coil = ~$0.30/m in Guadeloupe
+masked_shipping <- mask(x = shipping,
+                        mask = shipping_mask,
+                        maskvalue = F)
 
-current_factor <- 1.7 * (surface_current / max_surface_current)
-
-cost <- -1 * depth * 8 * port_distance * price_per_meter * current_factor
+cost <- calc(depth, get_cost)
 
 cost_df_full <- as.data.frame(cost, xy = T)
 
 
-data <- cost %>% 
-  # mask(x = ., mask = mahi_mahi_mask, maskvalue = F) %>% 
+croped_cost <- cost %>% 
+  mask(x = ., mask = mahi_mahi_mask, maskvalue = F) %>%
   mask(x = ., mask = depth_max_mask, maskvalue = F) %>% 
   mask(x = ., mask = depth_min_mask, maskvalue = F) %>%
-  mask(x = ., mask = land_distance_mask, maskvalue = F) %>% 
+  mask(x = ., mask = land_distance_mask, maskvalue = F) %>%
   mask(x = ., mask = port_distance_mask, maskvalue = F) %>%
-  mask(x = ., mask = sst_min_mask, maskvalue = F) %>% 
-  mask(x = ., mask = sst_max_mask, maskvalue = F) %>% 
-  mask(x = ., mask = surface_current_mask, maskvalue = F) %>% 
-  # mask(x = ., mask = wind_speed_mask, maskvalue = F) %>%
+  mask(x = ., mask = sst_min_mask, maskvalue = F) %>%
+  mask(x = ., mask = sst_max_mask, maskvalue = F) %>%
+  mask(x = ., mask = surface_current_mask, maskvalue = F) %>%
+  mask(x = ., mask = shipping_mask, maskvalue = F)
+
+writeRaster(x = croped_cost,
+            filename = here("data", "croped_cost.tif"))
+
+data <- croped_cost %>% 
   as.data.frame(xy = T)
 
 coast <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") %>% 
@@ -123,7 +131,6 @@ ggplot() +
               interpolate = T) +
   scale_fill_gradientn(colours = colorRamps::matlab.like(50),
                        na.value = "transparent",
-                       trans = "sqrt"
                        ) +
   geom_sf(data = coast) +
   ggtheme_map() +

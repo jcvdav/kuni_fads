@@ -68,6 +68,19 @@ raster(here("raw_data", "Coryphaena_hippurus.nc"),
   writeRaster(filename = here("data", "spatial", "raster", "Coryphaena_hippurus.tif"),
               overwrite = T)
 
+# Shipping lanes
+ref <- raster(here("data", "spatial", "raster", "depth.tif"))
+
+shipping <- raster(here("raw_data", "shipping", "shipping.tif")) %>% 
+  projectRaster(to = ref) %>% 
+  crop(y = caribbean_extent)
+
+shipping <- shipping > 10
+
+writeRaster(x = shipping,
+            filename = here("data", "spatial", "raster", "shipping_lanes.tif"),
+            overwrite = T)
+
 
 
 
