@@ -52,17 +52,21 @@ trade_fish <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T
   clean_names() %>%
   select(-(c(x_1, x, x_f))) %>% 
   filter(country != 'Totals') %>% 
-  mutate(flow = ifelse(flow == "Reexports", "Exports", flow), # grouping reexports with exports (see note below)
-        fad_fished  = ifelse(commodity %in% fad_fished, 1, 0), 
-          flow_binary = ifelse(quantity != 'NA', ifelse(quantity > 0, 1, 0))) %>% 
+  mutate(flow = ifelse(flow == "Reexports", "Exports", flow)) %>% # grouping reexports with exports (see note below)
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>% 
   mutate(alpha_3 = countrycode(country, "country.name", "iso3c")) %>%
+  mutate(fad_fished  = ifelse(commodity %in% fad_fished, 1, 0)) %>%
+  filter(fad_fished == 1) %>%
+  group_by(country, flow, year) %>%
+  summarize(quantity_fad = sum(quantity, na.rm = T))
+
+
   group_by(alpha_3, commodity, flow) %>%
-  summarise(quantity = mean(quantity, na.rm = T))
+  summarise(quantity = mean(quantity, na.rm = T)) %>%
+  mutate(fad_fished  = ifelse(commodity %in% fad_fished, 1, 0), 
+         flow_binary = ifelse(quantity != 'NA', ifelse(quantity > 0, 1, 0)))
 
 # exports currently include both exports and reexports (to indicate export streams/capacity)
-
-write.csv(trade_fish, here("data/fao_trade.csv"), row.names = F)
 
 ########################## GOVERNANCE INDICATORS ###############################
 
@@ -74,15 +78,24 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
   set_names("country","alpha_3","corruption","gov_eff","pol_stab","reg_qual","rule_law","accountability") %>%
   mutate_at(vars(3:8),funs(as.numeric)) %>%
   rowwise() %>%
-  mutate(wgi_mean = mean(c(corruption, gov_eff, pol_stab, reg_qual, rule_law, accountability), na.rm = T))
+  mutate(wgi_mean = mean(c(corruption, gov_eff, pol_stab, reg_qual, rule_law, accountability), na.rm = T)) %>%
   select(alpha_3, everything(), -country)
 
+########################### TOURISM ####################################
+
+tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), stringsAsFactors = F) %>%
+  select(alpha_3, foreign_tourists)
+  
 ########################### MERGING DATASETS ####################################
 
-dataset <- iso %>%
+social_data <- iso %>%
   select(name_govt, alpha_3) %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(wgi, by = "alpha_3") %>%
   left_join(trade_fish, by = "alpha_3") %>%
-  replace(. == "NaN", NA)
+  left_join(tourism, by = "alpha_3") %>%
+  replace(. == "NaN", NA) %>%
+  mutate_all(na_if,"")
+
+write.csv(trade_fish, here("data/fao_trade.csv"), row.names = F)
     
