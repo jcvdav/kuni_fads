@@ -17,17 +17,12 @@ crop_caribbean <- function(layer, extent) {
   
   # Name of raster to write
   raster_out <-
-    here::here("data", "spatial", "raster", paste0(layer, ".tif"))
+    here::here("data", "input", paste0(layer, ".tif"))
   
   # Make sure directories exist
-  if (!dir.exists(here::here("data", "spatial"))) {
-    print("creating missing directory: spatial")
-    dir.create(here::here("data", "spatial"))
-  }
-  
-  if (!dir.exists(here::here("data", "spatial", "raster"))) {
-    print("creating missing directory: spatial/raster")
-    dir.create(here::here("data", "spatial", "raster"))
+  if (!dir.exists(here::here("data", "input"))) {
+    print("creating missing directory: input")
+    dir.create(here::here("data", "input"))
   }
   
   # Read, crop, write raster
@@ -65,20 +60,24 @@ crop_caribbean(layer = "sstmean",
 raster(here("raw_data", "Coryphaena_hippurus.nc"),
        varname = "probability") %>% 
   crop(y = caribbean_extent) %>%
-  writeRaster(filename = here("data", "spatial", "raster", "Coryphaena_hippurus.tif"),
+  writeRaster(filename = here("data", "input", "Coryphaena_hippurus.tif"),
               overwrite = T)
 
 # Shipping lanes
-ref <- raster(here("data", "spatial", "raster", "depth.tif"))
+## Read in a reference rastr to reproject to
+reference <- raster(here("data", "input", "depth.tif")) 
 
+# Read in shipping
 shipping <- raster(here("raw_data", "shipping", "shipping.tif")) %>% 
-  projectRaster(to = ref) %>% 
-  crop(y = caribbean_extent)
+  projectRaster(to = reference) %>%                   # reproject
+  crop(y = caribbean_extent) %>%                     # crop to Caribbean
+  focal(w = matrix(1, 5, 5), mean)                   # Apply a focal function to smooth
 
-shipping <- shipping > 10
+shipping <- shipping > 10 # Filter values > 10 as T
 
+# Export the raster
 writeRaster(x = shipping,
-            filename = here("data", "spatial", "raster", "shipping_lanes.tif"),
+            filename = here("data", "input", "shipping_lanes.tif"),
             overwrite = T)
 
 
