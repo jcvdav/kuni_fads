@@ -1,5 +1,6 @@
 library(tidyverse)
 library(here)
+library(countrycode)
 
 # All Marine Fish (data base from Julia's laptop)
 
@@ -47,7 +48,10 @@ fad_fished <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfi
 trade_fish <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T, stringsAsFactors = F, na.strings = c("...", "-")) %>% 
   filter(Country != 'Totals') %>% 
   mutate(fad_fished  = ifelse(Commodity %in% fad_fished, 1, 0), 
-         flow_binary = ifelse(Quantity != 'NA', ifelse(Quantity >0, 1, 0))) %>% 
-  select(-(c(X.1, X, X.F)))
+         flow_binary = ifelse(Quantity != 'NA', ifelse(Quantity > 0, 1, 0))) %>% 
+  select(-(c(X.1, X, X.F))) %>% 
+  mutate(Country= ifelse(Country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(Country == "CuraÃ§ao", 'Curaçao', Country))) %>% 
+  mutate(alpha3 = countrycode(Country, "country.name", "iso3c"))
   
-write.csv(trade_fish, file = here("data/fao_trade.csv"))
+  
+write.csv(trade_fish, here("data/fao_trade.csv"), row.names = F)
