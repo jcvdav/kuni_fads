@@ -9,35 +9,34 @@ library(rnaturalearth)
 # library(rnaturalearthdata)
 
 # Load rasters
-depth <- raster(here("data", "spatial", "raster", "depth.tif"))
-land_distance <- raster(here("data", "spatial", "raster", "landdistance.tif"))
-port_distance <- raster(here("data", "spatial", "raster", "port_distance.tif"))
-sst <- raster(here("data", "spatial", "raster", "sstmean.tif"))
-surface_current <- abs(raster(here("data", "spatial", "raster", "surface_current.tif")))
-wind_speed <- raster(here("data", "spatial", "raster", "windspeed.tif"))
-mahi_mahi <- raster(here("data", "spatial", "raster", "Coryphaena_hippurus.tif")) %>% 
+## Biophysical data
+depth <- raster(here("data", "input", "depth.tif"))
+land_distance <- raster(here("data", "input", "landdistance.tif"))
+port_distance <- raster(here("data", "input", "port_distance.tif"))
+sst <- raster(here("data", "input", "sstmean.tif"))
+surface_current <- abs(raster(here("data", "input",  "surface_current.tif")))
+shipping <- raster(here("data", "input", "shipping_lanes.tif"))
+
+mahi_mahi <- raster(here("data", "input", "Coryphaena_hippurus.tif")) %>% 
   projectRaster(to = depth)
-shipping <- raster(here("data", "spatial", "raster", "shipping_lanes.tif"))
 
 # Custom cutoffs that make no sense for now
-max_depth <- -5000
+max_depth <- -3000
 min_depth <- -30
-max_land_distance <- 10
+max_land_distance <- 50 * 1.854
 max_port_distance <- 10
 min_sst <- 24
-max_sst <- 31
-max_surface_current <- 1.45 # m/s
-max_wind_speed <- 9 # m/s, about 16kn
+max_sst <- 41
+max_surface_current <- 0.65 # A constant 0.65 current would hide a FAD with a 400L flotation device
 
 # Create masks
 depth_max_mask <- depth > max_depth
 depth_min_mask <- depth < min_depth
 land_distance_mask <- land_distance < max_land_distance
-port_distance_mask <- port_distance < max_port_distance
+# port_distance_mask <- port_distance < max_port_distance
 sst_min_mask <- sst > min_sst
 sst_max_mask <- sst < max_sst
 surface_current_mask <- surface_current < max_surface_current
-wind_speed_mask <- wind_speed < max_wind_speed
 mahi_mahi_mask <- mahi_mahi > 0.1
 shipping_mask <- shipping == 0
 
@@ -47,8 +46,7 @@ stacked_masks <- stack(depth_max_mask,
                        port_distance_mask,
                        sst_min_mask,
                        sst_max_mask,
-                       surface_current_mask,
-                       wind_speed_mask)
+                       surface_current_mask)
 
 # Mask rasters
 masked_depth <- mask(x = depth,
@@ -79,10 +77,6 @@ masked_surface_current <- mask(x = surface_current,
                                mask = surface_current_mask,
                                maskvalue = F)
 
-masked_wind_speed <- mask(x = wind_speed,
-                          mask = wind_speed_mask,
-                          maskvalue = F)
-
 masked_shipping <- mask(x = shipping,
                         mask = shipping_mask,
                         maskvalue = F)
@@ -97,14 +91,15 @@ croped_cost <- cost %>%
   mask(x = ., mask = depth_max_mask, maskvalue = F) %>% 
   mask(x = ., mask = depth_min_mask, maskvalue = F) %>%
   mask(x = ., mask = land_distance_mask, maskvalue = F) %>%
-  mask(x = ., mask = port_distance_mask, maskvalue = F) %>%
+  # mask(x = ., mask = port_distance_mask, maskvalue = F) %>%
   mask(x = ., mask = sst_min_mask, maskvalue = F) %>%
   mask(x = ., mask = sst_max_mask, maskvalue = F) %>%
   mask(x = ., mask = surface_current_mask, maskvalue = F) %>%
   mask(x = ., mask = shipping_mask, maskvalue = F)
 
 writeRaster(x = croped_cost,
-            filename = here("data", "croped_cost.tif"))
+            filename = here("data", "croped_cost.tif"),
+            overwrite = T)
 
 data <- croped_cost %>% 
   as.data.frame(xy = T)
@@ -112,11 +107,14 @@ data <- croped_cost %>%
 coast <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") %>% 
   sf::st_crop(y = extent(depth))
 
+eez <- st_read(here("data", "caribbean_eez.gpkg"))
+
 ggplot() +
   geom_raster(data = cost_df_full,
               mapping = aes(x = x, y = y, fill = layer)) +
   scale_fill_gradientn(colours = colorRamps::matlab.like(50), na.value = "transparent") +
   geom_sf(data = coast) +
+  geom_sf(data = eez, fill = "transparent") +
   ggtheme_map() +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
                                ticks.colour = "black",
@@ -133,6 +131,7 @@ ggplot() +
                        na.value = "transparent",
                        ) +
   geom_sf(data = coast) +
+  geom_sf(data = eez, fill = "transparent") +
   ggtheme_map() +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
                                ticks.colour = "black",

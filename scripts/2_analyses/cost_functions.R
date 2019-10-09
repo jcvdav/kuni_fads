@@ -1,4 +1,4 @@
-rope_features <- function(d, r = 2, density = 1.024, d_lt, wa_f = 9, dens_f = 0.94, wa_s = 12.8, dens_s = 1.14, return_type = "lengths") {
+rope_features <- function(d, r, density = 1.024, d_lt, wa_f = 9, dens_f = 0.94, wa_s = 12.8, dens_s = 1.14) {
   
   total_rope_length <- d * r
   
@@ -18,14 +18,10 @@ rope_features <- function(d, r = 2, density = 1.024, d_lt, wa_f = 9, dens_f = 0.
   
   length_s <- d_lt + loop_arm_length + length_arm_s
   
-  if(return_type == "lengths"){
-    return(c(length_f, length_s))
-  }
+  return(c(length_f, length_s))
   
-  if(return_type == "weight"){
-    return((length_s - length_arm_s) * weight_in_water_s)
-  }
 }
+
 
 rope_cost <- function(rope_lengths, rope_costs = c(0.3, 0.3)) {
   
@@ -33,12 +29,15 @@ rope_cost <- function(rope_lengths, rope_costs = c(0.3, 0.3)) {
   
 }
 
-
 get_cost <- function(depth) {
+  
+  r <- case_when(depth < 1000 ~ 1.2,
+                 between(depth, 1000, 2000) ~ 1.5,
+                 T ~ 2)
   
   depth <- abs(depth)
   
-  rope_cost <- rope_features(d = depth, d_lt = 300) %>% 
+  rope_cost <- rope_features(d = depth, r = r, d_lt = 300) %>% 
     rope_cost()
   
   rope_cost + 1100
