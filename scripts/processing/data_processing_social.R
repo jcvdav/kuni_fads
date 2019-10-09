@@ -43,28 +43,54 @@ nutrition <- fao_fs %>%
 
 ######################## FAO TRADE DATA ################################
 
-# Defining FAD fisheries
+# sum function for calculating aggregate quantities
+my_sum <- function(x) {
+  # If all values are NA, return NA
+  if(sum(is.na(x)) == length(x)) {
+    res <- NA
+  } else {
+    # If they ar enot, do the calculation
+    res <- sum(x, na.rm = T)
+  }
+  # Return the result
+  return(res)
+}
 
-fad_fished <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfin tuna), frozen, nei", "Atlantic (Thunnus thynnus) and Pacific (Thunnus orientalis) bluefin tuna, frozen", "Euthynnus other than skipjack prep. or pres. not minced, nei", "Skipjack tuna, frozen", "Southern bluefin tuna (Thunnus maccoyii), live", "Tuna loins and fillets, frozen", "Tuna loins, prepared or preserved", "Tunas nei, frozen", "Tunas prepared or preserved, not minced, in oil", "Tunas prepared or preserved, not minced, nei", "Tunas, fresh or chilled, nei", "Yellowfin tuna, fresh or chilled", "Yellowfin tuna, frozen, nei", "Atlantic (Thunnus thynnus), Pacific (T.orientalis) bluefin tuna, live", "Atlantic (Thunnus thynnus)and Pacific (Thunnus orientalis) bluefin tuna, fresh or chilled", "Bigeye tuna, fresh or chilled", "Skipjack tuna, fresh or chilled", "Bigeye tuna, frozen, nei", "Dolphinfishes, fresh or chilled", "Dolphinfishes, frozen", "Miscellaneous pelagic fish fillets, frozen, nei", "Miscellaneous pelagic fish, fillets, fresh or chilled, nei", "Miscellaneous pelagic fish, nei, fresh or chilled", "Miscellaneous pelagic fish, nei, frozen", "Skipjack prepared or preserved, not minced, nei", "Southern bluefin tuna (Thunnus maccoyii), fresh or chilled", "Southern bluefin tuna (Thunnus maccoyii), frozen", "Tunas prepared or preserved, not minced, in airtight containers", "Tunas, bonitos, billfishes, fresh or chilled, nei", "Tunas, bonitos, billfishes, frozen, nei", "Tunas, flakes and grated, prepared or preserved", "Tuna loins and fillets, fresh or chilled", "Tuna meat, whether or not minced, frozen", "Tunas, bonitos, billfishes, meat, whether or not minced, frozen, nei", "Tunas, bonitos, billfishes, nei, minced, prepared or preserved", "Bonito (Sarda spp.), not minced, prepared or preserved, nei", "Miscellaneous pelagic fish nei, minced, prepared or preserved", "Skipjack, prepared or preserved, whole or in pieces, not minced, in oil", "Tunas nei, minced, prepared or preserved", "Yellowfin tuna, heads-off, etc., frozen", "Albacore (=Longfin tuna), gilled, gutted, frozen", "Albacore (=Longfin tuna), heads-off, etc., frozen", "Euthynnus excl. skipjack or stripe-bellied bonitos, fresh or chilled", "Euthynnus excl. skipjack or stripe-bellied bonitos, frozen", "Tunas, gilled, gutted, frozen, nei", "Yellowfin tuna, gilled, gutted, frozen", "Tunas, heads-off, etc., frozen, nei", "Miscellaneous pelagic fish nei, dried, whether or not salted", "Miscellaneous pelagic fish nei, fillets, dried, salted or in brine", "Marlins, fresh or chilled", "Marlins, frozen", "Tunas, bonitos, billfishes fillets, fresh or chilled, nei", "Tunas, bonitos, billfishes etc, fillets, frozen, nei")
-
-# All tidy 
 trade_fish <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T, stringsAsFactors = F, na.strings = c("...", "-")) %>% 
   clean_names() %>%
   select(-(c(x_1, x, x_f))) %>% 
   filter(country != 'Totals') %>% 
   mutate(flow = ifelse(flow == "Reexports", "Exports", flow)) %>% # grouping reexports with exports (see note below)
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>% 
-  mutate(alpha_3 = countrycode(country, "country.name", "iso3c")) %>%
+  mutate(alpha_3 = countrycode(country, "country.name", "iso3c"))
+  
+# calculating 3-year (2014-2016) averages of imports, exports, and production quantity of all fish products
+trade_sf <- trade_fish %>%
+  group_by(alpha_3, flow, year) %>%
+  summarize(quantity_sf = my_sum(quantity)) %>%
+  group_by(alpha_3, flow) %>%
+  summarize(quantity_sf = mean(quantity_sf, na.rm = T)) %>%
+  spread(flow, quantity_sf) %>%
+  set_names("alpha_3","exports_sf","imports_sf","production_sf")
+  
+# calculating 3-year (2014-2016) averages of imports, exports, and production quantity of products from potential FAD species
+fad_fished <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfin tuna), frozen, nei", "Atlantic (Thunnus thynnus) and Pacific (Thunnus orientalis) bluefin tuna, frozen", "Euthynnus other than skipjack prep. or pres. not minced, nei", "Skipjack tuna, frozen", "Southern bluefin tuna (Thunnus maccoyii), live", "Tuna loins and fillets, frozen", "Tuna loins, prepared or preserved", "Tunas nei, frozen", "Tunas prepared or preserved, not minced, in oil", "Tunas prepared or preserved, not minced, nei", "Tunas, fresh or chilled, nei", "Yellowfin tuna, fresh or chilled", "Yellowfin tuna, frozen, nei", "Atlantic (Thunnus thynnus), Pacific (T.orientalis) bluefin tuna, live", "Atlantic (Thunnus thynnus)and Pacific (Thunnus orientalis) bluefin tuna, fresh or chilled", "Bigeye tuna, fresh or chilled", "Skipjack tuna, fresh or chilled", "Bigeye tuna, frozen, nei", "Dolphinfishes, fresh or chilled", "Dolphinfishes, frozen", "Miscellaneous pelagic fish fillets, frozen, nei", "Miscellaneous pelagic fish, fillets, fresh or chilled, nei", "Miscellaneous pelagic fish, nei, fresh or chilled", "Miscellaneous pelagic fish, nei, frozen", "Skipjack prepared or preserved, not minced, nei", "Southern bluefin tuna (Thunnus maccoyii), fresh or chilled", "Southern bluefin tuna (Thunnus maccoyii), frozen", "Tunas prepared or preserved, not minced, in airtight containers", "Tunas, bonitos, billfishes, fresh or chilled, nei", "Tunas, bonitos, billfishes, frozen, nei", "Tunas, flakes and grated, prepared or preserved", "Tuna loins and fillets, fresh or chilled", "Tuna meat, whether or not minced, frozen", "Tunas, bonitos, billfishes, meat, whether or not minced, frozen, nei", "Tunas, bonitos, billfishes, nei, minced, prepared or preserved", "Bonito (Sarda spp.), not minced, prepared or preserved, nei", "Miscellaneous pelagic fish nei, minced, prepared or preserved", "Skipjack, prepared or preserved, whole or in pieces, not minced, in oil", "Tunas nei, minced, prepared or preserved", "Yellowfin tuna, heads-off, etc., frozen", "Albacore (=Longfin tuna), gilled, gutted, frozen", "Albacore (=Longfin tuna), heads-off, etc., frozen", "Euthynnus excl. skipjack or stripe-bellied bonitos, fresh or chilled", "Euthynnus excl. skipjack or stripe-bellied bonitos, frozen", "Tunas, gilled, gutted, frozen, nei", "Yellowfin tuna, gilled, gutted, frozen", "Tunas, heads-off, etc., frozen, nei", "Miscellaneous pelagic fish nei, dried, whether or not salted", "Miscellaneous pelagic fish nei, fillets, dried, salted or in brine", "Marlins, fresh or chilled", "Marlins, frozen", "Tunas, bonitos, billfishes fillets, fresh or chilled, nei", "Tunas, bonitos, billfishes etc, fillets, frozen, nei")
+trade_fads <- trade_fish %>%
   mutate(fad_fished  = ifelse(commodity %in% fad_fished, 1, 0)) %>%
   filter(fad_fished == 1) %>%
-  group_by(country, flow, year) %>%
-  summarize(quantity_fad = sum(quantity, na.rm = T))
+  group_by(alpha_3, flow, year) %>%
+  summarize(quantity_fad = my_sum(quantity)) %>%
+  group_by(alpha_3, flow) %>%
+  summarize(quantity_fad = mean(quantity_fad, na.rm = T)) %>%
+  spread(flow, quantity_fad) %>%
+  set_names("alpha_3","exports_fad","imports_fad","production_fad") %>%
+  replace(. == "NaN", NA) %>%
+  mutate(exports_fad_yn = ifelse(is.na(exports_fad) | exports_fad = 0, 0, 1),
+         imports_fad_yn = ifelse(is.na(imports_fad) | imports_fad = 0, 0, 1))
 
-
-  group_by(alpha_3, commodity, flow) %>%
-  summarise(quantity = mean(quantity, na.rm = T)) %>%
-  mutate(fad_fished  = ifelse(commodity %in% fad_fished, 1, 0), 
-         flow_binary = ifelse(quantity != 'NA', ifelse(quantity > 0, 1, 0)))
+# merging into single trade dataset
+trade <- trade_sf %>%
+  left_join(trade_fads, by = "alpha_3")
 
 # exports currently include both exports and reexports (to indicate export streams/capacity)
 
@@ -90,10 +116,11 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
 
 social_data <- iso %>%
   select(name_govt, alpha_3) %>%
+  distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(wgi, by = "alpha_3") %>%
-  left_join(trade_fish, by = "alpha_3") %>%
-  left_join(tourism, by = "alpha_3") %>%
+  left_join(trade, by = "alpha_3") %>%
+  left_join(tourism, by = "alpha_3") %>% # need to distinguish among BES tourism numbers, right now has numbers for different islands but no island reference
   replace(. == "NaN", NA) %>%
   mutate_all(na_if,"")
 
