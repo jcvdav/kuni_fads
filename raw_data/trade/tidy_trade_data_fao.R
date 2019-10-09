@@ -51,7 +51,7 @@ trade_fish <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T
          flow_binary = ifelse(Quantity != 'NA', ifelse(Quantity > 0, 1, 0))) %>% 
   select(-(c(X.1, X, X.F))) %>% 
   mutate(Country= ifelse(Country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(Country == "CuraÃ§ao", 'Curaçao', Country))) %>% 
-  mutate(alpha3 = countrycode(Country, "country.name", "iso3c"))
+  mutate(alpha_3 = countrycode(Country, "country.name", "iso3c"))
   
   
 write.csv(trade_fish, here("data/fao_trade.csv"), row.names = F)

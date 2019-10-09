@@ -1,4 +1,4 @@
-"Country","Commodity","Flow","Unit","Year","Quantity","fad_fished","flow_binary","alpha3"
+"Country","Commodity","Flow","Unit","Year","Quantity","fad_fished","flow_binary","alpha_3"
 "Antigua and Barbuda","Alaska pollock fillets, frozen","Imports","Tonnes",2014,NA,0,NA,"ATG"
 "Antigua and Barbuda","Alaska pollock, meat, whether or not minced, frozen","Imports","Tonnes",2014,NA,0,NA,"ATG"
 "Antigua and Barbuda","Albacore (=Longfin tuna), fresh or chilled","Imports","Tonnes",2014,NA,1,NA,"ATG"
