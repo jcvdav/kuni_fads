@@ -12,7 +12,6 @@ library(rnaturalearth)
 ## Biophysical data
 depth <- raster(here("data", "input", "depth.tif"))
 land_distance <- raster(here("data", "input", "landdistance.tif"))
-port_distance <- raster(here("data", "input", "port_distance.tif"))
 sst <- raster(here("data", "input", "sstmean.tif"))
 surface_current <- abs(raster(here("data", "input",  "surface_current.tif")))
 shipping <- raster(here("data", "input", "shipping_lanes.tif"))
@@ -23,8 +22,7 @@ mahi_mahi <- raster(here("data", "input", "Coryphaena_hippurus.tif")) %>%
 # Custom cutoffs that make no sense for now
 max_depth <- -3000
 min_depth <- -30
-max_land_distance <- 50 * 1.854
-max_port_distance <- 10
+max_land_distance <- 50
 min_sst <- 24
 max_sst <- 41
 max_surface_current <- 0.65 # A constant 0.65 current would hide a FAD with a 400L flotation device
@@ -33,7 +31,6 @@ max_surface_current <- 0.65 # A constant 0.65 current would hide a FAD with a 40
 depth_max_mask <- depth > max_depth
 depth_min_mask <- depth < min_depth
 land_distance_mask <- land_distance < max_land_distance
-# port_distance_mask <- port_distance < max_port_distance
 sst_min_mask <- sst > min_sst
 sst_max_mask <- sst < max_sst
 surface_current_mask <- surface_current < max_surface_current
@@ -43,7 +40,6 @@ shipping_mask <- shipping == 0
 stacked_masks <- stack(depth_max_mask,
                        depth_min_mask,
                        land_distance_mask,
-                       port_distance_mask,
                        sst_min_mask,
                        sst_max_mask,
                        surface_current_mask)
@@ -59,10 +55,6 @@ masked_min_depth <- mask(x = depth,
 
 masked_land_distance <- mask(x = land_distance,
                              mask = land_distance_mask,
-                             maskvalue = F)
-
-masked_port_distance <- mask(x = port_distance,
-                             mask = port_distance_mask,
                              maskvalue = F)
 
 masked_sst_min <- mask(x = sst,
@@ -91,7 +83,6 @@ croped_cost <- cost %>%
   mask(x = ., mask = depth_max_mask, maskvalue = F) %>% 
   mask(x = ., mask = depth_min_mask, maskvalue = F) %>%
   mask(x = ., mask = land_distance_mask, maskvalue = F) %>%
-  # mask(x = ., mask = port_distance_mask, maskvalue = F) %>%
   mask(x = ., mask = sst_min_mask, maskvalue = F) %>%
   mask(x = ., mask = sst_max_mask, maskvalue = F) %>%
   mask(x = ., mask = surface_current_mask, maskvalue = F) %>%
@@ -105,7 +96,7 @@ data <- croped_cost %>%
   as.data.frame(xy = T)
 
 coast <- rnaturalearth::ne_countries(scale = "medium", returnclass = "sf") %>% 
-  sf::st_crop(y = extent(depth))
+  st_crop(y = extent(depth))
 
 eez <- st_read(here("data", "caribbean_eez.gpkg"))
 

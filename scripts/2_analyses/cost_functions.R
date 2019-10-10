@@ -31,6 +31,8 @@ rope_cost <- function(rope_lengths, rope_costs = c(0.3, 0.3)) {
 
 get_cost <- function(depth) {
   
+  depth <- abs(depth)
+  
   r <- case_when(depth < 1000 ~ 1.2,
                  between(depth, 1000, 2000) ~ 1.5,
                  T ~ 2)
