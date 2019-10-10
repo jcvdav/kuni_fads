@@ -36,20 +36,8 @@ crop_caribbean <- function(layer, extent) {
 crop_caribbean(layer = "depth",
                extent = caribbean_extent)
 
-# Distance to land
-crop_caribbean(layer = "landdistance",
-               extent = caribbean_extent)
-
-# Distance to port
-crop_caribbean(layer = "port_distance",
-               extent = caribbean_extent)
-
 # Surface current
 crop_caribbean(layer = "surface_current",
-               extent = caribbean_extent)
-
-# Wind speed
-crop_caribbean(layer = "windspeed",
                extent = caribbean_extent)
 
 # Temperature
@@ -80,8 +68,28 @@ writeRaster(x = shipping,
             filename = here("data", "input", "shipping_lanes.tif"),
             overwrite = T)
 
+#######
+#Distance to land
 
+# Create a raster template for rasterizing the polys. 
+# (set the desired grid resolution with res)
+r <- raster(extent(reference), res = 0.083)
 
+coast <- rnaturalearth::ne_countries(scale = "large", returnclass = "sf") %>% 
+  sf::st_crop(y = extent(reference))
 
+# Rasterize and set land pixels to NA
+r2 <- rasterize(coast, reference, 1)
+r3 <- mask(is.na(r2), r2, maskvalue=1, updatevalue=NA)
+# Calculate distance to nearest non-NA pixel
+d <- distance(r2)
+
+# Optionally set non-land pixels to NA (otherwise values are "distance to non-land")
+d2 <- ((d*r3) / 1e3) / 1.854
+
+# Export the raster
+writeRaster(x = d2,
+            filename = here("data", "input", "landdistance.tif"),
+            overwrite = T)
 
 
