@@ -23,11 +23,14 @@ iso <- read.csv(here("raw_data", "iso_codes.csv"),
 # Load EEZ
 eez <- st_read(here("raw_data", "eez")) %>% 
   filter(ISO_Ter1 %in% iso) %>%             # Filtering ISO 3 codes of interest
+  group_by(ISO_Ter1) %>% 
+  summarize(a = 0) %>% 
   select(ISO_Ter1) %>%                      # Keeping only column of interest
   rmapshaper::ms_simplify(keep_shapes = T)  # Simplify the EEZ boundary for faster computation
 
 # Write out the geopackage file
 st_write(obj = eez,
-         dsn = here("data", "caribbean_eez.gpkg"))
+         dsn = here("data", "caribbean_eez.gpkg"),
+         delete_layer = T)
 
 
