@@ -59,9 +59,9 @@ reference <- raster(here("data", "input", "depth.tif"))
 shipping <- raster(here("raw_data", "shipping", "shipping.tif")) %>% 
   projectRaster(to = reference) %>%                   # reproject
   crop(y = caribbean_extent) %>%                     # crop to Caribbean
-  focal(w = matrix(1, 5, 5), mean)                   # Apply a focal function to smooth
+  focal(w = matrix(1, 3, 3), mean)                   # Apply a focal function to smooth
 
-shipping <- shipping > 10 # Filter values > 10 as T
+shipping <- shipping > 12 # Filter values > 10 as T
 
 # Export the raster
 writeRaster(x = shipping,
