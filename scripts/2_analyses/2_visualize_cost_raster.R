@@ -94,11 +94,13 @@ summarized_values_by_country <- raster::extract(croped_cost,
                                                 sp = T) %>% 
   st_as_sf()
 
+# Add ISO3 codes
 eez_with_data <- eez %>% 
   st_set_geometry(NULL) %>%
   left_join(all_values_by_country, by = "ID") %>% 
   drop_na(croped_cost)
 
+# Plot the distribution of costs
 cost_distribution <- ggplot(eez_with_data, aes(y = ISO_Ter1, x = croped_cost)) +
   ggridges::geom_density_ridges(quantile_lines = T,
                                 quantiles = 2,
@@ -108,11 +110,13 @@ cost_distribution <- ggplot(eez_with_data, aes(y = ISO_Ter1, x = croped_cost)) +
   ggtheme_plot() +
   labs(x = "Cost ($USD)", y = "Country (ISO3 code)")
 
+# Save the plot with the distribution of costs
 ggsave(plot = cost_distribution,
        filename = here("img", "cost_distribution.png"),
        height = 5,
        width = 3.5)
 
+# Plot the costs at the EEZ-level
 summarized_cost <- ggplot(summarized_values_by_country) +
   geom_sf(aes(fill = croped_cost)) +
   geom_sf(data = coast) +
@@ -125,7 +129,30 @@ summarized_cost <- ggplot(summarized_values_by_country) +
         legend.position = c(1, 1),
         text = element_text(size = 15))
 
+# Save the plot
 ggsave(plot = summarized_cost,
        filename = here("img", "summarized_cost.png"),
        height = 5,
        width = 8)
+
+# Calculate various country-level stats
+country_level_summary_statistics <- eez_with_data %>% 
+  group_by(ISO_Ter1) %>% 
+  summarize(mean = mean(croped_cost),
+            median = median(croped_cost),
+            sd = sd(croped_cost),
+            min = min(croped_cost),
+            max = max(croped_cost),
+            pct10 = quantile(croped_cost, 0.1),
+            pct25 = quantile(croped_cost, 0.25),
+            pct75 = quantile(croped_cost, 0.75),
+            pct09 = quantile(croped_cost, 0.9)) %>% 
+  rename(ISO3 = ISO_Ter1)
+
+# Export the csv of coutnry-level stats
+write.csv(x = country_level_summary_statistics,
+          file = here("data", "country_level_cost_summary_statistics.csv"),
+          row.names = F)
+
+# END OF SCRIPT
+
