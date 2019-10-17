@@ -9,38 +9,32 @@ library(countrycode)
 iso <- read.csv(here("raw_data", "iso_codes.csv"), stringsAsFactors = F)
 
 ############################## NUTRITION + FOOD SECURITY ####################################
-fao_intake <- read.csv(here("raw_data", "nutrition", "fao_intake.csv"), stringsAsFactors = F) %>% 
-  clean_names() %>%
-  filter(item == "Pelagic Fish", year == 2013, country != "Caribbean") %>% ### eventually calculate 3-year average?
-  select(country,element,value) %>%
-  spread(element,value) %>%
-  set_names("country","fao_fat_pf","fao_cal_pf","fao_prot_pf") %>%
-  mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  select(alpha_3, everything(), -country)
-
 fao_fs <- fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"), stringsAsFactors = F) %>% 
   clean_names() %>%
   filter(area != "Caribbean") %>%
   select(area,item,value) %>%
   spread(item, value) %>%
-  set_names("country","energy_adequacy","sev_insecurity","undernourishment") %>%
+  set_names("country","energy_ad","sev_insecurity","undernourishment") %>%
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(alpha_3, everything(), -country)
-### energy_adequacy is the only variable with reasonable coverage
 
-genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stringsAsFactors = F) %>%
+genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stringsAsFactors = F) %>% 
   clean_names() %>% # all from 2011
-  select(country,calories_pelagicfish,fat_pelagicfish,protein_pelagic_fish) %>%
-  set_names("country","gen_cal_pf","gen_fat_pf","gen_prot_pf") %>%
+  mutate(calories_pf = calories_pelagicfish / calories, # calculating proportion of calories obtained from pelagic fish
+         protein_pf = protein_pelagic_fish / protein) %>% # calculating proportion of protein obtained from pelagic fish
+  select(country,calories_pf,protein_pf) %>%
+  mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", country)) %>% 
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(alpha_3, everything(), -country)
-### won't use GENuS data, because has same country coverage as FAO for protein, fat, and calories and FAO data is more recent (GENuS = 2011)
 
 # selected nutrition variables:
 nutrition <- fao_fs %>%
   select(alpha_3, energy_adequacy) %>% 
-  full_join(fao_intake, by = "alpha_3")
+  full_join(genus_intake, by = "alpha_3")
 
+# calculating nutrition score (need to finish):
+# nutrition_test <- nutrition %>%
+#   mutate(energy_ad_scaled = rescale(energy_ad, to = c(0,1)))
 ######################## FAO TRADE DATA ################################
 
 # sum function for calculating aggregate quantities
@@ -110,10 +104,10 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
   rename("value" = x2018_yr2018) %>%
   select(country_name, country_code, series_name, value) %>%
   spread(series_name, value) %>%
-  set_names("country","alpha_3","corruption","gov_eff","pol_stab","reg_qual","rule_law","accountability") %>%
+  set_names("country","alpha_3","wgi_corrupt","wgi_goveff","wgi_polstab","wgi_regqual","wgi_rulelaw","wgi_account") %>%
   mutate_at(vars(3:8),funs(as.numeric)) %>%
   rowwise() %>%
-  mutate(wgi_mean = mean(c(corruption, gov_eff, pol_stab, reg_qual, rule_law, accountability), na.rm = T)) %>%
+  mutate(wgi_mean = mean(c(wgi_corrupt, wgi_goveff, wgi_polstab, wgi_regqual, wgi_rulelaw, wgi_account), na.rm = T)) %>%
   select(alpha_3, everything(), -country)
 
 hist(wgi$wgi_mean)
@@ -139,5 +133,5 @@ social_data <- iso %>%
   mutate_all(na_if,"")
 
 
-write.csv(trade_fish, here("data/fao_trade.csv"), row.names = F)
+write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
     
