@@ -130,8 +130,8 @@ social_data <- iso %>%
   replace(. == "NaN", NA) %>%
   mutate_all(na_if,"")
 
-data_scaled <- social_data %>%
-  mutate_at()
+# data_scaled <- social_data %>%
+#   mutate_at()
 
 
 # write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
