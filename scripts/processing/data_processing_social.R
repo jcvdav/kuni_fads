@@ -4,6 +4,7 @@ library(tidyverse)
 library(here)
 library(janitor)
 library(countrycode)
+library(scales)
 
 # file with country names and alpha_3 codes
 iso <- read.csv(here("raw_data", "iso_codes.csv"), stringsAsFactors = F)
@@ -29,12 +30,9 @@ genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stri
 
 # selected nutrition variables:
 nutrition <- fao_fs %>%
-  select(alpha_3, energy_adequacy) %>% 
+  select(alpha_3, energy_ad) %>% 
   full_join(genus_intake, by = "alpha_3")
 
-# calculating nutrition score (need to finish):
-# nutrition_test <- nutrition %>%
-#   mutate(energy_ad_scaled = rescale(energy_ad, to = c(0,1)))
 ######################## FAO TRADE DATA ################################
 
 # sum function for calculating aggregate quantities
@@ -132,6 +130,9 @@ social_data <- iso %>%
   replace(. == "NaN", NA) %>%
   mutate_all(na_if,"")
 
+data_scaled <- social_data %>%
+  mutate_at()
 
-write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
+
+# write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
     
