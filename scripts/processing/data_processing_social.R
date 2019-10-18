@@ -130,9 +130,13 @@ social_data <- iso %>%
   replace(. == "NaN", NA) %>%
   mutate_all(na_if,"")
 
-# data_scaled <- social_data %>%
-#   mutate_at()
+data_scaled <- social_data %>%
+  mutate_at(vars(3:27), as.numeric) %>%
+  mutate_if(is.numeric, rescale, to = c(0,1)) %>%
+  mutate(score_nutrit = 1/4 * calories_pf + 1/4 * protein_pf + 1/2 * energy_ad,
+         score_govt = wgi_mean
+         # score_econ =
+           )
 
-
-# write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
+# write.csv(data_scaled, here("raw_data/data_scaled.csv"), row.names = F)
     
