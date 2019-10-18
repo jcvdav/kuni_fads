@@ -31,7 +31,9 @@ genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stri
 # selected nutrition variables:
 nutrition <- fao_fs %>%
   select(alpha_3, energy_ad) %>% 
-  full_join(genus_intake, by = "alpha_3")
+  full_join(genus_intake, by = "alpha_3") %>%
+  rowwise() %>%
+  mutate(reliance_pf = mean(c(calories_pf, protein_pf), na.rm = FALSE))
 
 ######################## FAO TRADE DATA ################################
 
@@ -79,21 +81,17 @@ trade_fads <- trade_fish %>%
   summarize(quantity_fad = mean(quantity_fad, na.rm = T)) %>%
   spread(flow, quantity_fad) %>%
   set_names("alpha_3","exports_fad","imports_fad","production_fad", "reexports_fad") %>%
-  replace(. == "NaN", NA) %>%
-  mutate(exports_fad_yn = ifelse(is.na(exports_fad) | exports_fad == 0, 0, 1),
-         imports_fad_yn = ifelse(is.na(imports_fad) | imports_fad == 0, 0, 1),
-         reexports_fad_yn = ifelse(is.na(reexports_fad) | reexports_fad == 0, 0, 1))
+  replace(. == "NaN", NA) 
+  # %>%
+  # mutate(exports_fad_yn = ifelse(is.na(exports_fad) | exports_fad == 0, 0, 1),
+  #        imports_fad_yn = ifelse(is.na(imports_fad) | imports_fad == 0, 0, 1),
+  #        reexports_fad_yn = ifelse(is.na(reexports_fad) | reexports_fad == 0, 0, 1))
 
 # merging into single trade dataset
 trade <- trade_sf %>%
-  left_join(trade_fads, by = "alpha_3")
-
-hist(trade$exports_fish)
-hist(trade$exports_fad)
-
-ggplot(trade, aes(x = log(exports_fish), y = log(exports_fad))) +
-  geom_point() +
-  geom_text(aes(label=alpha_3),hjust=0, vjust=0)
+  left_join(trade_fads, by = "alpha_3") %>%
+  mutate(trade_def_fad = imports_fad - exports_fad) %>%
+  select(alpha_3, trade_def_fad, exports_fish)
 
 ########################## GOVERNANCE INDICATORS ###############################
 
@@ -108,9 +106,9 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
   mutate(wgi_mean = mean(c(wgi_corrupt, wgi_goveff, wgi_polstab, wgi_regqual, wgi_rulelaw, wgi_account), na.rm = T)) %>%
   select(alpha_3, everything(), -country)
 
-hist(wgi$wgi_mean)
-
 ########################### TOURISM ####################################
+
+# currently this produces all NAs - needs to be adjusted with BES average
 
 tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), stringsAsFactors = F) %>%
   group_by(alpha_3) %>%
@@ -118,7 +116,13 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
   summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T))) %>%
   select(alpha_3, tourists)
   
-########################### MERGING DATASETS ####################################
+########################### SURVEY DATA ####################################
+
+survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
+  clean_names()
+
+
+########################## MERGING DATASETS ###################################
 
 social_data <- iso %>%
   select(name_govt, alpha_3) %>%
@@ -133,8 +137,8 @@ social_data <- iso %>%
 data_scaled <- social_data %>%
   mutate_at(vars(3:27), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
-  mutate(score_nutrit = 1/4 * calories_pf + 1/4 * protein_pf + 1/2 * energy_ad,
-         score_govt = wgi_mean
+  mutate(score_nutrit = 1/2 * reliance_pf + 1/2 * energy_ad,
+         score_govt = wgi_mean # placeholder until survey data is calculated
          # score_econ =
            )
 
