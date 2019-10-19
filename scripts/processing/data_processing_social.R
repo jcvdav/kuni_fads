@@ -118,8 +118,13 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
   
 ########################### SURVEY DATA ####################################
 
-survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
-  clean_names()
+# survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
+#   clean_names() %>%
+#   setNames("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
+#   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+#   select(country, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
+#   mutate_all(ifelse("Yes", 1, 
+#                     ifelse("No", 0, "NA")))
 
 
 ########################## MERGING DATASETS ###################################
