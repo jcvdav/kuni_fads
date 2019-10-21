@@ -123,8 +123,9 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
   # mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(country, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
-  mutate_at(vars(-country), ifelse(. == "Yes", 1, 
-                    ifelse(. == "No", 0, NA)))
+  mutate_at(.vars = vars(-country),
+            .funs = case_when(x == "Yes" ~ 1,
+                              x == "No" ~ 2)) #NA is automatically matched to any missing
 
 ########################## MERGING DATASETS ###################################
 
