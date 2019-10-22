@@ -23,7 +23,7 @@ genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stri
   clean_names() %>% # all from 2011
   mutate(calories_pf = calories_pelagicfish / calories, # calculating proportion of calories obtained from pelagic fish
          protein_pf = protein_pelagic_fish / protein) %>% # calculating proportion of protein obtained from pelagic fish
-  select(country,calories_pf,protein_pf) %>%
+  select(country = i_country,calories_pf,protein_pf) %>%
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", country)) %>% 
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(alpha_3, everything(), -country)
@@ -101,7 +101,7 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
   select(country_name, country_code, series_name, value) %>%
   spread(series_name, value) %>%
   set_names("country","alpha_3","wgi_corrupt","wgi_goveff","wgi_polstab","wgi_regqual","wgi_rulelaw","wgi_account") %>%
-  mutate_at(vars(3:8),funs(as.numeric)) %>%
+  mutate_at(.vars = vars(3:8),.funs = as.numeric) %>%
   rowwise() %>%
   mutate(wgi_mean = mean(c(wgi_corrupt, wgi_goveff, wgi_polstab, wgi_regqual, wgi_rulelaw, wgi_account), na.rm = T)) %>%
   select(alpha_3, everything(), -country)
