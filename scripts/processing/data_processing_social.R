@@ -145,12 +145,13 @@ social_data <- iso %>%
   mutate_all(na_if,"")
 
 data_scaled <- social_data %>%
-  mutate_at(vars(3:27), as.numeric) %>%
+  mutate_at(vars(-c(name_govt,alpha_3)), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
   mutate(score_nutrit = 1/2 * reliance_pf + 1/2 * energy_ad,
-         score_govt = wgi_mean # placeholder until survey data is calculated
-         # score_econ =
+         score_govt = wgi_mean, # placeholder until survey data is calculated
+         score_econ = 1/2 * trade_def_fad + 1/2 * exports_fish # placeholder until tourism data is formatted
            )
 
-# write.csv(data_scaled, here("raw_data/data_scaled.csv"), row.names = F)
+write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
+write.csv(data_scaled, here("raw_data/data_scaled.csv"), row.names = F)
     
