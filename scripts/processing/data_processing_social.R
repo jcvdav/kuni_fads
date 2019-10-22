@@ -152,6 +152,6 @@ data_scaled <- social_data %>%
          score_econ = 1/2 * trade_def_fad + 1/2 * exports_fish # placeholder until tourism data is formatted
            )
 
-write.csv(social_data, here("raw_data/social_data.csv"), row.names = F)
-write.csv(data_scaled, here("raw_data/data_scaled.csv"), row.names = F)
+write.csv(social_data, here("data", "social_data.csv"), row.names = F)
+write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
     

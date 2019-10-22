@@ -17,7 +17,8 @@ croped_cost <- raster(here("data", "croped_cost.tif"))
 ## EEZ vector
 eez <- st_read(here("data", "caribbean_eez.gpkg"))  %>% 
   arrange(ISO_Ter1) %>% 
-  mutate(ID = group_indices(., ISO_Ter1))
+  mutate(ID = group_indices(., ISO_Ter1),
+         area = st_area(.))
 
 ## Convert EEZ to spatial
 eez_sp <- eez %>% 
@@ -127,12 +128,13 @@ summarized_cost <- ggplot(summarized_values_by_country) +
                                frame.colour = "black")) +
   theme(legend.justification = c(1, 1),
         legend.position = c(1, 1),
-        text = element_text(size = 15))
+        text = element_text(size = 15)) +
+  ggtitle("Average cost of deploying a MFAD")
 
 # Save the plot
 ggsave(plot = summarized_cost,
        filename = here("img", "summarized_cost.png"),
-       height = 5,
+       height = 5.5,
        width = 8)
 
 # Calculate various country-level stats
