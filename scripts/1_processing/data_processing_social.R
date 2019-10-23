@@ -112,7 +112,6 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
 
 tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), stringsAsFactors = F) %>%
   group_by(alpha_3) %>%
-  mutate_all(na_if,"NA") %>%
   select("alpha_3", "foreign_tourists") %>% 
   summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T)))
 
