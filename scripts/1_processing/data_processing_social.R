@@ -108,14 +108,14 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
 
 ########################### TOURISM ####################################
 
-# currently this produces all NAs - needs to be adjusted with BES average
+#This should work now (as of 10/23)
 
 tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), stringsAsFactors = F) %>%
   group_by(alpha_3) %>%
-  mutate_all(na_if,"") %>%
-  summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T))) %>%
-  select(alpha_3, tourists)
-  
+  mutate_all(na_if,"NA") %>%
+  select("alpha_3", "foreign_tourists") %>% 
+  summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T)))
+
 ########################### SURVEY DATA ####################################
 
 my_fun <- function(x) {
@@ -126,11 +126,13 @@ my_fun <- function(x) {
 survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
-  # mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  select(country, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
-  mutate_at(.vars = vars(-country),
+  mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
+  mutate_at(.vars = vars(-c(country, alpha_3)),
             .funs = ~ case_when(. == "Yes" ~ 1,
-                                . == "No" ~ 0)) #NA is automatically matched to any missing
+                                . == "No" ~ 0) # NA is automatically matched to any missing
+            ) %>%
+  mutate(reg_strength = 1/3 * reg_set_yn * reg_set_enf_yn + 1/3 * reg_whofish_yn * reg_whofish_enf_yn + 1/3 * reg_howfish_yn * reg_howfish_enf_yn)
 
 ########################## MERGING DATASETS ###################################
 
@@ -140,7 +142,8 @@ social_data <- iso %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(wgi, by = "alpha_3") %>%
   left_join(trade, by = "alpha_3") %>%
-  left_join(tourism, by = "alpha_3") %>% # need to distinguish among BES tourism numbers, right now has numbers for different islands but no island reference
+  left_join(tourism, by = "alpha_3") %>% 
+  left_join(survey, by = "alpha_3") %>% 
   replace(. == "NaN", NA) %>%
   mutate_all(na_if,"")
 
@@ -148,8 +151,8 @@ data_scaled <- social_data %>%
   mutate_at(vars(-c(name_govt,alpha_3)), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
   mutate(score_nutrit = 1/2 * reliance_pf + 1/2 * energy_ad,
-         score_govt = wgi_mean, # placeholder until survey data is calculated
-         score_econ = 1/2 * trade_def_fad + 1/2 * exports_fish # placeholder until tourism data is formatted
+         score_govt = 1/2 * wgi_mean + 1/2 * reg_strength,
+         score_econ = 1/4 * trade_def_fad + 1/4 * tourists + 1/2 * exports_fish # placeholder until tourism data is formatted
            )
 
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
