@@ -108,14 +108,14 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
 
 ########################### TOURISM ####################################
 
-# currently this produces all NAs - needs to be adjusted with BES average
+#This should work now (as of 10/23)
 
 tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), stringsAsFactors = F) %>%
   group_by(alpha_3) %>%
-  mutate_all(na_if,"") %>%
-  summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T))) %>%
-  select(alpha_3, tourists)
-   
+  mutate_all(na_if,"NA") %>%
+  select("alpha_3", "foreign_tourists") %>% 
+  summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T)))
+
 ########################### SURVEY DATA ####################################
 
 my_fun <- function(x) {
