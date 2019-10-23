@@ -22,7 +22,7 @@ fao_fs <- fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.cs
 genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stringsAsFactors = F) %>% 
   clean_names() %>% # all from 2011
   mutate(calories_pf = calories_pelagicfish / calories, # calculating proportion of calories obtained from pelagic fish
-         protein_pf = protein_pelagic_fish / protein) %>% # calculating proportion of protein obtained from pelagic fish
+         protein_pf = protein_pelagic_fish / protein) #%>% # calculating proportion of protein obtained from pelagic fish
   select(country = i_country,calories_pf,protein_pf) %>%
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", country)) %>% 
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
@@ -115,7 +115,7 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
   mutate_all(na_if,"") %>%
   summarize(tourists = sum(as.numeric(foreign_tourists, rm.na = T))) %>%
   select(alpha_3, tourists)
-  
+   
 ########################### SURVEY DATA ####################################
 
 my_fun <- function(x) {
