@@ -13,8 +13,8 @@ library(magrittr)
 library(ggmap)
 
 # Import FAD number data
-fad_timeline <- read_csv(here("raw_data", "fad_data", "timeline.csv"))
-fad_current <- read_csv(here("raw_data", "fad_data", "fad_current.csv"))
+fad_timeline <- read_csv(here("raw_data", "fad_data", "fads_timeline.csv"))
+fad_current <- read_csv(here("raw_data", "fad_data", "fads_current.csv"))
 
 # Import world map file and cropping to the Caribbean Region
 map.world <- map_data("world")
