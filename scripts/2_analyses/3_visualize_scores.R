@@ -7,6 +7,7 @@ library(startR)
 library(here)
 library(GGally)
 library(ggrepel)
+library(scales)
 library(tidyverse)
 
 # Load data
@@ -44,7 +45,7 @@ data %>%
   geom_vline(xintercept = 0.5, linetype = "dashed") +
   geom_label_repel(aes(label = ISO3), seed = 43, point.padding = 0.7) +
   startR::ggtheme_plot() +
-  scale_fill_manual(values = c("red", "orange", "darkgreen")) +
+  scale_fill_manual(values = c("orange", "darkgreen")) +
   labs(x = "Cost score",
        y = "Market potential") +
   guides(size = guide_legend(title = "Nutrition\npotential"),

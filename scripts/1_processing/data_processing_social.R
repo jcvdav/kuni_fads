@@ -142,16 +142,27 @@ survey_long <- survey %>%
          ) %>%
   group_by(question, category, reg_type, response) %>%
   summarise(count = n()) %>%
-  mutate(response = ifelse(response == 0, "No",
-                           ifelse(response == 1, "Yes", "NA"))) %>%
-  filter(response != "NA")
+  ungroup() %>% 
+  group_by(question, category, reg_type) %>% 
+  mutate(n = sum(count)) %>% 
+  ungroup() %>% 
+  mutate(prop = count / n) %>% 
+  mutate(response = case_when(response == 0 ~ "No",
+                              response == 1 ~ "Yes",
+                              is.na(response) ~ "Did not respond"),
+         category = fct_relevel(category, "Existence", "Enforcement"),
+         reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
 
-ggplot(survey_long, aes(x = category, y = count, fill = response)) +
-  geom_bar(stat = "identity", position = "stack") +
+ggplot(survey_long, aes(x = category, y = prop, fill = response)) +
+  geom_col(color = "black") +
   facet_grid(~ reg_type) +
   theme_bw() +
   theme(legend.title = element_blank()) +
-  labs(x = "", y = "Number of responses") 
+  labs(x = "", y = "Response frequency (n = 15)")  +
+  scale_y_continuous(limits = c(0, 1)) +
+  scale_fill_manual(values = c("gray", "red", "steelblue")) +
+  ggtheme_plot() +
+  guides(fill = guide_legend(title = "Response"))
 
 ggsave(plot = last_plot(),
        filename = here("img", "survey_gov.png"),
