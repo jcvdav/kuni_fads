@@ -133,6 +133,31 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
             ) %>%
   mutate(reg_strength = 1/3 * reg_set_yn * reg_set_enf_yn + 1/3 * reg_whofish_yn * reg_whofish_enf_yn + 1/3 * reg_howfish_yn * reg_howfish_enf_yn)
 
+survey_long <- survey %>%
+  select(-(reg_strength)) %>%
+  gather("question", "response", -c(country, alpha_3)) %>%
+  mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
+         reg_type = ifelse(grepl("set", question), "Setting MFADs", 
+                           ifelse(grepl("whofish", question), "Rights to use MFADs", "Fishing practices on MFADs"))
+         ) %>%
+  group_by(question, category, reg_type, response) %>%
+  summarise(count = n()) %>%
+  mutate(response = ifelse(response == 0, "No",
+                           ifelse(response == 1, "Yes", "NA"))) %>%
+  filter(response != "NA")
+
+ggplot(survey_long, aes(x = category, y = count, fill = response)) +
+  geom_bar(stat = "identity", position = "stack") +
+  facet_grid(~ reg_type) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  labs(x = "", y = "Number of responses") 
+
+ggsave(plot = last_plot(),
+       filename = here("img", "survey_gov.png"),
+       width = 7,
+       height = 3)
+
 ########################## MERGING DATASETS ###################################
 
 social_data <- iso %>%
