@@ -29,7 +29,12 @@ data <- cost_data %>%
 # Create ggpairs
 data %>%
   select(contains("score")) %>%
-  ggpairs()
+  ggpairs() +
+  ggtheme_plot()
+
+ggsave(filename = here("img", "score_pair_plot.png"),
+       width = 7,
+       height = 4)
 
 # Plot the data
 data %>% 
@@ -43,7 +48,7 @@ data %>%
          score_govt_breaks = fct_relevel(score_govt_breaks,
                                          "Low", "Med", "High", "NA")) %>% 
   ggplot(aes(x = score_cost, y = score_econ)) +
-  geom_point(size = 2, shape = 21, fill = "gray") +
+  geom_point(size = 1, shape = 21, fill = "gray") +
   geom_point(shape = 21, aes(size = score_nutrit, fill = score_govt_breaks)) +
   geom_hline(yintercept = 0.5, linetype = "dashed") +
   geom_vline(xintercept = 0.5, linetype = "dashed") +
@@ -55,10 +60,10 @@ data %>%
   startR::ggtheme_plot() +
   scale_fill_manual(values = c("red", "orange", "darkgreen", "gray")) +
   scale_size_continuous(breaks = c(0.3, 0.6, 1), range = c(1, 10)) +
-  labs(x = "Cost score",
-       y = "Market potential") +
+  labs(x = "Biophysical cost",
+       y = "Market access") +
   guides(size = guide_legend(title = "Nutrition\npotential"),
-         fill = guide_legend(title = "Governance\n(terciles)", override.aes = list(size = 4))) +
+         fill = guide_legend(title = "Governance\ncapacity\n(terciles)", override.aes = list(size = 4))) +
   scale_x_continuous(limits = c(0, 1)) +
   scale_y_continuous(limits = c(0, 1)) +
   coord_equal()
