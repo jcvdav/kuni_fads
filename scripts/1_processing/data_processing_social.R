@@ -1,5 +1,6 @@
 ### Cleaning and merging nutrition, WGI, and trade data
 
+library(startR)
 library(tidyverse)
 library(here)
 library(janitor)
@@ -7,7 +8,8 @@ library(countrycode)
 library(scales)
 
 # file with country names and alpha_3 codes
-iso <- read.csv(here("raw_data", "iso_codes.csv"), stringsAsFactors = F)
+iso <- read.csv(here("raw_data", "iso_codes.csv"), stringsAsFactors = F) %>% 
+  clean_names()
 
 ############################## NUTRITION + FOOD SECURITY ####################################
 fao_fs <- fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"), stringsAsFactors = F) %>% 
@@ -21,9 +23,10 @@ fao_fs <- fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.cs
 
 genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stringsAsFactors = F) %>% 
   clean_names() %>% # all from 2011
+  drop_na(year) %>% 
   mutate(calories_pf = calories_pelagicfish / calories, # calculating proportion of calories obtained from pelagic fish
          protein_pf = protein_pelagic_fish / protein) %>% # calculating proportion of protein obtained from pelagic fish
-  select(country = country,calories_pf,protein_pf) %>%
+  select(country = i_country, calories_pf,protein_pf) %>%
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", country)) %>% 
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(alpha_3, everything(), -country)
@@ -72,6 +75,7 @@ trade_sf <- trade_fish %>%
   
 # calculating 3-year (2014-2016) averages of imports, exports, and production quantity of products from potential FAD species
 fad_fished <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfin tuna), frozen, nei", "Atlantic (Thunnus thynnus) and Pacific (Thunnus orientalis) bluefin tuna, frozen", "Euthynnus other than skipjack prep. or pres. not minced, nei", "Skipjack tuna, frozen", "Southern bluefin tuna (Thunnus maccoyii), live", "Tuna loins and fillets, frozen", "Tuna loins, prepared or preserved", "Tunas nei, frozen", "Tunas prepared or preserved, not minced, in oil", "Tunas prepared or preserved, not minced, nei", "Tunas, fresh or chilled, nei", "Yellowfin tuna, fresh or chilled", "Yellowfin tuna, frozen, nei", "Atlantic (Thunnus thynnus), Pacific (T.orientalis) bluefin tuna, live", "Atlantic (Thunnus thynnus)and Pacific (Thunnus orientalis) bluefin tuna, fresh or chilled", "Bigeye tuna, fresh or chilled", "Skipjack tuna, fresh or chilled", "Bigeye tuna, frozen, nei", "Dolphinfishes, fresh or chilled", "Dolphinfishes, frozen", "Miscellaneous pelagic fish fillets, frozen, nei", "Miscellaneous pelagic fish, fillets, fresh or chilled, nei", "Miscellaneous pelagic fish, nei, fresh or chilled", "Miscellaneous pelagic fish, nei, frozen", "Skipjack prepared or preserved, not minced, nei", "Southern bluefin tuna (Thunnus maccoyii), fresh or chilled", "Southern bluefin tuna (Thunnus maccoyii), frozen", "Tunas prepared or preserved, not minced, in airtight containers", "Tunas, bonitos, billfishes, fresh or chilled, nei", "Tunas, bonitos, billfishes, frozen, nei", "Tunas, flakes and grated, prepared or preserved", "Tuna loins and fillets, fresh or chilled", "Tuna meat, whether or not minced, frozen", "Tunas, bonitos, billfishes, meat, whether or not minced, frozen, nei", "Tunas, bonitos, billfishes, nei, minced, prepared or preserved", "Bonito (Sarda spp.), not minced, prepared or preserved, nei", "Miscellaneous pelagic fish nei, minced, prepared or preserved", "Skipjack, prepared or preserved, whole or in pieces, not minced, in oil", "Tunas nei, minced, prepared or preserved", "Yellowfin tuna, heads-off, etc., frozen", "Albacore (=Longfin tuna), gilled, gutted, frozen", "Albacore (=Longfin tuna), heads-off, etc., frozen", "Euthynnus excl. skipjack or stripe-bellied bonitos, fresh or chilled", "Euthynnus excl. skipjack or stripe-bellied bonitos, frozen", "Tunas, gilled, gutted, frozen, nei", "Yellowfin tuna, gilled, gutted, frozen", "Tunas, heads-off, etc., frozen, nei", "Miscellaneous pelagic fish nei, dried, whether or not salted", "Miscellaneous pelagic fish nei, fillets, dried, salted or in brine", "Marlins, fresh or chilled", "Marlins, frozen", "Tunas, bonitos, billfishes fillets, fresh or chilled, nei", "Tunas, bonitos, billfishes etc, fillets, frozen, nei")
+
 trade_fads <- trade_fish %>%
   mutate(fad_fished  = ifelse(commodity %in% fad_fished, 1, 0)) %>%
   filter(fad_fished == 1) %>%
@@ -125,13 +129,20 @@ my_fun <- function(x) {
 survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
-  mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+  mutate(
+    country = ifelse(country %in% c("Bonaire", "Saba", "St. Eustatius"),
+                     "Bonaire, Sint Eustatius and Saba", country),
+    alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
   mutate_at(.vars = vars(-c(country, alpha_3)),
             .funs = ~ case_when(. == "Yes" ~ 1,
                                 . == "No" ~ 0) # NA is automatically matched to any missing
             ) %>%
   mutate(reg_strength = 1/3 * reg_set_yn * reg_set_enf_yn + 1/3 * reg_whofish_yn * reg_whofish_enf_yn + 1/3 * reg_howfish_yn * reg_howfish_enf_yn)
+
+survey2 <- survey %>% 
+  group_by(country, alpha_3) %>% 
+  summarize_all(mean, na.rm = T)
 
 survey_long <- survey %>%
   select(-(reg_strength)) %>%
@@ -172,23 +183,24 @@ ggsave(plot = last_plot(),
 ########################## MERGING DATASETS ###################################
 
 social_data <- iso %>%
-  select(name_govt, alpha_3) %>%
+  select(name_govt = i_name_govt, alpha_3) %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(wgi, by = "alpha_3") %>%
   left_join(trade, by = "alpha_3") %>%
   left_join(tourism, by = "alpha_3") %>% 
-  left_join(survey, by = "alpha_3") %>% 
+  left_join(survey2, by = "alpha_3") %>% 
   replace(. == "NaN", NA) %>%
-  mutate_all(na_if,"")
+  mutate_all(na_if, "")
 
 data_scaled <- social_data %>%
-  mutate_at(vars(-c(name_govt,alpha_3)), as.numeric) %>%
+  mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
-  mutate(score_nutrit = 1/2 * reliance_pf + 1/2 * energy_ad,
-         score_govt = 1/2 * wgi_mean + 1/2 * reg_strength,
-         score_econ = 1/4 * trade_def_fad + 1/4 * tourists + 1/2 * exports_fish # placeholder until tourism data is formatted
-           )
+  mutate(score_govt = wgi_mean) %>%  #1/2 * wgi_mean + 1/2 * reg_strength) %>% 
+  rowwise() %>% 
+  mutate(score_nutrit = mean(reliance_pf, energy_ad, na.rm = T),
+         score_econ = mean(trade_def_fad, tourists, exports_fish, na.rm = T))
+  
 
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)

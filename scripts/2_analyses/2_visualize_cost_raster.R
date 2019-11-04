@@ -91,7 +91,7 @@ all_values_by_country <- raster::extract(croped_cost,
 summarized_values_by_country <- raster::extract(croped_cost,
                                                 eez_sp,
                                                 na.rm = T,
-                                                fun = mean,
+                                                fun = median,
                                                 sp = T) %>% 
   st_as_sf()
 
@@ -129,7 +129,7 @@ summarized_cost <- ggplot(summarized_values_by_country) +
   theme(legend.justification = c(1, 1),
         legend.position = c(1, 1),
         text = element_text(size = 15)) +
-  ggtitle("Average cost of deploying a MFAD")
+  ggtitle("Median cost of deploying a MFAD")
 
 # Save the plot
 ggsave(plot = summarized_cost,
