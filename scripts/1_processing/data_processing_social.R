@@ -26,7 +26,7 @@ genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stri
   drop_na(year) %>% 
   mutate(calories_pf = calories_pelagicfish / calories, # calculating proportion of calories obtained from pelagic fish
          protein_pf = protein_pelagic_fish / protein) %>% # calculating proportion of protein obtained from pelagic fish
-  select(country = i_country, calories_pf,protein_pf) %>%
+  select(country = country, calories_pf, protein_pf) %>%
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", country)) %>% 
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
   select(alpha_3, everything(), -country)
@@ -183,7 +183,7 @@ ggsave(plot = last_plot(),
 ########################## MERGING DATASETS ###################################
 
 social_data <- iso %>%
-  select(name_govt = i_name_govt, alpha_3) %>%
+  select(name_govt = name_govt, alpha_3) %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(wgi, by = "alpha_3") %>%
