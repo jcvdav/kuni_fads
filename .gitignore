@@ -5,3 +5,4 @@
 raw_data/landdistance/*
 raw_data/eez/*
 raw_data/shipping/*
+*.DS_Store
