@@ -8,11 +8,15 @@ library(countrycode)
 library(scales)
 
 # file with country names and alpha_3 codes
-iso <- read.csv(here("raw_data", "iso_codes.csv"), stringsAsFactors = F) %>% 
+iso <- read.csv(here("raw_data", "iso_codes.csv"),
+                stringsAsFactors = F,
+                fileEncoding = "UTF-8-BOM") %>% 
   clean_names()
 
 ############################## NUTRITION + FOOD SECURITY ####################################
-fao_fs <- fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"), stringsAsFactors = F) %>% 
+fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
+                   stringsAsFactors = F,
+                   fileEncoding = "UTF-8-BOM") %>% 
   clean_names() %>%
   filter(area != "Caribbean") %>%
   select(area,item,value) %>%
