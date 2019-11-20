@@ -152,11 +152,6 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
 
 ########################### SURVEY DATA ####################################
 
-my_fun <- function(x) {
-  case_when(str_detect(., "draft") ~ .5,
-            str_detect(., "formal") ~ 1)
-}
-
 survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
@@ -180,9 +175,9 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
                                       str_detect(reg_howfish_type, "Formal") ~ 1,
                                       str_detect(reg_howfish_type, "formal") ~ 1)
   ) %>%
-  mutate_at(.vars = vars(c(reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn)),
+  mutate_at(.vars = vars(c(reg_set_enf_yn, reg_whofish_enf_yn, reg_howfish_enf_yn)),
             .funs = ~ case_when(. == "Yes" ~ 1,
-                                . == "No" ~ 0) # NA is automatically matched to any missing
+                                . == "No" ~ .5) # NA is automatically matched to any missing
             ) %>%
   mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn) 
 
