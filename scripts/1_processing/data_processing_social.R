@@ -24,7 +24,8 @@ nutrition <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
   spread(item, value) %>%
   set_names("country","energy_ad","sev_insecurity","undernourishment") %>%
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  select(alpha_3, as.numeric(energy_ad))
+  select(alpha_3, energy_ad) %>%
+  mutate(energy_ad = as.numeric(energy_ad))
 
 ############################## POVERTY ####################################
 
@@ -217,11 +218,12 @@ social_data <- iso %>%
 data_scaled <- social_data %>%
   mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
-  mutate(score_govt = reg_strength) %>% 
-  rowwise() %>% 
-  mutate(score_need = mean(energy_ad, poverty_rate, na.rm = T),
-         score_econ = mean(trade_def_fad, tourists, exports_fish, na.rm = T))
-  
+  mutate(energy_ad = 1 - energy_ad,
+         score_govt = reg_strength,
+         score_need = (energy_ad + poverty_rate) / 2
+         # score_marketability = ( / 4)
+        )
+         
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
     
