@@ -21,7 +21,7 @@ write.csv(AllMarineFish.tidy, file = "raw_data/trade/AllMarineFish.tidy.csv")
 
 # FAO FAD fisheries data
 
-FADFish <- read.csv("raw_data/trade/FAO_species_fad_1976_2016.csv", header = T, stringsAsFactors = F)
+FADFish <- read.csv("raw_data/trade/FAO_FADSpecies_191120.csv", header = T, stringsAsFactors = F)
 
 FADFish.tidy <- FADFish %>% 
   gather("Year", "Quantity", 5:45) %>% 
