@@ -14,6 +14,7 @@ iso <- read.csv(here("raw_data", "iso_codes.csv"),
   clean_names()
 
 ############################## NUTRITION + FOOD SECURITY ####################################
+
 fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
                    stringsAsFactors = F,
                    fileEncoding = "UTF-8-BOM") %>% 
@@ -181,11 +182,6 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
                                 . == "No" ~ .5) # NA is automatically matched to any missing
             ) %>%
   mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn) 
-
-
-# %>% 
-#   group_by(country, alpha_3) %>% 
-#   summarize_all(mean, na.rm = T)
 
 survey_long <- survey %>%
   select(-(reg_strength)) %>%
