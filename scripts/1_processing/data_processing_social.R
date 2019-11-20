@@ -38,6 +38,13 @@ nutrition <- fao_fs %>%
   rowwise() %>%
   mutate(reliance_pf = mean(c(calories_pf, protein_pf), na.rm = FALSE))
 
+########################### POPULATION DATA ####################################
+
+pop <- read.csv(here("raw_data", "population", "pop_UN.csv"), stringsAsFactors = F) %>% 
+  rename(pop_2016 = y_2016, pop_2017 = y_2017, pop_2018 = y_2018) %>% 
+  select(alpha_3, pop_2016, pop_2017, pop_2018) %>% 
+  left_join(iso, by= "alpha_3")
+
 ######################## FAO TRADE DATA ################################
 
 # sum function for calculating aggregate quantities
@@ -117,7 +124,7 @@ trade <- trade_sf %>%
   left_join(trade_fads_ff, by = "alpha_3") %>% 
   mutate(prop_ff = (exports_fad_ff/exports_fad)) %>% 
 #  mutate(trade_def_fad = imports_fad - exports_fad) %>%
-  select(alpha_3, imports_fish, exports_fad, reexports_fad, exports_fad_ff, reexports_fad_ff, prop_ff)
+  select(alpha_3, imports_fish, exports_fad, reexports_fad, exports_fad_ff, reexports_fad_ff, prop_ff) 
 
 ########################## GOVERNANCE INDICATORS ###############################
 
@@ -203,6 +210,18 @@ ggsave(plot = last_plot(),
        height = 3)
 
 ########################## MERGING DATASETS ###################################
+
+# merging trade and population databases to estimate per capita flows
+trade <- trade %>% 
+  left_join(pop, by = "alpha_3") %>% 
+  mutate(imports_fish_pc = imports_fish/pop_2018, exports_fad_pc = exports_fad/pop_2018)
+
+# merging tourism and population databases to estimate num. tourist per capita
+tourism <- tourism %>% 
+  left_join(pop, by = "alpha_3") %>% 
+  mutate(tourists_pc = tourists/pop_2018)
+
+# merging everything
 
 social_data <- iso %>%
   select(name_govt = name_govt, alpha_3) %>%
