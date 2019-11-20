@@ -42,6 +42,13 @@ nutrition <- fao_fs %>%
   rowwise() %>%
   mutate(reliance_pf = mean(c(calories_pf, protein_pf), na.rm = FALSE))
 
+############################## POVERTY ####################################
+
+poverty <- read.csv(here("raw_data", "poverty", "poverty.csv"),
+                   stringsAsFactors = F) %>% 
+  clean_names() %>%
+  select(alpha_3, poverty_rate)
+
 ########################### POPULATION DATA ####################################
 
 pop <- read.csv(here("raw_data", "population", "pop_UN.csv"), stringsAsFactors = F) %>% 
@@ -240,6 +247,7 @@ social_data <- iso %>%
   select(name_govt = name_govt, alpha_3) %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%
+  left_join(poverty, by = "alpha_3") %>%
   left_join(wgi, by = "alpha_3") %>%
   left_join(trade, by = "alpha_3") %>%
   left_join(tourism, by = "alpha_3") %>% 
