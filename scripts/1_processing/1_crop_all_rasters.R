@@ -8,7 +8,7 @@ library(raster)
 library(tidyverse)
 
 # Create an extent object for the Caribbean only
-caribbean_extent <- extent(-90, -55, 5, 30)
+caribbean_extent <- extent(-90, -55, 5, 36)
 
 # Create a function that reads, crops, and saves raster files
 crop_caribbean <- function(layer, extent) {
@@ -51,6 +51,27 @@ raster(here("raw_data", "Coryphaena_hippurus.nc"),
   writeRaster(filename = here("data", "input", "Coryphaena_hippurus.tif"),
               overwrite = T)
 
+# Wahoo distribution
+raster(here("raw_data", "Acanthocybium_solandri.nc"),
+       varname = "probability") %>% 
+  crop(y = caribbean_extent) %>%
+  writeRaster(filename = here("data", "input", "Acanthocybium_solandri.tif"),
+              overwrite = T)
+
+# Skipjack
+raster(here("raw_data", "Katsuwonus_pelamis.nc"),
+       varname = "probability") %>% 
+  crop(y = caribbean_extent) %>%
+  writeRaster(filename = here("data", "input", "Katsuwonus_pelamis.tif"),
+              overwrite = T)
+
+# Skipjack
+raster(here("raw_data", "Thunnus_albacares.nc"),
+       varname = "probability") %>% 
+  crop(y = caribbean_extent) %>%
+  writeRaster(filename = here("data", "input", "Thunnus_albacares.tif"),
+              overwrite = T)
+
 # Shipping lanes
 ## Read in a reference rastr to reproject to
 reference <- raster(here("data", "input", "depth.tif")) 
@@ -79,7 +100,12 @@ coast <- rnaturalearth::ne_countries(scale = "large", returnclass = "sf") %>%
   sf::st_crop(y = extent(reference))
 
 # Rasterize and set land pixels to NA
-r2 <- rasterize(coast, reference, 1)
+r2 <- rasterize(x = coast,
+                y = reference,
+                getCover = T)
+
+r2[r2 == 0] <- NA
+
 r3 <- mask(is.na(r2), r2, maskvalue=1, updatevalue=NA)
 # Calculate distance to nearest non-NA pixel
 d <- distance(r2)

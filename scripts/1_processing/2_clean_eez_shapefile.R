@@ -22,7 +22,7 @@ iso <- read.csv(here("raw_data", "iso_codes.csv"),
 
 # Load EEZ
 eez <- st_read(here("raw_data", "eez")) %>% 
-  filter(ISO_Ter1 %in% iso) %>%             # Filtering ISO 3 codes of interest
+  filter(ISO_Ter1 %in% c(iso, "BMU")) %>%             # Filtering ISO 3 codes of interest
   group_by(ISO_Ter1) %>% 
   summarize(a = 0) %>% 
   select(ISO_Ter1) %>%                      # Keeping only column of interest

@@ -5,6 +5,7 @@
 library(startR)
 library(here)
 library(raster)
+library(sf)
 library(magrittr)
 library(tidyverse)
 library(rnaturalearth)
@@ -17,20 +18,23 @@ source(here("scripts", "2_analyses", "cost_functions.R"))
 ## Biophysical data
 depth <- raster(here("data", "input", "depth.tif"))
 land_distance <- raster(here("data", "input", "landdistance.tif"))
-sst <- raster(here("data", "input", "sstmean.tif"))
 surface_current <- abs(raster(here("data", "input",  "surface_current.tif")))
 shipping <- raster(here("data", "input", "shipping_lanes.tif"))
 mahi_mahi <- raster(here("data", "input", "Coryphaena_hippurus.tif")) %>% 
+  projectRaster(to = depth)
+wahoo <- raster(here("data", "input", "Acanthocybium_solandri.tif")) %>% 
+  projectRaster(to = depth)
+skipjack <- raster(here("data", "input", "Katsuwonus_pelamis.tif")) %>% 
+  projectRaster(to = depth)
+yellowfin <- raster(here("data", "input", "Thunnus_albacares.tif")) %>% 
   projectRaster(to = depth)
 
 # Cutoffs
 max_depth <- -3000          # max depth is 3000 meters
 min_depth <- -30            # min depth is 30 meters
 max_land_distance <- 50     # Max distance from land is 50 nautical miles
-min_sst <- 24               # Minimum SST is 24
-max_sst <- 41               # Maximum SST is 41 (mahi upper limit on Aquamaps)
 max_surface_current <- 0.65 # A constant 0.65 current would hide a FAD with a 400L flotation device
-mahi_mahi_threshold <- 0.5  # Probability threshold for mahi mahi presence
+spp_threshold <- 0.25       # Probability threshold for species presence
 
 #### Create masks ####
 # The following lines create rasters with values
@@ -41,33 +45,25 @@ depth_min_mask <- depth < min_depth
 depth_mask <- depth_max_mask * depth_min_mask
 ## Land
 land_distance_mask <- land_distance < max_land_distance
-## SST
-sst_min_mask <- sst > min_sst
-sst_max_mask <- sst < max_sst
-sst_mask <- sst_min_mask * sst_max_mask
 ## Surface curent
 surface_current_mask <- surface_current < max_surface_current
 ## Mahi mahi
-mahi_mahi_mask <- mahi_mahi > 0.5
+mahi_mask <- mahi_mahi > spp_threshold
+skj_mask <- skipjack > spp_threshold
+wahoo_mask <- wahoo > spp_threshold
+yellowfin_mask <- yellowfin > spp_threshold
+
+spp_mask <- mahi_mask * skj_mask * wahoo_mask * yellowfin_mask
+
 ## Shipping
 shipping_mask <- shipping == 0
 
-# Stack all masks to have a 
-# raster stack for visualization
-stacked_masks <- stack(depth_mask,
-                       land_distance_mask,
-                       sst_mask,
-                       surface_current_mask,
-                       mahi_mahi_mask,
-                       shipping_mask)
-
-names(stacked_masks) <- c("depth", "land_distance", "sst", "surface_current", "Mahi_mahi", "shipping")
-
-plot(stacked_masks)
-
 #### Calculate costs ####
 # Apply the get_cost function on the depth raster
-cost <- calc(depth, get_cost)
+deployment_cost <- calc(depth, deployment_cost)
+travel_cost <- calc(land_distance, travel_cost)
+
+cost <- deployment_cost + travel_cost
 
 # Save a complete cost raster
 writeRaster(x = cost,
@@ -103,20 +99,18 @@ snapshot <- function(r, step) {
 # step-by-step cropping
 croped_cost <- cost %T>% 
   snapshot(step = 1) %>% 
-  mask(x = ., mask = mahi_mahi_mask, maskvalue = F) %T>%
+  mask(x = ., mask = spp_mask, maskvalue = F) %T>%
   snapshot(step = 2) %>% 
   mask(x = ., mask = depth_mask, maskvalue = F) %T>%
   snapshot(step = 3) %>% 
   mask(x = ., mask = land_distance_mask, maskvalue = F) %T>%
   snapshot(step = 4) %>% 
-  mask(x = ., mask = sst_mask, maskvalue = F) %T>%
-  snapshot(step = 5) %>% 
   mask(x = ., mask = surface_current_mask, maskvalue = F) %T>%
-  snapshot(step = 6) %>% 
+  snapshot(step = 5) %>% 
   mask(x = ., mask = shipping_mask, maskvalue = F)
 
 # Final snapshot
-snapshot(croped_cost, step = 7)
+snapshot(croped_cost, step = 6)
 
 # Export the croped raster
 writeRaster(x = croped_cost,

@@ -1,3 +1,5 @@
+
+
 rope_features <- function(d, r, density = 1.024, d_lt, wa_f = 9, dens_f = 0.94, wa_s = 12.8, dens_s = 1.14) {
   
   total_rope_length <- d * r
@@ -29,15 +31,13 @@ rope_cost <- function(rope_lengths, rope_costs = c(0.3, 0.3)) {
   
 }
 
-get_cost <- function(depth) {
+deployment_cost <- function(depth) {
   
   depth <- abs(depth)
   
   r <- case_when(depth < 1000 ~ 1.2,
                  between(depth, 1000, 2000) ~ 1.5,
                  T ~ 2)
-  
-  depth <- abs(depth)
   
   rope_cost <- rope_features(d = depth, r = r, d_lt = 300) %>% 
     rope_cost()
@@ -46,12 +46,11 @@ get_cost <- function(depth) {
   
 }
 
-#- r-factor as a function current speed
-#
+travel_cost <- function(dist, speed = 30, efficiency = 20, price = 1.2, n_trips = 1){
+  dist <- dist * 1.854 # Convert from nautical miles to kilometers
+  ((2 * dist) / speed) * efficiency * price * n_trips # Calculate fuel cost
+}
 
 
 
-
-
-#900 - 1100 C ost of buoys
 
