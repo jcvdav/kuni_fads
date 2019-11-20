@@ -162,10 +162,13 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
 survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
-  mutate(
-    country = ifelse(country %in% c("Bonaire", "Saba", "St. Eustatius"),
-                     "Bonaire, Sint Eustatius and Saba", country),
-    alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+  mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+  mutate(alpha_3 = case_when(country == "Bonaire" ~ "BESB",
+                             country == "St. Eustatius" ~ "BESE",
+                             country == "Saba" ~ "BESS",
+                             country == "Saint Martin" ~ "MAF",
+                             TRUE ~ alpha_3)
+          ) %>%
   select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type) %>%
   mutate(reg_set_pres = case_when(reg_set_yn == "No" ~ 0,
                                   str_detect(reg_set_type, "Draft") ~ .5,
@@ -258,9 +261,9 @@ social_data <- iso %>%
 data_scaled <- social_data %>%
   mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
-  mutate(score_govt = wgi_mean) %>%  #1/2 * wgi_mean + 1/2 * reg_strength) %>% 
+  mutate(score_govt = reg_strength) %>% 
   rowwise() %>% 
-  mutate(score_nutrit = mean(energy_ad, na.rm = T),
+  mutate(score_need = mean(malnutrition, poverty_rate, na.rm = T),
          score_econ = mean(trade_def_fad, tourists, exports_fish, na.rm = T))
   
 
