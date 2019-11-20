@@ -35,7 +35,7 @@ croped_cost_data <- as.data.frame(croped_cost, xy = T)
 
 # Visualize rasters
 ## For all data
-all_costs <- ggplot() +
+(all_costs <- ggplot() +
   geom_raster(data = cost_data,
               mapping = aes(x = x, y = y, fill = cost),
               interpolate = T) +
@@ -48,16 +48,18 @@ all_costs <- ggplot() +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
                                ticks.colour = "black",
                                frame.colour = "black")) +
-  theme(legend.justification = c(1, 1),
-        legend.position = c(1, 1),
-        text = element_text(size = 15))
+  theme(legend.justification = c(0, 0),
+        legend.position = c(0.01, 0.01),
+        text = element_text(size = 15)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)))
 
 ggsave(plot = all_costs,
        filename = here("img", "all_costs.png"),
        width = 8, height = 5)
 
 ## For the croped data
-croped_costs <- ggplot() +
+(croped_costs <- ggplot() +
   geom_raster(data = croped_cost_data,
               mapping = aes(x = x, y = y, fill = croped_cost),
               interpolate = T) +
@@ -70,9 +72,11 @@ croped_costs <- ggplot() +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
                                ticks.colour = "black",
                                frame.colour = "black")) +
-  theme(legend.justification = c(1, 1),
-        legend.position = c(1, 1),
-        text = element_text(size = 15))
+  theme(legend.justification = c(0, 0),
+        legend.position = c(0.01, 0.01),
+        text = element_text(size = 15)) +
+  scale_y_continuous(expand = c(0, 0)) +
+  scale_x_continuous(expand = c(0, 0)))
 
 ggsave(plot = croped_costs,
        filename = here("img", "croped_costs.png"),
@@ -102,14 +106,14 @@ eez_with_data <- eez %>%
   drop_na(croped_cost)
 
 # Plot the distribution of costs
-cost_distribution <- ggplot(eez_with_data, aes(y = ISO_Ter1, x = croped_cost)) +
+(cost_distribution <- ggplot(eez_with_data, aes(y = ISO_Ter1, x = croped_cost)) +
   ggridges::geom_density_ridges(quantile_lines = T,
                                 quantiles = 2,
                                 panel_scaling = T,
                                 fill = "steelblue",
                                 alpha = 0.5) +
   ggtheme_plot() +
-  labs(x = "Cost ($USD)", y = "Country (ISO3 code)")
+  labs(x = "Cost ($USD)", y = "Country (ISO3 code)"))
 
 # Save the plot with the distribution of costs
 ggsave(plot = cost_distribution,
@@ -118,7 +122,7 @@ ggsave(plot = cost_distribution,
        width = 3.5)
 
 # Plot the costs at the EEZ-level
-summarized_cost <- ggplot(summarized_values_by_country) +
+(summarized_cost <- ggplot(summarized_values_by_country) +
   geom_sf(aes(fill = croped_cost)) +
   geom_sf(data = coast) +
   ggtheme_map() +
@@ -126,10 +130,12 @@ summarized_cost <- ggplot(summarized_values_by_country) +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
                                ticks.colour = "black",
                                frame.colour = "black")) +
-  theme(legend.justification = c(1, 1),
-        legend.position = c(1, 1),
+  theme(legend.justification = c(0, 0),
+        legend.position = c(0, 0),
         text = element_text(size = 15)) +
-  ggtitle("Median cost of deploying a MFAD")
+  scale_x_continuous(expand = c(0 ,0)) +
+  scale_y_continuous(expand = c(0 ,0)) +
+  ggtitle("Median cost of deploying a MFAD"))
 
 # Save the plot
 ggsave(plot = summarized_cost,
