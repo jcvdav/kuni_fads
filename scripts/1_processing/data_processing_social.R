@@ -141,8 +141,6 @@ wgi <- read.csv(here("raw_data", "governance", "wgi_indicators.csv"), stringsAsF
 
 ########################### TOURISM ####################################
 
-#This should work now (as of 10/23)
-
 tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), stringsAsFactors = F) %>%
   group_by(alpha_3) %>%
   select("alpha_3", "foreign_tourists") %>% 
@@ -151,8 +149,8 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
 ########################### SURVEY DATA ####################################
 
 my_fun <- function(x) {
-  case_when(x == "Yes" ~ 1,
-            x == "No" ~ 0)
+  case_when(str_detect(., "draft") ~ .5,
+            str_detect(., "formal") ~ 1)
 }
 
 survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
@@ -162,16 +160,32 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
     country = ifelse(country %in% c("Bonaire", "Saba", "St. Eustatius"),
                      "Bonaire, Sint Eustatius and Saba", country),
     alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
-  mutate_at(.vars = vars(-c(country, alpha_3)),
+  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type) %>%
+  mutate(reg_set_pres = case_when(reg_set_yn == "No" ~ 0,
+                                  str_detect(reg_set_type, "Draft") ~ .5,
+                                  str_detect(reg_set_type, "Formal") ~ 1,
+                                  str_detect(reg_set_type, "formal") ~ 1)
+  ) %>%
+  mutate(reg_whofish_pres = case_when(reg_whofish_yn == "No" ~ 0,
+                                  str_detect(reg_whofish_type, "Draft") ~ .5,
+                                  str_detect(reg_whofish_type, "Formal") ~ 1,
+                                  str_detect(reg_whofish_type, "formal") ~ 1)
+  ) %>%
+  mutate(reg_howfish_pres = case_when(reg_howfish_yn == "No" ~ 0,
+                                      str_detect(reg_howfish_type, "Draft") ~ .5,
+                                      str_detect(reg_howfish_type, "Formal") ~ 1,
+                                      str_detect(reg_howfish_type, "formal") ~ 1)
+  ) %>%
+  mutate_at(.vars = vars(c(reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn)),
             .funs = ~ case_when(. == "Yes" ~ 1,
                                 . == "No" ~ 0) # NA is automatically matched to any missing
             ) %>%
-  mutate(reg_strength = 1/3 * reg_set_yn * reg_set_enf_yn + 1/3 * reg_whofish_yn * reg_whofish_enf_yn + 1/3 * reg_howfish_yn * reg_howfish_enf_yn)
+  mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn) 
 
-survey2 <- survey %>% 
-  group_by(country, alpha_3) %>% 
-  summarize_all(mean, na.rm = T)
+
+# %>% 
+#   group_by(country, alpha_3) %>% 
+#   summarize_all(mean, na.rm = T)
 
 survey_long <- survey %>%
   select(-(reg_strength)) %>%
@@ -230,7 +244,7 @@ social_data <- iso %>%
   left_join(wgi, by = "alpha_3") %>%
   left_join(trade, by = "alpha_3") %>%
   left_join(tourism, by = "alpha_3") %>% 
-  left_join(survey2, by = "alpha_3") %>% 
+  left_join(survey, by = "alpha_3") %>% 
   replace(. == "NaN", NA) %>%
   mutate_all(na_if, "")
 
@@ -239,7 +253,7 @@ data_scaled <- social_data %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
   mutate(score_govt = wgi_mean) %>%  #1/2 * wgi_mean + 1/2 * reg_strength) %>% 
   rowwise() %>% 
-  mutate(score_nutrit = mean(reliance_pf, energy_ad, na.rm = T),
+  mutate(score_nutrit = mean(energy_ad, na.rm = T),
          score_econ = mean(trade_def_fad, tourists, exports_fish, na.rm = T))
   
 
