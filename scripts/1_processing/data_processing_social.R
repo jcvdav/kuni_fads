@@ -226,8 +226,8 @@ data_scaled <- social_data %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
   mutate(energy_ad = 1 - energy_ad,
          score_govt = reg_strength,
-         score_need = (energy_ad + poverty_rate) / 2
-         # score_marketability = ( / 4)
+         score_need = (energy_ad + poverty_rate) / 2,
+         score_marketability = ((pc_imported_all + pc_n_tourists)/2 + (pc_exported_fad + pp_ff_over_fad_exp)/2)/2
         )
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
