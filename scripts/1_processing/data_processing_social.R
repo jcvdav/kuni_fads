@@ -71,7 +71,7 @@ fad_fished_ff <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Lon
 trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T, stringsAsFactors = F, na.strings = c("...", "-")) %>% 
   clean_names() %>%
   select(-(c(x_1, x, x_f))) %>% 
-  filter(country != 'Totals') %>% 
+  filter(country != "Totals - All") %>% 
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>% 
   mutate(alpha_3 = countrycode(country, "country.name", "iso3c"),
          fad_fished = ifelse(commodity %in% fad_fished, 1, 0), 
