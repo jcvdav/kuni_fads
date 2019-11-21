@@ -12,14 +12,6 @@ library(tidyverse)
 
 # Load data
 ## Total costs
-croped_cost <- raster(here("data", "croped_cost.tif"))
-
-## Deployment costs
-deployment_cost <- raster(here("data", "deployment_cost.tif"))
-
-## Travel costs
-travel_cost <- raster(here("data", "travel_cost.tif"))
-
 ## EEZ vector
 eez <- st_read(here("data", "caribbean_eez.gpkg"))  %>% 
   arrange(ISO_Ter1) %>% 
@@ -29,6 +21,20 @@ eez <- st_read(here("data", "caribbean_eez.gpkg"))  %>%
 ## Convert EEZ to spatial
 eez_sp <- eez %>% 
   as_Spatial()
+
+croped_cost <- raster(here("data", "croped_cost.tif")) %>% 
+  crop(eez_sp) %>% 
+  mask(eez_sp)
+
+## Deployment costs
+deployment_cost <- raster(here("data", "deployment_cost.tif")) %>% 
+  crop(eez_sp) %>% 
+  mask(eez_sp)
+
+## Travel costs
+travel_cost <- raster(here("data", "travel_cost.tif")) %>% 
+  crop(eez_sp) %>%
+  mask(eez_sp)
 
 ## Coastline cropped to the extent of the cost raster
 coast <- ne_countries(scale = "medium", returnclass = "sf") %>% 
@@ -124,7 +130,7 @@ ggsave(plot = plot,
 
 ## Country-level stats
 # Extract all values by EEZ (for analyses)
-all_values_by_country <- raster::extract(travel_cost,
+all_values_by_country <- raster::extract(croped_cost,
                                          eez_sp,
                                          na.rm = T,
                                          df = T)

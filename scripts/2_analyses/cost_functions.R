@@ -1,6 +1,6 @@
 
 
-rope_features <- function(d, r, density = 1.024, d_lt, wa_f = 9, dens_f = 0.94, wa_s = 12.8, dens_s = 1.14) {
+rope_features <- function(d, r, density = 1.024, d_lt, wa_f = 9, dens_f = 0.94, wa_s = 12.8, dens_s = 1.14, cost_f = 0.3, cost_s = 0.3) {
   
   total_rope_length <- d * r
   
@@ -20,27 +20,22 @@ rope_features <- function(d, r, density = 1.024, d_lt, wa_f = 9, dens_f = 0.94, 
   
   length_s <- d_lt + loop_arm_length + length_arm_s
   
-  return(c(length_f, length_s))
+  rope_cost <- (length_f * cost_f) + (length_s * cost_s)
+  
+  return(rope_cost)
   
 }
 
 
-rope_cost <- function(rope_lengths, rope_costs = c(0.3, 0.3)) {
-  
-  sum(rope_lengths * rope_costs)
-  
-}
-
-deployment_cost <- function(depth) {
+deployment_cost <- function(depth, current) {
   
   depth <- abs(depth)
   
-  r <- case_when(depth < 1000 ~ 1.2,
-                 between(depth, 1000, 2000) ~ 1.5,
+  r <- case_when(current < 0.02 ~ 1.2,
+                 between(current, 0.02, 0.05) ~ 1.5,
                  T ~ 2)
   
-  rope_cost <- rope_features(d = depth, r = r, d_lt = 300) %>% 
-    rope_cost()
+  rope_cost <- rope_features(d = depth, r = r, d_lt = depth * 0.2)
   
   rope_cost + 1100
   
