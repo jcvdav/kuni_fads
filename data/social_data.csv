@@ -1,35 +1,35 @@
 "name_govt","alpha_3","energy_ad","poverty_rate","pc_imported_all","pc_exported_fad","pp_ff_over_fad_exp","pc_n_tourists","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","reg_set_pres","reg_whofish_pres","reg_howfish_pres","reg_strength"
-"Anguilla","AIA",NA,23.3,NA,NA,NA,4.72846666666667,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Antigua and Barbuda","ATG",95,18.4,0.0118694158075601,0.00459450171821306,1,2.57026804123711,"Antigua and Barbuda","Yes",1,"Formal legislation","Yes",1,"Formal legislation","Yes",1,"Formal legislation",1,1,1,1
-"Aruba","ABW",NA,NA,0.075025078369906,0,NA,10.082275862069,"Aruba","No",NA,NA,"No",0.5,NA,"No",NA,NA,0,0,0,NA
-"Bahamas","BHS",109,9.3,0.00763099315068493,0.000155821917808219,NA,3.65203767123288,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Barbados","BRB",121,19.3,0.00742392566782811,0.000221835075493612,1,1.81044599303136,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Bermuda","BMU",NA,11,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Bonaire, Sint Eustatius and Saba","BES",NA,NA,0.138692307692308,0.024025641025641,0.938888888888889,6.46538461538462,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Bonaire, Sint Eustatius and Saba","BES",NA,NA,0.138692307692308,0.024025641025641,0.938888888888889,6.46538461538462,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Bonaire, Sint Eustatius and Saba","BES",NA,NA,0.138692307692308,0.024025641025641,0.938888888888889,6.46538461538462,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Anguilla","AIA",NA,23.3,NA,NA,NA,4864.23280907096,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Antigua and Barbuda","ATG",95,18.4,14.7149759466739,0,0,2613.01919025709,"Antigua and Barbuda","Yes",1,"Formal legislation","Yes",1,"Formal legislation","Yes",1,"Formal legislation",1,1,1,1
+"Aruba","ABW",NA,NA,19.0867588576418,0.00316372598336513,0,10175.3210390942,"Aruba","No",NA,NA,"No",0.5,NA,"No",NA,NA,0,0,0,NA
+"Bahamas","BHS",109,9.3,9.14939204869897,0.0689762355040766,0,3724.35000811999,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Barbados","BRB",121,19.3,20.2371344487806,0.574144402557912,0.982137884393523,1815.3607501843,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bermuda","BMU",108,11,28.9532529458098,0,0,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bonaire, Sint Eustatius and Saba","BES",NA,NA,0,0,0,6624.02143645248,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bonaire, Sint Eustatius and Saba","BES",NA,NA,0,0,0,6624.02143645248,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Bonaire, Sint Eustatius and Saba","BES",NA,NA,0,0,0,6624.02143645248,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
 "Bonaire, Sint Eustatius and Saba","BESB",NA,NA,NA,NA,NA,NA,"Bonaire","Yes",0.5,"Formal legislation","Yes",NA,"Community/informal regulations","Yes",NA,"Community/informal regulations",1,1,1,NA
 "Bonaire, Sint Eustatius and Saba","BESE",NA,NA,NA,NA,NA,NA,"St. Eustatius","Yes",0.5,"Formal legislation","No",0.5,"No regulations","No",0.5,"No regulations",1,0,0,0.166666666666667
 "Bonaire, Sint Eustatius and Saba","BESS",NA,NA,NA,NA,NA,NA,"Saba","Yes",0.5,"Formal legislation","No",0.5,"Community/informal regulations","No",0.5,"Community/informal regulations",1,0,0,0.166666666666667
-"Cayman Islands","CYM",NA,NA,0.189174358974359,0,NA,5.88947692307692,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Cuba","CUB",147,NA,6.81510677098653e-05,2.94134949114654e-08,NA,0.264894229072298,"Cuba","No",NA,NA,"No",NA,NA,"No",NA,NA,0,0,0,NA
-"CuraÃ§ao","CUW",NA,NA,0.00106326530612245,4.28571428571429e-05,NA,2.76093673469388,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Dominica","DMA",122,29,0.0120092592592593,1.38888888888889e-05,NA,1.13155555555556,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Dominican Republic","DOM",114,30.5,8.11138014527845e-05,3.41466443161358e-07,NA,0.478802104674986,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Grenada","GRD",100,38,0.0716815476190476,0.00584821428571429,0.999595469255663,1.19215178571429,"Grenada","Yes",0.5,"Drafted legislation","Yes",1,"Drafted legislation;Informal regulations ","Yes",1,"Drafted legislation;Informal regulations",0.5,0.5,0.5,0.416666666666667
-"Guadeloupe","GLP",NA,NA,0.0253408333333333,8.33333333333333e-07,NA,1.2175,"Guadeloupe","Yes",0.5,"Formal legislation","Yes",1,"Formal legislation","No",0.5,NA,1,1,0,0.5
-"Haiti","HTI",96,58.5,0.000265027079818876,3.40347450353665e-06,0.0161793372319688,0.0413010743141259,"Haiti","No",NA,NA,"No",NA,NA,"No",NA,NA,0,0,0,NA
-"Jamaica","JAM",113,17.1,0.00189145183175034,1.66214382632293e-05,1,0.705624491180461,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Martinique","MTQ",NA,NA,0.00112156166814552,0,NA,1.30317923691216,"Martinique","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation",1,1,1,0.5
-"Montserrat","MSR",NA,NA,1.38586666666667,NA,NA,1.7608,"Montserrat","Yes",0.5,"Drafted legislation","Yes",0.5,"Drafted legislation","Yes",0.5,"Drafted legislation",0.5,0.5,0.5,0.25
-"Puerto Rico","PRI",NA,NA,0.000354199683042789,NA,NA,0.573400045279602,"Puerto Rico","Yes",1,"Formal legislation","No",0.5,NA,"Yes",1,"Formal legislation",1,0,1,0.666666666666667
-"Saint BarthÃ©lemy","BLM",NA,NA,NA,NA,NA,28.1272,"Saint Barthelemy","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation",1,1,1,0.5
-"Saint Kitts and Nevis","KNA",102,21.8,0.0809240506329114,0,NA,1.98854430379747,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Saint Lucia","LCA",104,28.8,0.00933879781420765,0.00014207650273224,NA,1.84785792349727,"Saint lucia ","Yes",0.5,"Drafted legislation;Community/informal regulations","No",0.5,"Drafted legislation","Yes",0.5,"Community/informal regulations;Plan addresses legislative framework",0.5,0,1,0.25
-"Saint Martin","MAF",NA,NA,NA,NA,NA,5.29523684210526,"Saint Martin","Yes",0.5,"Formal legislation","Yes",1,"Formal legislation","No",0.5,NA,1,1,0,0.5
-"Saint Vincent and the Grenadines","VCT",121,30.2,0.0171415662650602,2.10843373493976e-05,1,0.638972891566265,"St. Vincent and the Grenadines ","Yes",1,"Formal legislation","Yes",1,"Formal legislation","Yes",1,"Formal legislation",1,1,1,1
-"Sint Maarten","SXM",NA,NA,NA,NA,NA,11.8091338582677,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Trinidad and Tobago","TTO",129,20,0.00761639579349904,0.000231357552581262,1,0.295796128107075,"Tobago","No",NA,NA,"No",0.5,"None exists","No",0.5,"None exists",0,0,0,NA
-"Turks and Caicos Islands","TCA",NA,NA,0.0831217391304348,0.00193913043478261,1,9.60427826086956,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Virgin Islands, British","VGB",NA,28.9,NA,NA,NA,12.8683,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
-"Virgin Islands, U.S.","VIR",NA,NA,NA,NA,NA,6.97802866242038,"US Virgin Islands","Yes",1,"Formal legislation","No",0.5,NA,"Yes",0.5,"Community/informal regulations;The USVI DPNR-DFW advises the public and fishing communities to avoid tying up/mooring up to the FADs to ensure that they last for a long time, but I don't think there is formal legislation stating this. ",1,0,1,0.5
+"Cayman Islands","CYM",NA,NA,5.79618671926364,0,0,6040.48915187377,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Cuba","CUB",147,NA,1.26097787836304,0,0,264.781363270883,"Cuba","No",NA,NA,"No",NA,NA,"No",NA,NA,0,0,0,NA
+"Curaçao","CUW",NA,NA,8.81019182751785,126.090724391263,0.99974390569993,2784.8007723327,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Dominica","DMA",122,29,11.6143476841271,0,0,1140.05317412193,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Dominican Republic","DOM",114,30.5,3.38379248440278,0.000507324722637647,0.26984126984127,489.065186343858,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Grenada","GRD",100,38,5.108407072994,7.7001945343953,1,1204.37837691565,"Grenada","Yes",0.5,"Drafted legislation","Yes",1,"Drafted legislation;Informal regulations ","Yes",1,"Drafted legislation;Informal regulations",0.5,0.5,0.5,0.416666666666667
+"Guadeloupe","GLP",NA,NA,0,0,0,1218.22789116497,"Guadeloupe","Yes",0.5,"Formal legislation","Yes",1,"Formal legislation","No",0.5,NA,1,1,0,0.5
+"Haiti","HTI",96,58.5,1.75875234485642,0.000485650337706068,0,42.3584831610155,"Haiti","No",NA,NA,"No",NA,NA,"No",NA,NA,0,0,0,NA
+"Jamaica","JAM",113,17.1,9.32397207875752,0.000228260186025204,0,712.233753039142,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Martinique","MTQ",NA,NA,0,0,0,1301.54854787081,"Martinique","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation",1,1,1,0.5
+"Montserrat","MSR",NA,NA,12.5016713464367,NA,NA,1765.74408343361,"Montserrat","Yes",0.5,"Drafted legislation","Yes",0.5,"Drafted legislation","Yes",0.5,"Drafted legislation",0.5,0.5,0.5,0.25
+"Puerto Rico","PRI",NA,NA,0,NA,NA,533.966774287537,"Puerto Rico","Yes",1,"Formal legislation","No",0.5,NA,"Yes",1,"Formal legislation",1,0,1,0.666666666666667
+"Saint Barthélemy","BLM",NA,NA,NA,NA,NA,28752.0785062014,"Saint Barthelemy","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation","Yes",0.5,"Formal legislation",1,1,1,0.5
+"Saint Kitts and Nevis","KNA",102,21.8,10.5565911434812,0.00640569850939396,0,2012.60641466649,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Saint Lucia","LCA",104,28.8,8.73878869041589,0.00184207181501178,0,1868.73396246226,"Saint lucia ","Yes",0.5,"Drafted legislation;Community/informal regulations","No",0.5,"Drafted legislation","Yes",0.5,"Community/informal regulations;Plan addresses legislative framework",0.5,0,1,0.25
+"Saint Martin","MAF",NA,NA,NA,NA,NA,5493.33418267524,"Saint Martin","Yes",0.5,"Formal legislation","Yes",1,"Formal legislation","No",0.5,NA,1,1,0,0.5
+"Saint Vincent and the Grenadines","VCT",121,30.2,3.92416319420207,0.0728382959480663,0,643.826802671951,"St. Vincent and the Grenadines ","Yes",1,"Formal legislation","Yes",1,"Formal legislation","Yes",1,"Formal legislation",1,1,1,1
+"Sint Maarten","SXM",NA,NA,NA,NA,NA,12076.1401700593,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Trinidad and Tobago","TTO",129,20,8.42787432475595,0.919435129118368,0.998459642637092,298.114495568067,"Tobago","No",NA,NA,"No",0.5,"None exists","No",0.5,"None exists",0,0,0,NA
+"Turks and Caicos Islands","TCA",NA,NA,27.0884416062656,0.386207887622486,0,9920.08191199849,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Virgin Islands, British","VGB",NA,28.9,NA,NA,NA,13051.8966799648,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"Virgin Islands, U.S.","VIR",NA,NA,NA,NA,NA,6972.12234221965,"US Virgin Islands","Yes",1,"Formal legislation","No",0.5,NA,"Yes",0.5,"Community/informal regulations;The USVI DPNR-DFW advises the public and fishing communities to avoid tying up/mooring up to the FADs to ensure that they last for a long time, but I don't think there is formal legislation stating this. ",1,0,1,0.5
