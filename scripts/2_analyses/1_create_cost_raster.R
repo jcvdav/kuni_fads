@@ -19,6 +19,8 @@ source(here("scripts", "2_analyses", "cost_functions.R"))
 depth <- raster(here("data", "input", "depth.tif"))
 land_distance <- raster(here("data", "input", "landdistance.tif"))
 surface_current <- abs(raster(here("data", "input",  "surface_current.tif")))
+names(surface_current) <- "current"
+
 shipping <- raster(here("data", "input", "shipping_lanes.tif"))
 mahi_mahi <- raster(here("data", "input", "Coryphaena_hippurus.tif")) %>% 
   projectRaster(to = depth)
@@ -63,7 +65,7 @@ all_masks <- spp_mask * depth_mask * land_distance_mask * surface_current_mask *
 
 #### Calculate costs ####
 # Apply the get_cost function on the depth raster
-deployment_cost <- calc(depth, deployment_cost) * all_masks
+deployment_cost <- overlay(depth, surface_current, fun = deployment_cost) * all_masks
 deployment_cost[deployment_cost == 0] <- NA
 
 travel_cost <- calc(land_distance, travel_cost) * all_masks
