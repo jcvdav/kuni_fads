@@ -13,8 +13,9 @@ iso <- read.csv(here("raw_data", "iso_codes.csv"),
                 fileEncoding = "UTF-8-BOM") %>% 
   clean_names()
 
-############################## NUTRITION + FOOD SECURITY ####################################
-fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
+############################## NUTRITION  ####################################
+
+nutrition <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
                    stringsAsFactors = F,
                    fileEncoding = "UTF-8-BOM") %>% 
   clean_names() %>%
@@ -23,24 +24,8 @@ fao_fs <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
   spread(item, value) %>%
   set_names("country","energy_ad","sev_insecurity","undernourishment") %>%
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  select(alpha_3, everything(), -country)
-
-genus_intake <- read.csv(here("raw_data", "nutrition", "genus_intake.csv"), stringsAsFactors = F) %>% 
-  clean_names() %>% # all from 2011
-  drop_na(year) %>% 
-  mutate(calories_pf = calories_pelagicfish / calories, # calculating proportion of calories obtained from pelagic fish
-         protein_pf = protein_pelagic_fish / protein) %>% # calculating proportion of protein obtained from pelagic fish
-  select(country = country, calories_pf, protein_pf) %>%
-  mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", country)) %>% 
-  mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  select(alpha_3, everything(), -country)
-
-# selected nutrition variables:
-nutrition <- fao_fs %>%
-  select(alpha_3, energy_ad) %>% 
-  full_join(genus_intake, by = "alpha_3") %>%
-  rowwise() %>%
-  mutate(reliance_pf = mean(c(calories_pf, protein_pf), na.rm = FALSE))
+  select(alpha_3, energy_ad) %>%
+  mutate(energy_ad = as.numeric(energy_ad))
 
 ############################## POVERTY ####################################
 
@@ -50,7 +35,6 @@ poverty <- read.csv(here("raw_data", "poverty", "poverty.csv"),
   select(alpha_3, poverty_rate)
 
 ########################### POPULATION DATA ####################################
-
 
 pop <- read.csv(here("raw_data", "population", "pop_UN.csv"), stringsAsFactors = F) %>% 
   rename(pop_2016 = y_2016, pop_2017 = y_2017, pop_2018 = y_2018) %>% 
@@ -153,10 +137,13 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
 survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
-  mutate(
-    country = ifelse(country %in% c("Bonaire", "Saba", "St. Eustatius"),
-                     "Bonaire, Sint Eustatius and Saba", country),
-    alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+  mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+  mutate(alpha_3 = case_when(country == "Bonaire" ~ "BESB",
+                             country == "St. Eustatius" ~ "BESE",
+                             country == "Saba" ~ "BESS",
+                             country == "Saint Martin" ~ "MAF",
+                             TRUE ~ alpha_3)
+          ) %>%
   select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type) %>%
   mutate(reg_set_pres = case_when(reg_set_yn == "No" ~ 0,
                                   str_detect(reg_set_type, "Draft") ~ .5,
@@ -178,11 +165,6 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
                                 . == "No" ~ .5) # NA is automatically matched to any missing
             ) %>%
   mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn) 
-
-
-# %>% 
-#   group_by(country, alpha_3) %>% 
-#   summarize_all(mean, na.rm = T)
 
 survey_long <- survey %>%
   select(-(reg_strength)) %>%
@@ -227,7 +209,6 @@ social_data <- iso %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(poverty, by = "alpha_3") %>%
-  left_join(wgi, by = "alpha_3") %>%
   left_join(trade, by = "alpha_3") %>%
   left_join(tourism, by = "alpha_3") %>% 
   left_join(survey, by = "alpha_3") %>% 
@@ -237,12 +218,12 @@ social_data <- iso %>%
 data_scaled <- social_data %>%
   mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
-  mutate(score_govt = wgi_mean) %>%  #1/2 * wgi_mean + 1/2 * reg_strength) %>% 
-  rowwise() %>% 
-  mutate(score_nutrit = mean(energy_ad, na.rm = T),
-         score_econ = mean(trade_def_fad, tourists, exports_fish, na.rm = T))
-  
-
+  mutate(energy_ad = 1 - energy_ad,
+         score_govt = reg_strength,
+         score_need = (energy_ad + poverty_rate) / 2
+         # score_marketability = ( / 4)
+        )
+         
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
     

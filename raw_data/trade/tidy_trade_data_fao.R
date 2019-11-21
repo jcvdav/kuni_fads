@@ -4,7 +4,7 @@ library(countrycode)
 
 # All Marine Fish (data base from Julia's laptop)
 
-AllMarineFish <- read.csv("raw_data/trade/FAO_species_allmarinefish_1976_2016.csv", header = T, stringsAsFactors = F)
+AllMarineFish <- read.csv("raw_data/trade/FAO_AllSpecies_191120.csv", header = T, stringsAsFactors = F)
 
 AllMarineFish.tidy <- AllMarineFish %>% 
   gather("Year", "Quantity", 5:45) %>% 
@@ -21,22 +21,20 @@ write.csv(AllMarineFish.tidy, file = "raw_data/trade/AllMarineFish.tidy.csv")
 
 # FAO FAD fisheries data
 
-FADFish <- read.csv("raw_data/trade/FAO_species_fad_1976_2016.csv", header = T, stringsAsFactors = F)
+#FADFish <- read.csv("raw_data/trade/FAO_FADSpecies_191120.csv", header = T, stringsAsFactors = F)
 
-FADFish.tidy <- FADFish %>% 
-  gather("Year", "Quantity", 5:45) %>% 
-  separate(Year,c("X" , "Year"), "X") %>% 
-  separate(Quantity, c("Quantity", " F"), " F") %>% 
-  rename("Country" = "Country..Country.") %>% 
-  rename("Commodity" = "Commodity..Commodity.") %>% 
-  rename("Flow" = "Trade.flow..Trade.flow.") %>% 
-  filter(Country != "FAO. 2018. Fishery and Aquaculture Statistics. Global Fisheries commodities production and trade 1976-2016 (FishstatJ). In: FAO Fisheries and Aquaculture Department [online]. Rome. Updated 2018. www.fao.org/fishery/statistics/software/fishstatj/en") %>% 
-  mutate(Quantity = recode(Quantity, "0 0" = "0")) %>% 
-  filter(Year == "2014" | Year == "2015" | Year == "2016")
+#FADFish.tidy <- FADFish %>% 
+#  gather("Year", "Quantity", 5:45) %>% 
+#  separate(Year,c("X" , "Year"), "X") %>% 
+#  separate(Quantity, c("Quantity", " F"), " F") %>% 
+#  rename("Country" = "Country..Country.") %>% 
+#  rename("Commodity" = "Commodity..Commodity.") %>% 
+#  rename("Flow" = "Trade.flow..Trade.flow.") %>% 
+#  filter(Country != "FAO. 2018. Fishery and Aquaculture Statistics. Global Fisheries commodities production and trade 1976-2016 (FishstatJ). In: FAO Fisheries and Aquaculture Department [online]. Rome. Updated 2018. www.fao.org/fishery/statistics/software/fishstatj/en") %>% 
+#  mutate(Quantity = recode(Quantity, "0 0" = "0")) %>% 
+#  filter(Year == "2014" | Year == "2015" | Year == "2016")
 
-View(FADFish.tidy)
-
-write.csv(FADFish.tidy, file = "raw_data/trade/FADFish_tidy.csv")
+#write.csv(FADFish.tidy, file = "raw_data/trade/FADFish_tidy.csv")
 
 #############################################################################################
 
@@ -52,6 +50,7 @@ trade_fish <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T
   select(-(c(X.1, X, X.F))) %>% 
   mutate(Country= ifelse(Country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(Country == "CuraÃ§ao", 'Curaçao', Country))) %>% 
   mutate(alpha_3 = countrycode(Country, "country.name", "iso3c"))
-  
+View(trade_fish)
+
   
 write.csv(trade_fish, here("data/fao_trade.csv"), row.names = F)
