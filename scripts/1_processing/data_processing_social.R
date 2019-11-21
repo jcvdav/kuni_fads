@@ -36,13 +36,18 @@ poverty <- read.csv(here("raw_data", "poverty", "poverty.csv"),
 
 ########################### POPULATION DATA ####################################
 
-pop <- read.csv(here("raw_data", "population", "pop_UN.csv"), stringsAsFactors = F) %>% 
-  rename(pop_2016 = y_2016, pop_2017 = y_2017, pop_2018 = y_2018) %>% 
-  select(alpha_3, pop_2016, pop_2017, pop_2018) %>% 
-  left_join(iso, by= "alpha_3") %>% 
-  mutate(mean_pop = (pop_2016 + pop_2017 + pop_2018)/3) %>% 
-  select(alpha_3, mean_pop) %>% 
-  distinct()
+pop <- read.csv(here("raw_data", "population", "pop_FAO.csv"), stringsAsFactors = F, fileEncoding = "UTF-8-BOM") %>%
+  mutate(alpha_3 = countrycode(Area, 'country.name', 'iso3c')) %>% 
+  select(-(Area)) %>% 
+  spread(Year, Value) 
+
+colnames <- c("alpha_3", "pop_2015", "pop_2016", "pop_2017", "pop_2018")
+
+colnames(pop) <- colnames
+
+pop <- pop %>% 
+  mutate(mean_pop = (pop_2016+ pop_2017+ pop_2018)/3) %>% 
+  select(alpha_3, mean_pop)
 
 ######################## FAO TRADE DATA ################################
 
@@ -107,7 +112,8 @@ trade <- trade_fao %>%
   full_join(pop, by = 'alpha_3') %>% 
 # per capita calculations for ell exported fad-products and all impoerted marine products
   mutate(pc_imported_all = imported_all_marine/mean_pop, pc_exported_fad = exported_fad/mean_pop) %>% 
-  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp)
+  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
+  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
   
 ########################## GOVERNANCE INDICATORS ###############################
 
