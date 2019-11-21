@@ -46,7 +46,7 @@ deployment_cost <- function(depth) {
   
 }
 
-travel_cost <- function(dist, speed = 30, efficiency = 20, price = 1.2, n_trips = 1){
+travel_cost <- function(dist, speed = 30, efficiency = 20, price = 1.2, n_trips = 104){
   dist <- dist * 1.854 # Convert from nautical miles to kilometers
   ((2 * dist) / speed) * efficiency * price * n_trips # Calculate fuel cost
 }

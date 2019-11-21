@@ -7,12 +7,18 @@ library(here)
 library(raster)
 library(sf)
 library(rnaturalearth)
+library(cowplot)
 library(tidyverse)
 
 # Load data
-## Cost rasters
-cost <- raster(here("data", "cost.tif"))
+## Total costs
 croped_cost <- raster(here("data", "croped_cost.tif"))
+
+## Deployment costs
+deployment_cost <- raster(here("data", "deployment_cost.tif"))
+
+## Travel costs
+travel_cost <- raster(here("data", "travel_cost.tif"))
 
 ## EEZ vector
 eez <- st_read(here("data", "caribbean_eez.gpkg"))  %>% 
@@ -30,14 +36,33 @@ coast <- ne_countries(scale = "medium", returnclass = "sf") %>%
 
 # Convert the rasters to a data.frames
 # for easy ggplot handling
-cost_data <- as.data.frame(cost, xy = T)
 croped_cost_data <- as.data.frame(croped_cost, xy = T)
+deployment_cost_data <- as.data.frame(deployment_cost, xy = T)
+travel_cost_data <- as.data.frame(travel_cost, xy = T)
 
 # Visualize rasters
-## For all data
-(all_costs <- ggplot() +
-  geom_raster(data = cost_data,
-              mapping = aes(x = x, y = y, fill = cost),
+## For the deployment costs
+(deployment_costs <- ggplot() +
+    geom_raster(data = deployment_cost_data,
+                mapping = aes(x = x, y = y, fill = deployment_cost),
+                interpolate = T) +
+    scale_fill_gradientn(colours = colorRamps::matlab.like(50),
+                         na.value = "transparent",
+    ) +
+    geom_sf(data = coast) +
+    geom_sf(data = eez, fill = "transparent") +
+    ggtheme_map() +
+    theme(legend.position = "bottom") +
+    guides(fill = guide_colorbar(title = "Costs ($USD)",
+                                 ticks.colour = "black",
+                                 frame.colour = "black")) +
+    scale_y_continuous(expand = c(0, 0)) +
+    scale_x_continuous(expand = c(0, 0)))
+
+## For the travel costs
+(travel_costs <- ggplot() +
+  geom_raster(data = travel_cost_data,
+              mapping = aes(x = x, y = y, fill = travel_cost),
               interpolate = T) +
   scale_fill_gradientn(colours = colorRamps::matlab.like(50),
                        na.value = "transparent",
@@ -45,50 +70,14 @@ croped_cost_data <- as.data.frame(croped_cost, xy = T)
   geom_sf(data = coast) +
   geom_sf(data = eez, fill = "transparent") +
   ggtheme_map() +
+  theme(legend.position = "bottom") +
   guides(fill = guide_colorbar(title = "Costs ($USD)",
                                ticks.colour = "black",
                                frame.colour = "black")) +
-  theme(legend.justification = c(0, 0),
-        legend.position = c(0.01, 0.01),
-        text = element_text(size = 15)) +
   scale_y_continuous(expand = c(0, 0)) +
   scale_x_continuous(expand = c(0, 0)))
 
-ggsave(plot = all_costs,
-       filename = here("img", "all_costs.png"),
-       width = 8, height = 5)
 
-## For the croped data
-(croped_costs <- ggplot() +
-  geom_raster(data = croped_cost_data,
-              mapping = aes(x = x, y = y, fill = croped_cost),
-              interpolate = T) +
-  scale_fill_gradientn(colours = colorRamps::matlab.like(50),
-                       na.value = "transparent",
-  ) +
-  geom_sf(data = coast) +
-  geom_sf(data = eez, fill = "transparent") +
-  ggtheme_map() +
-  guides(fill = guide_colorbar(title = "Costs ($USD)",
-                               ticks.colour = "black",
-                               frame.colour = "black")) +
-  theme(legend.justification = c(0, 0),
-        legend.position = c(0.01, 0.01),
-        text = element_text(size = 15)) +
-  scale_y_continuous(expand = c(0, 0)) +
-  scale_x_continuous(expand = c(0, 0)))
-
-ggsave(plot = croped_costs,
-       filename = here("img", "croped_costs.png"),
-       width = 8, height = 5)
-
-
-## Country-level stats
-# Extract all values by EEZ (for analyses)
-all_values_by_country <- raster::extract(croped_cost,
-                                         eez_sp,
-                                         na.rm = T,
-                                         df = T)
 
 # Extract all values by EEZ and summarize with mean
 # (for visualization)
@@ -99,21 +88,63 @@ summarized_values_by_country <- raster::extract(croped_cost,
                                                 sp = T) %>% 
   st_as_sf()
 
+# Plot the costs at the EEZ-level
+(summarized_cost <- ggplot(summarized_values_by_country) +
+    geom_sf(data = eez, fill = "transparent") +
+    geom_sf(aes(fill = croped_cost)) +
+    geom_sf(data = coast) +
+    ggtheme_map() +
+    scale_fill_gradientn(colours = colorRamps::matlab.like(100)) +
+    guides(fill = guide_colorbar(title = "Costs ($USD)",
+                                 ticks.colour = "black",
+                                 frame.colour = "black")) +
+    theme(legend.justification = c(0, 0),
+          legend.position = c(0, 0)) +
+    scale_x_continuous(expand = c(0 ,0)) +
+    scale_y_continuous(expand = c(0 ,0)))
+
+
+subplots <- plot_grid(deployment_costs,
+                      travel_costs,
+                      ncol = 2,
+                      labels = c("B", "C"))
+
+plot <- plot_grid(summarized_cost,
+                  subplots,
+                  ncol = 1,
+                  rel_heights = c(2, 1),
+                  align = "v",
+                  labels = c("A", NA))
+
+ggsave(plot = plot,
+       filename = here("img", "cost_map.png"),
+       height = 7.5,
+       width = 5)
+
+
+## Country-level stats
+# Extract all values by EEZ (for analyses)
+all_values_by_country <- raster::extract(travel_cost,
+                                         eez_sp,
+                                         na.rm = T,
+                                         df = T)
+
 # Add ISO3 codes
 eez_with_data <- eez %>% 
   st_set_geometry(NULL) %>%
   left_join(all_values_by_country, by = "ID") %>% 
-  drop_na(croped_cost)
+  drop_na()
 
 # Plot the distribution of costs
-(cost_distribution <- ggplot(eez_with_data, aes(y = ISO_Ter1, x = croped_cost)) +
-  ggridges::geom_density_ridges(quantile_lines = T,
-                                quantiles = 2,
-                                panel_scaling = T,
-                                fill = "steelblue",
-                                alpha = 0.5) +
-  ggtheme_plot() +
-  labs(x = "Cost ($USD)", y = "Country (ISO3 code)"))
+(cost_distribution <- ggplot(eez_with_data, aes(y = reorder(ISO_Ter1, travel_cost, FUN = median), x = travel_cost)) +
+    ggridges::geom_density_ridges(quantile_lines = T,
+                                  quantiles = 2,
+                                  panel_scaling = T,
+                                  fill = "steelblue",
+                                  alpha = 0.5) +
+    # geom_boxplot() +
+    ggtheme_plot() +
+    labs(x = "Cost ($USD)", y = "Country (ISO3 code)"))
 
 # Save the plot with the distribution of costs
 ggsave(plot = cost_distribution,
@@ -121,27 +152,6 @@ ggsave(plot = cost_distribution,
        height = 5,
        width = 3.5)
 
-# Plot the costs at the EEZ-level
-(summarized_cost <- ggplot(summarized_values_by_country) +
-  geom_sf(aes(fill = croped_cost)) +
-  geom_sf(data = coast) +
-  ggtheme_map() +
-  scale_fill_gradientn(colours = colorRamps::matlab.like(100)) +
-  guides(fill = guide_colorbar(title = "Costs ($USD)",
-                               ticks.colour = "black",
-                               frame.colour = "black")) +
-  theme(legend.justification = c(0, 0),
-        legend.position = c(0, 0),
-        text = element_text(size = 15)) +
-  scale_x_continuous(expand = c(0 ,0)) +
-  scale_y_continuous(expand = c(0 ,0)) +
-  ggtitle("Median cost of deploying a MFAD"))
-
-# Save the plot
-ggsave(plot = summarized_cost,
-       filename = here("img", "summarized_cost.png"),
-       height = 5.5,
-       width = 8)
 
 # Calculate various country-level stats
 country_level_summary_statistics <- eez_with_data %>% 
