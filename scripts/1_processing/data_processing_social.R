@@ -57,7 +57,7 @@ my_sum <- function(x) {
   if(sum(is.na(x)) == length(x)) {
     res <- 0
   } else {
-    # If they ar enot, do the calculation
+    # If they are not, do the calculation
     res <- sum(x, na.rm = T)
   }
   # Return the result
@@ -168,50 +168,63 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
   ) %>%
   mutate_at(.vars = vars(c(reg_set_enf_yn, reg_whofish_enf_yn, reg_howfish_enf_yn)),
             .funs = ~ case_when(. == "Yes" ~ 1,
-                                . == "No" ~ .5) # NA is automatically matched to any missing
-            ) %>%
-  mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn) 
-
-survey_long <- survey %>%
-  select(-(reg_strength)) %>%
-  gather("question", "response", -c(country, alpha_3)) %>%
-  mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
-         reg_type = ifelse(grepl("set", question), "Setting MFADs", 
-                           ifelse(grepl("whofish", question), "Rights to use MFADs", "Fishing practices on MFADs"))
+                                . == "No" ~ .5,
+                                is.na(.) ~ 0 # NAs mean no enforcement because no reg presence - don't use this df for graphing responses
+            )) %>%
+  mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn
          ) %>%
-  group_by(question, category, reg_type, response) %>%
-  summarise(count = n()) %>%
-  ungroup() %>% 
-  group_by(question, category, reg_type) %>% 
-  mutate(n = sum(count)) %>% 
-  ungroup() %>% 
-  mutate(prop = count / n) %>% 
-  mutate(response = case_when(response == 0 ~ "No",
-                              response == 1 ~ "Yes",
-                              is.na(response) ~ "Did not respond"),
-         category = fct_relevel(category, "Existence", "Enforcement"),
-         reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
+  select(alpha_3, reg_strength)
 
-ggplot(survey_long, aes(x = category, y = prop, fill = response)) +
-  geom_col(color = "black") +
-  facet_grid(~ reg_type) +
-  theme_bw() +
-  theme(legend.title = element_blank()) +
-  labs(x = "", y = "Response frequency (n = 15)")  +
-  scale_y_continuous(limits = c(0, 1)) +
-  scale_fill_manual(values = c("gray", "red", "steelblue")) +
-  ggtheme_plot() +
-  guides(fill = guide_legend(title = "Response"))
 
-ggsave(plot = last_plot(),
-       filename = here("img", "survey_gov.png"),
-       width = 7,
-       height = 3)
+# survey_long <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
+#   clean_names() %>%
+#   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
+#   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
+#   mutate(alpha_3 = case_when(country == "Bonaire" ~ "BESB",
+#                              country == "St. Eustatius" ~ "BESE",
+#                              country == "Saba" ~ "BESS",
+#                              country == "Saint Martin" ~ "MAF",
+#                              TRUE ~ alpha_3)
+#   ) %>%
+#   select(-c(reg_set_type, reg_whofish_type, reg_howfish_type)) %>%
+#   gather("question", "response", -c(country, alpha_3)) %>%
+#   mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
+#          reg_type = ifelse(grepl("set", question), "Setting MFADs", 
+#                            ifelse(grepl("whofish", question), "Rights to use MFADs", "Fishing practices on MFADs"))
+#          ) %>%
+#   group_by(question, category, reg_type, response) %>%
+#   summarise(count = n()) %>%
+#   ungroup() %>% 
+#   group_by(question, category, reg_type) %>% 
+#   mutate(n = sum(count)) %>% 
+#   ungroup() %>% 
+#   mutate(prop = count / n) %>% 
+#   mutate(response = case_when(response == 0 ~ "No",
+#                               response == 1 ~ "Yes",
+#                               is.na(response) ~ "Did not respond"),
+#          category = fct_relevel(category, "Existence", "Enforcement"),
+#          reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
+# 
+# ggplot(survey_long, aes(x = category, y = prop, fill = response)) +
+#   geom_col(color = "black") +
+#   facet_grid(~ reg_type) +
+#   theme_bw() +
+#   theme(legend.title = element_blank()) +
+#   labs(x = "", y = "Response frequency (n = 15)")  +
+#   scale_y_continuous(limits = c(0, 1)) +
+#   scale_fill_manual(values = c("gray", "red", "steelblue")) +
+#   #ggtheme_plot() +
+#   guides(fill = guide_legend(title = "Response"))
+# 
+# ggsave(plot = last_plot(),
+#        filename = here("img", "survey_gov.png"),
+#        width = 7,
+#        height = 3)
 
 ########################## MERGING DATASETS ###################################
 
 social_data <- iso %>%
-  select(name_govt = name_govt, alpha_3) %>%
+  select(name_govt, alpha_3) %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%
   left_join(poverty, by = "alpha_3") %>%

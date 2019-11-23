@@ -30,7 +30,7 @@ data <- cost_data %>%
 data %>%
   select(contains("score")) %>%
   ggpairs() +
-  ggtheme_plot()
+  #ggtheme_plot()
 
 ggsave(filename = here("img", "score_pair_plot.png"),
        width = 7,
