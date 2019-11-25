@@ -193,7 +193,6 @@ survey_plot <- survey_clean %>%
          category = fct_relevel(category, "Existence", "Enforcement"),
          reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
 
-ggplot(survey_plot, aes())
 ggplot(survey_plot, aes(x = category, y = prop, fill = response)) +
   geom_col(color = "black") +
   facet_grid(~ reg_type) +

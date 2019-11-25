@@ -30,7 +30,7 @@ data <- cost_data %>%
 data %>%
   select(contains("score")) %>%
   ggpairs() +
-  #ggtheme_plot()
+  ggtheme_plot()
 
 ggsave(filename = here("img", "score_pair_plot.png"),
        width = 7,
@@ -57,7 +57,7 @@ data %>%
                    point.padding = 0.7,
                    size = 2,
                    min.segment.length = 0) +
-  #startR::ggtheme_plot() +
+  startR::ggtheme_plot() +
   scale_fill_manual(values = c("red", "orange", "darkgreen", "gray")) +
   scale_size_continuous(breaks = c(0.3, 0.6, 1), range = c(1, 10)) +
   labs(x = "Biophysical cost",
