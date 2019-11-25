@@ -12,7 +12,7 @@ library(tidyverse)
 
 # Load data
 ## Scaled data
-scaled_data <- read.csv(here("data", "data_scaled.csv"),
+scaled_data <- read.csv(here("data", "data_scaled2.csv"),
                         stringsAsFactors = F) %>% 
   select(alpha_3, contains("score"))
 
@@ -29,8 +29,8 @@ data <- cost_data %>%
 # Create ggpairs
 data %>%
   select(contains("score")) %>%
-  ggpairs() +
-  ggtheme_plot()
+  ggpairs() #+
+  #ggtheme_plot()
 
 ggsave(filename = here("img", "score_pair_plot.png"),
        width = 7,
@@ -57,7 +57,8 @@ data %>%
                    point.padding = 0.7,
                    size = 2,
                    min.segment.length = 0) +
-  startR::ggtheme_plot() +
+  #startR::ggtheme_plot() +
+  theme_bw() +
   scale_fill_manual(values = c("red", "orange", "darkgreen", "gray")) +
   scale_size_continuous(breaks = c(0.3, 0.6, 1), range = c(1, 10)) +
   labs(x = "Biophysical cost",

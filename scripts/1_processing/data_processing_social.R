@@ -230,7 +230,12 @@ data_scaled <- social_data %>%
          score_need = (energy_ad + poverty_rate) / 2,
          score_marketability = ((pc_imported_all + pc_n_tourists)/2 + (pc_exported_fad + pp_ff_over_fad_exp)/2)/2
         )
+
+data_scaled2 <- data_scaled %>%
+  select(alpha_3, score_govt, score_need, score_marketability) %>%
+  mutate_if(is.numeric, rescale, to = c(0,1))
+  
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
-    
+write.csv(data_scaled2, here("data", "data_scaled2.csv"), row.names = F)    
