@@ -140,7 +140,7 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
 
 ########################### SURVEY DATA ####################################
 
-survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
+survey_clean <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
@@ -150,21 +150,20 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
                              country == "Saint Martin" ~ "MAF",
                              TRUE ~ alpha_3)
           ) %>%
-  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type) %>%
-  mutate(reg_set_pres = case_when(reg_set_yn == "No" ~ 0,
-                                  str_detect(reg_set_type, "Draft") ~ .5,
-                                  str_detect(reg_set_type, "Formal") ~ 1,
-                                  str_detect(reg_set_type, "formal") ~ 1)
-  ) %>%
-  mutate(reg_whofish_pres = case_when(reg_whofish_yn == "No" ~ 0,
-                                  str_detect(reg_whofish_type, "Draft") ~ .5,
-                                  str_detect(reg_whofish_type, "Formal") ~ 1,
-                                  str_detect(reg_whofish_type, "formal") ~ 1)
-  ) %>%
-  mutate(reg_howfish_pres = case_when(reg_howfish_yn == "No" ~ 0,
-                                      str_detect(reg_howfish_type, "Draft") ~ .5,
-                                      str_detect(reg_howfish_type, "Formal") ~ 1,
-                                      str_detect(reg_howfish_type, "formal") ~ 1)
+  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type)
+
+survey_govt <- survey_clean %>% mutate(reg_set_pres = case_when(reg_set_yn == "No" ~ 0,
+                                            str_detect(reg_set_type, "Draft") ~ .5,
+                                            str_detect(reg_set_type, "Formal") ~ 1,
+                                            str_detect(reg_set_type, "formal") ~ 1),
+                                      reg_whofish_pres = case_when(reg_whofish_yn == "No" ~ 0,
+                                            str_detect(reg_whofish_type, "Draft") ~ .5,
+                                            str_detect(reg_whofish_type, "Formal") ~ 1,
+                                            str_detect(reg_whofish_type, "formal") ~ 1),
+                                      reg_howfish_pres = case_when(reg_howfish_yn == "No" ~ 0,
+                                            str_detect(reg_howfish_type, "Draft") ~ .5,
+                                            str_detect(reg_howfish_type, "Formal") ~ 1,
+                                            str_detect(reg_howfish_type, "formal") ~ 1)
   ) %>%
   mutate_at(.vars = vars(c(reg_set_enf_yn, reg_whofish_enf_yn, reg_howfish_enf_yn)),
             .funs = ~ case_when(. == "Yes" ~ 1,
@@ -176,50 +175,40 @@ survey <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFact
   select(alpha_3, reg_strength)
 
 
-# survey_long <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
-#   clean_names() %>%
-#   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
-#   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-#   mutate(alpha_3 = case_when(country == "Bonaire" ~ "BESB",
-#                              country == "St. Eustatius" ~ "BESE",
-#                              country == "Saba" ~ "BESS",
-#                              country == "Saint Martin" ~ "MAF",
-#                              TRUE ~ alpha_3)
-#   ) %>%
-#   select(-c(reg_set_type, reg_whofish_type, reg_howfish_type)) %>%
-#   gather("question", "response", -c(country, alpha_3)) %>%
-#   mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
-#          reg_type = ifelse(grepl("set", question), "Setting MFADs", 
-#                            ifelse(grepl("whofish", question), "Rights to use MFADs", "Fishing practices on MFADs"))
-#          ) %>%
-#   group_by(question, category, reg_type, response) %>%
-#   summarise(count = n()) %>%
-#   ungroup() %>% 
-#   group_by(question, category, reg_type) %>% 
-#   mutate(n = sum(count)) %>% 
-#   ungroup() %>% 
-#   mutate(prop = count / n) %>% 
-#   mutate(response = case_when(response == 0 ~ "No",
-#                               response == 1 ~ "Yes",
-#                               is.na(response) ~ "Did not respond"),
-#          category = fct_relevel(category, "Existence", "Enforcement"),
-#          reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
-# 
-# ggplot(survey_long, aes(x = category, y = prop, fill = response)) +
-#   geom_col(color = "black") +
-#   facet_grid(~ reg_type) +
-#   theme_bw() +
-#   theme(legend.title = element_blank()) +
-#   labs(x = "", y = "Response frequency (n = 15)")  +
-#   scale_y_continuous(limits = c(0, 1)) +
-#   scale_fill_manual(values = c("gray", "red", "steelblue")) +
-#   #ggtheme_plot() +
-#   guides(fill = guide_legend(title = "Response"))
-# 
-# ggsave(plot = last_plot(),
-#        filename = here("img", "survey_gov.png"),
-#        width = 7,
-#        height = 3)
+survey_plot <- survey_clean %>%
+  select(alpha_3, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
+  gather("question", "response", -alpha_3) %>%
+  mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
+         reg_type = ifelse(grepl("set", question), "Setting MFADs",
+                           ifelse(grepl("whofish", question), "Rights to use MFADs", "Fishing practices on MFADs"))
+         ) %>%
+  group_by(question, category, reg_type, response) %>%
+  summarise(count = n()) %>%
+  ungroup() %>%
+  group_by(question, category, reg_type) %>%
+  mutate(n = sum(count)) %>%
+  ungroup() %>%
+  mutate(prop = count / n) %>%
+  mutate(response = replace_na(response, "Did not respond"),
+         category = fct_relevel(category, "Existence", "Enforcement"),
+         reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
+
+ggplot(survey_plot, aes())
+ggplot(survey_plot, aes(x = category, y = prop, fill = response)) +
+  geom_col(color = "black") +
+  facet_grid(~ reg_type) +
+  theme_bw() +
+  theme(legend.title = element_blank()) +
+  labs(x = "", y = "Response frequency (n = 15)")  +
+  scale_y_continuous(limits = c(0, 1)) +
+  scale_fill_manual(values = c("gray", "red", "steelblue")) +
+  #ggtheme_plot() +
+  guides(fill = guide_legend(title = "Response"))
+
+ggsave(plot = last_plot(),
+       filename = here("img", "survey_gov.png"),
+       width = 7,
+       height = 3)
 
 ########################## MERGING DATASETS ###################################
 
@@ -230,7 +219,7 @@ social_data <- iso %>%
   left_join(poverty, by = "alpha_3") %>%
   left_join(trade, by = "alpha_3") %>%
   left_join(tourism, by = "alpha_3") %>% 
-  left_join(survey, by = "alpha_3") %>% 
+  left_join(survey_govt, by = "alpha_3") %>% 
   replace(. == "NaN", NA) %>%
   mutate_all(na_if, "")
 
