@@ -107,12 +107,15 @@ exports <- trade_fao %>%
 # combining with imports flows of interest (all marine)
 trade <- trade_fao %>% 
   filter(flow == "Imports") %>% 
-  select(alpha_3, imported_all_marine= all_marine) %>% 
+  select(alpha_3, imported_all_marine = all_marine) %>% 
   full_join(exports, by = 'alpha_3') %>% 
   full_join(pop, by = 'alpha_3') %>% 
 # per capita calculations for ell exported fad-products and all impoerted marine products
-  mutate(pc_imported_all = imported_all_marine/mean_pop, pc_exported_fad = exported_fad/mean_pop) %>% 
+  mutate(pc_imported_all = imported_all_marine * 1e3, #/mean_pop,
+         pc_exported_fad = exported_fad * 1e3) %>% #/mean_pop) %>% 
   select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
+  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
+  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
   mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
   
 ########################## GOVERNANCE INDICATORS ###############################
@@ -230,12 +233,7 @@ data_scaled <- social_data %>%
          score_need = (energy_ad + poverty_rate) / 2,
          score_marketability = ((pc_imported_all + pc_n_tourists)/2 + (pc_exported_fad + pp_ff_over_fad_exp)/2)/2
         )
-
-data_scaled2 <- data_scaled %>%
-  select(alpha_3, score_govt, score_need, score_marketability) %>%
-  mutate_if(is.numeric, rescale, to = c(0,1))
-  
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
-write.csv(data_scaled2, here("data", "data_scaled2.csv"), row.names = F)    
+    

@@ -12,7 +12,7 @@ library(tidyverse)
 
 # Load data
 ## Scaled data
-scaled_data <- read.csv(here("data", "data_scaled2.csv"),
+scaled_data <- read.csv(here("data", "data_scaled.csv"),
                         stringsAsFactors = F) %>% 
   select(alpha_3, contains("score"))
 
@@ -29,8 +29,8 @@ data <- cost_data %>%
 # Create ggpairs
 data %>%
   select(contains("score")) %>%
-  ggpairs() #+
-  #ggtheme_plot()
+  ggpairs() +
+  ggtheme_plot()
 
 ggsave(filename = here("img", "score_pair_plot.png"),
        width = 7,
