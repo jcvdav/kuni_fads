@@ -38,6 +38,7 @@ poverty <- read.csv(here("raw_data", "poverty", "poverty.csv"),
 
 pop <- read.csv(here("raw_data", "population", "pop_FAO.csv"), stringsAsFactors = F, fileEncoding = "UTF-8-BOM") %>%
   mutate(alpha_3 = countrycode(Area, 'country.name', 'iso3c')) %>% 
+  mutate(alpha_3 = ifelse(!(is.na(alpha_3)), alpha_3, ifelse(Area == 'Sint Eustatius and Saba', 'ESS', 'BON'))) %>% 
   select(-(Area)) %>% 
   spread(Year, Value) 
 
