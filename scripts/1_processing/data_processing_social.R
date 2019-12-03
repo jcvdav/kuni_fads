@@ -98,6 +98,7 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   group_by(flow, alpha_3) %>% 
   summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
   ungroup()
+  
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
 exports <- trade_fao %>% 
@@ -141,15 +142,17 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
   mutate(pc_n_tourists = tourists/mean_pop) %>% 
   select(alpha_3, pc_n_tourists)
 
+### Need to add tourism data for Bonaire vs. Saba/Eustatia
+
 ########################### SURVEY DATA ####################################
 
 survey_clean <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
   clean_names() %>%
   set_names("time","email","name","country","reg_set_yn","reg_set_enf_yn","reg_set_type","reg_whofish_yn","reg_whofish_enf_yn","reg_whofish_type","reg_howfish_yn","reg_howfish_enf_yn","reg_howfish_type","nfads_public","nfads_private","nvessels_fads","nvessels_tot","comments") %>%
   mutate(alpha_3 = countrycode(country, 'country.name', 'iso3c')) %>%
-  mutate(alpha_3 = case_when(country == "Bonaire" ~ "BESB",
-                             country == "St. Eustatius" ~ "BESE",
-                             country == "Saba" ~ "BESS",
+  mutate(alpha_3 = case_when(country == "Bonaire" ~ "BON",
+                             country == "St. Eustatius" ~ "ESS",
+                             country == "Saba" ~ "ESS",
                              country == "Saint Martin" ~ "MAF",
                              TRUE ~ alpha_3)
           ) %>%
@@ -175,7 +178,9 @@ survey_govt <- survey_clean %>% mutate(reg_set_pres = case_when(reg_set_yn == "N
             )) %>%
   mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn
          ) %>%
-  select(alpha_3, reg_strength)
+  select(alpha_3, reg_strength) %>%
+  group_by(alpha_3) %>%
+  summarise(reg_strength = mean(reg_strength)) # Saba and Eustatia already have the same governance responses
 
 
 survey_plot <- survey_clean %>%
@@ -217,11 +222,11 @@ ggsave(plot = last_plot(),
 social_data <- iso %>%
   select(name_govt, alpha_3) %>%
   distinct() %>%
-  left_join(nutrition, by = "alpha_3") %>%
-  left_join(poverty, by = "alpha_3") %>%
-  left_join(trade, by = "alpha_3") %>%
-  left_join(tourism, by = "alpha_3") %>% 
-  left_join(survey_govt, by = "alpha_3") %>% 
+  left_join(nutrition, by = "alpha_3") %>%  # no BES
+  left_join(poverty, by = "alpha_3") %>%  # no BES
+  left_join(trade, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
+  left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
+  left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   replace(. == "NaN", NA) %>%
   mutate_all(na_if, "")
 
