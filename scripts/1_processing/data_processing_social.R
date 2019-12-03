@@ -206,7 +206,7 @@ ggplot(survey_plot, aes(x = category, y = prop, fill = response)) +
   facet_grid(~ reg_type) +
   theme_bw() +
   theme(legend.title = element_blank()) +
-  labs(x = "", y = "Response frequency (n = 15)")  +
+  labs(x = "", y = "Response frequency (n = 20)")  +
   scale_y_continuous(limits = c(0, 1)) +
   scale_fill_manual(values = c("gray", "red", "steelblue")) +
   #ggtheme_plot() +
