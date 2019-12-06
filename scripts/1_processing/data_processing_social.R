@@ -143,8 +143,6 @@ tourism <- read.csv(here("raw_data", "tourism", "cto_2015_tourism.csv"), strings
   mutate(pc_n_tourists = tourists/mean_pop) %>% 
   select(alpha_3, pc_n_tourists)
 
-### Need to add tourism data for Bonaire vs. Saba/Eustatia
-
 ########################### SURVEY DATA ####################################
 
 survey_clean <- read.csv(here("raw_data", "survey", "survey_clean.csv"), stringsAsFactors = F) %>%
@@ -229,7 +227,12 @@ social_data <- iso %>%
   left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   replace(. == "NaN", NA) %>%
-  mutate_all(na_if, "")
+  mutate_all(na_if, "") %>%
+  # tried to do this a more efficient/prettier way but ended up pasting values (0) manually so that BON/ESS trade variables reflected overall BES estimates (which were 0...)
+  mutate(pc_imported_all = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_imported_all)) %>%
+  mutate(pc_exported_fad = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_exported_fad)) %>%
+  mutate(pp_ff_over_fad_exp = if_else(alpha_3 %in% c("BON", "ESS"), 0, pp_ff_over_fad_exp)) %>%
+  filter(alpha_3 != "BES")
 
 data_scaled <- social_data %>%
   mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
