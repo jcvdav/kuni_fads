@@ -17,10 +17,10 @@ timeline <- read.csv(here("raw_data", "fad_data", "fads_timeline.csv"),
 ggplot(timeline, aes(x = year, y = name, group = name)) +
   geom_jitter(aes(size = n_fads, colour = zero_yn, shape = zero_yn), height = 0, width = 0.5) +
   #scale_size(breaks = c(0,100,500)) +
-  scale_colour_manual(values = c("blue","black")) +
+  scale_colour_manual(values = c("blue","blue")) +
   scale_shape_manual(values = c(21,16)) +
   theme_bw() +
   labs(x = "Year", y = "country")
 
 # going to put 0 values before each initial introduction/reintroduction
-ggsave(plot = timeline, filename = here("img/timeline_new.tiff"), width = 8, height = 6)
+ggsave(plot = last_plot(), filename = here("img/timeline_new.png"), width = 8, height = 6)
