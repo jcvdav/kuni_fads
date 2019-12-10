@@ -30,7 +30,7 @@ data <- cost_data %>%
 data %>%
   select(contains("score")) %>%
   ggpairs() +
-  ggtheme_plot()
+  #ggtheme_plot()
 
 ggsave(filename = here("img", "score_pair_plot.png"),
        width = 7,
@@ -63,7 +63,7 @@ data %>%
   scale_size_continuous(breaks = c(0.3, 0.6, 1), range = c(1, 10)) +
   labs(x = "Biophysical cost",
        y = "Market access") +
-  guides(size = guide_legend(title = "Nutrition\npotential"),
+  guides(size = guide_legend(title = "Social\npotential"),
          fill = guide_legend(title = "Governance\ncapacity\n(terciles)", override.aes = list(size = 4))) +
   scale_x_continuous(limits = c(0, 1)) +
   scale_y_continuous(limits = c(0, 1)) +
