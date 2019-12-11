@@ -62,7 +62,7 @@ data %>%
   scale_fill_manual(values = c("red", "orange", "darkgreen", "gray")) +
   scale_size_continuous(breaks = c(0.3, 0.6, 1), range = c(1, 10)) +
   labs(x = "Biophysical cost",
-       y = "Market access") +
+       y = "Marketability of catch") +
   guides(size = guide_legend(title = "Social\npotential"),
          fill = guide_legend(title = "Governance\ncapacity\n(terciles)", override.aes = list(size = 4))) +
   scale_x_continuous(limits = c(0, 1)) +
