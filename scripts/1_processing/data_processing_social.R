@@ -187,7 +187,8 @@ survey_plot <- survey_clean %>%
   gather("question", "response", -alpha_3) %>%
   mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
          reg_type = ifelse(grepl("set", question), "Setting MFADs",
-                           ifelse(grepl("whofish", question), "Rights to use MFADs", "Fishing practices on MFADs"))
+                           ifelse(grepl("whofish", question), "Rights to use MFADs", "Practices on MFADs")),
+         response = ifelse(response == "NR", "Not reported", response)
          ) %>%
   group_by(question, category, reg_type, response) %>%
   summarise(count = n()) %>%
@@ -196,18 +197,18 @@ survey_plot <- survey_clean %>%
   mutate(n = sum(count)) %>%
   ungroup() %>%
   mutate(prop = count / n) %>%
-  mutate(response = replace_na(response, "Did not respond"),
+  mutate(response = replace_na(response, "Not applicable"),
          category = fct_relevel(category, "Existence", "Enforcement"),
          reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
 
-ggplot(survey_plot, aes(x = category, y = prop, fill = response)) +
+ggplot(survey_plot, aes(x = category, y = prop, fill = factor(response, levels=c("Not applicable","Not reported","No","Yes" )))) +
   geom_col(color = "black") +
   facet_grid(~ reg_type) +
   theme_bw() +
   theme(legend.title = element_blank()) +
-  labs(x = "", y = "Response frequency (n = 20)")  +
+  labs(x = "", y = "Response frequency (n = 25)")  +
   scale_y_continuous(limits = c(0, 1)) +
-  scale_fill_manual(values = c("gray", "red", "steelblue")) +
+  scale_fill_manual(values = c("gray90", "gray60", "orangered", "lightskyblue")) +
   #ggtheme_plot() +
   guides(fill = guide_legend(title = "Response"))
 
@@ -215,6 +216,13 @@ ggsave(plot = last_plot(),
        filename = here("img", "survey_gov.png"),
        width = 7,
        height = 3)
+
+survey_summary <- survey_clean %>%
+  select(country, reg_set_yn, reg_whofish_yn, reg_howfish_yn) %>%
+  gather(question, response, -country) %>%
+  group_by(question) %>%
+  summarize(prop_yes = mean(response == "Yes"))
+
 
 ########################## MERGING DATASETS ###################################
 

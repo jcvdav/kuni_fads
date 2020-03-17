@@ -25,4 +25,4 @@ ggplot(timeline, aes(x = year, y = reorder(name, desc(name)))) +
   theme_bw() +
   labs(x = "", y = "", shape = "MFAD Presence", size = "Num. MFADs")
 
-ggsave(plot = last_plot(), filename = here("img/timeline_new.png"), width = 6, height = 5)
+ggsave(plot = last_plot(), filename = here("img/timeline.png"), width = 6, height = 5)
