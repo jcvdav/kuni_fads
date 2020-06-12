@@ -93,7 +93,7 @@ map <- ggplot() +
                      min.segment.length = 0,
                      seed = 1) +
   ggtheme_map() +
-  scale_size_continuous(trans = "log10", range = c(1, 6), breaks = c(10, 100, 1000)) +
+  scale_size_continuous(range = c(1, 6), breaks = c(1, 10, 100, 1000)) +
   guides(size = guide_legend(title = "Number of FADs")) +
   ggtitle("Estimated MFAD numbers (present)") +
   theme(legend.justification = c(1, 1),

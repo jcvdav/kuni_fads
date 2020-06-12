@@ -69,7 +69,7 @@ my_sum <- function(x) {
 
 fad_fished <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfin tuna), frozen, nei", "Atlantic (Thunnus thynnus) and Pacific (Thunnus orientalis) bluefin tuna, frozen", "Euthynnus other than skipjack prep. or pres. not minced, nei", "Skipjack tuna, frozen", "Southern bluefin tuna (Thunnus maccoyii), live", "Tuna loins and fillets, frozen", "Tuna loins, prepared or preserved", "Tunas nei, frozen", "Tunas prepared or preserved, not minced, in oil", "Tunas prepared or preserved, not minced, nei", "Tunas, fresh or chilled, nei", "Yellowfin tuna, fresh or chilled", "Yellowfin tuna, frozen, nei", "Atlantic (Thunnus thynnus), Pacific (T.orientalis) bluefin tuna, live", "Atlantic (Thunnus thynnus)and Pacific (Thunnus orientalis) bluefin tuna, fresh or chilled", "Bigeye tuna, fresh or chilled", "Skipjack tuna, fresh or chilled", "Bigeye tuna, frozen, nei", "Dolphinfishes, fresh or chilled", "Dolphinfishes, frozen", "Miscellaneous pelagic fish fillets, frozen, nei", "Miscellaneous pelagic fish, fillets, fresh or chilled, nei", "Miscellaneous pelagic fish, nei, fresh or chilled", "Miscellaneous pelagic fish, nei, frozen", "Skipjack prepared or preserved, not minced, nei", "Southern bluefin tuna (Thunnus maccoyii), fresh or chilled", "Southern bluefin tuna (Thunnus maccoyii), frozen", "Tunas prepared or preserved, not minced, in airtight containers", "Tunas, bonitos, billfishes, fresh or chilled, nei", "Tunas, bonitos, billfishes, frozen, nei", "Tunas, flakes and grated, prepared or preserved", "Tuna loins and fillets, fresh or chilled", "Tuna meat, whether or not minced, frozen", "Tunas, bonitos, billfishes, meat, whether or not minced, frozen, nei", "Tunas, bonitos, billfishes, nei, minced, prepared or preserved", "Bonito (Sarda spp.), not minced, prepared or preserved, nei", "Miscellaneous pelagic fish nei, minced, prepared or preserved", "Skipjack, prepared or preserved, whole or in pieces, not minced, in oil", "Tunas nei, minced, prepared or preserved", "Yellowfin tuna, heads-off, etc., frozen", "Albacore (=Longfin tuna), gilled, gutted, frozen", "Albacore (=Longfin tuna), heads-off, etc., frozen", "Euthynnus excl. skipjack or stripe-bellied bonitos, fresh or chilled", "Euthynnus excl. skipjack or stripe-bellied bonitos, frozen", "Tunas, gilled, gutted, frozen, nei", "Yellowfin tuna, gilled, gutted, frozen", "Tunas, heads-off, etc., frozen, nei", "Miscellaneous pelagic fish nei, dried, whether or not salted", "Miscellaneous pelagic fish nei, fillets, dried, salted or in brine", "Marlins, fresh or chilled", "Marlins, frozen", "Tunas, bonitos, billfishes fillets, fresh or chilled, nei", "Tunas, bonitos, billfishes etc, fillets, frozen, nei")
 
-fad_fished_ff <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfin tuna), frozen, nei", "Atlantic (Thunnus thynnus) and Pacific (Thunnus orientalis) bluefin tuna, frozen", "Skipjack tuna, frozen", "Southern bluefin tuna (Thunnus maccoyii), live", "Tuna loins and fillets, frozen", "Tunas nei, frozen", "Tunas, fresh or chilled, nei", "Yellowfin tuna, fresh or chilled", "Yellowfin tuna, frozen, nei", "Atlantic (Thunnus thynnus), Pacific (T.orientalis) bluefin tuna, live", "Atlantic (Thunnus thynnus)and Pacific (Thunnus orientalis) bluefin tuna, fresh or chilled", "Bigeye tuna, fresh or chilled", "Skipjack tuna, fresh or chilled", "Bigeye tuna, frozen, nei", "Dolphinfishes, fresh or chilled", "Dolphinfishes, frozen", "Miscellaneous pelagic fish fillets, frozen, nei", "Miscellaneous pelagic fish, fillets, fresh or chilled, nei", "Miscellaneous pelagic fish, nei, fresh or chilled", "Miscellaneous pelagic fish, nei, frozen", "Southern bluefin tuna (Thunnus maccoyii), fresh or chilled", "Southern bluefin tuna (Thunnus maccoyii), frozen", "Tunas, bonitos, billfishes, fresh or chilled, nei", "Tunas, bonitos, billfishes, frozen, nei", "Tuna loins and fillets, fresh or chilled", "Tuna meat, whether or not minced, frozen", "Tunas, bonitos, billfishes, meat, whether or not minced, frozen, nei", "Yellowfin tuna, heads-off, etc., frozen", "Albacore (=Longfin tuna), gilled, gutted, frozen", "Albacore (=Longfin tuna), heads-off, etc., frozen", "Euthynnus excl. skipjack or stripe-bellied bonitos, fresh or chilled", "Euthynnus excl. skipjack or stripe-bellied bonitos, frozen", "Tunas, gilled, gutted, frozen, nei", "Yellowfin tuna, gilled, gutted, frozen", "Tunas, heads-off, etc., frozen, nei", "Marlins, fresh or chilled", "Marlins, frozen", "Tunas, bonitos, billfishes fillets, fresh or chilled, nei", "Tunas, bonitos, billfishes etc, fillets, frozen, nei")
+#fad_fished_ff <- c("Albacore (=Longfin tuna), fresh or chilled", "Albacore (=Longfin tuna), frozen, nei", "Atlantic (Thunnus thynnus) and Pacific (Thunnus orientalis) bluefin tuna, frozen", "Skipjack tuna, frozen", "Southern bluefin tuna (Thunnus maccoyii), live", "Tuna loins and fillets, frozen", "Tunas nei, frozen", "Tunas, fresh or chilled, nei", "Yellowfin tuna, fresh or chilled", "Yellowfin tuna, frozen, nei", "Atlantic (Thunnus thynnus), Pacific (T.orientalis) bluefin tuna, live", "Atlantic (Thunnus thynnus)and Pacific (Thunnus orientalis) bluefin tuna, fresh or chilled", "Bigeye tuna, fresh or chilled", "Skipjack tuna, fresh or chilled", "Bigeye tuna, frozen, nei", "Dolphinfishes, fresh or chilled", "Dolphinfishes, frozen", "Miscellaneous pelagic fish fillets, frozen, nei", "Miscellaneous pelagic fish, fillets, fresh or chilled, nei", "Miscellaneous pelagic fish, nei, fresh or chilled", "Miscellaneous pelagic fish, nei, frozen", "Southern bluefin tuna (Thunnus maccoyii), fresh or chilled", "Southern bluefin tuna (Thunnus maccoyii), frozen", "Tunas, bonitos, billfishes, fresh or chilled, nei", "Tunas, bonitos, billfishes, frozen, nei", "Tuna loins and fillets, fresh or chilled", "Tuna meat, whether or not minced, frozen", "Tunas, bonitos, billfishes, meat, whether or not minced, frozen, nei", "Yellowfin tuna, heads-off, etc., frozen", "Albacore (=Longfin tuna), gilled, gutted, frozen", "Albacore (=Longfin tuna), heads-off, etc., frozen", "Euthynnus excl. skipjack or stripe-bellied bonitos, fresh or chilled", "Euthynnus excl. skipjack or stripe-bellied bonitos, frozen", "Tunas, gilled, gutted, frozen, nei", "Yellowfin tuna, gilled, gutted, frozen", "Tunas, heads-off, etc., frozen, nei", "Marlins, fresh or chilled", "Marlins, frozen", "Tunas, bonitos, billfishes fillets, fresh or chilled, nei", "Tunas, bonitos, billfishes etc, fillets, frozen, nei")
 
 
 # Importing fao trade data
@@ -80,45 +80,47 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   filter(country != "Totals - All") %>% 
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>% 
   mutate(alpha_3 = countrycode(country, "country.name", "iso3c"),
-         fad_fished = ifelse(commodity %in% fad_fished, 1, 0), 
-         fad_fished_ff = ifelse (commodity %in% fad_fished_ff,1,0)) %>% 
+         fad_fished = ifelse(commodity %in% fad_fished, 1, 0)) %>%  
+  #       fad_fished_ff = ifelse (commodity %in% fad_fished_ff,1,0)) %>% 
   # calculating total tonnes of every category of commodity per year and country (NAs as zero!)
-  group_by(flow, year, alpha_3, fad_fished, fad_fished_ff) %>% 
+  group_by(flow, year, alpha_3, fad_fished) %>% 
   summarize(tonnes = my_sum(quantity)) %>% 
   ungroup() %>% 
   # generating a variable with type of commodities
-  mutate(category = ifelse(fad_fished == 0 & fad_fished_ff == 0, 'no_fad_no_ff', ifelse(fad_fished == 1 & fad_fished_ff == 0, 'fad_no_ff', ifelse(fad_fished == 0 & fad_fished_ff == 1, 'no_fad_ff', 'fad_ff')))) %>% 
-  select(-c(fad_fished, fad_fished_ff)) %>% 
+#  mutate(category = ifelse(fad_fished == 0 & fad_fished_ff == 0, 'no_fad_no_ff', ifelse(fad_fished == 1 & fad_fished_ff == 0, 'fad_no_ff', ifelse(fad_fished == 0 & fad_fished_ff == 1, 'no_fad_ff', 'fad_ff')))) %>% 
+#  select(-c(fad_fished, fad_fished_ff)) %>% 
+  filter(fad_fished == "1") %>%
   # generating a column for each kind of commodity per year, country and type of flow
-  spread(category, tonnes, fill= 0) %>% 
+  #spread(category, tonnes, fill= 0) %>% 
   # calculating all marine, all fad and proportion of freash and frozen fad over all fad (NaN for zero over zero!)
-  mutate(all_marine = fad_ff + fad_no_ff + no_fad_no_ff, 
-         all_fad = fad_ff + fad_no_ff,
-         ff_over_all_fad = fad_ff/all_fad) %>% 
+  #mutate(all_marine = fad_ff + fad_no_ff + no_fad_no_ff, 
+  #       all_fad = fad_ff + fad_no_ff,
+  #       ff_over_all_fad = fad_ff/all_fad) %>% 
   # calculating the mean over the last three years for each country
-  group_by(flow, alpha_3) %>% 
-  summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
+  group_by(alpha_3, flow) %>% 
+  summarise(all_fad = mean(tonnes))
+#  summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
   ungroup()
   
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
 exports <- trade_fao %>% 
   filter(flow == "Exports") %>% 
-  select(alpha_3, exported_fad = all_fad, pp_ff_over_fad_exp = ff_over_all_fad) 
+  select(alpha_3, exported_fad = all_fad) 
 
 # combining with imports flows of interest (all marine)
-trade <- trade_fao %>% 
-  filter(flow == "Imports") %>% 
-  select(alpha_3, imported_all_marine = all_marine) %>% 
-  full_join(exports, by = 'alpha_3') %>% 
-  full_join(pop, by = 'alpha_3') %>% 
+#trade <- trade_fao %>% 
+#  filter(flow == "Imports") %>% 
+#  select(alpha_3, imported_all_marine = all_marine) %>% 
+#  full_join(exports, by = 'alpha_3') %>% 
+#  full_join(pop, by = 'alpha_3') %>% 
 # per capita calculations for ell exported fad-products and all impoerted marine products
-  mutate(pc_imported_all = imported_all_marine * 1e3, #/mean_pop,
-         pc_exported_fad = exported_fad * 1e3) %>% #/mean_pop) %>% 
-  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
-  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
-  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
-  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
+#  mutate(pc_imported_all = imported_all_marine * 1e3, #/mean_pop,
+#         pc_exported_fad = exported_fad * 1e3) %>% #/mean_pop) %>% 
+#  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
+#  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
+#  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
+#  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
   
 ########################## GOVERNANCE INDICATORS ###############################
 
@@ -232,16 +234,16 @@ social_data <- iso %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%  # no BES
   left_join(poverty, by = "alpha_3") %>%  # no BES
-  left_join(trade, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
+  left_join(exports, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
   left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   replace(. == "NaN", NA) %>%
   mutate_all(na_if, "") %>%
   # tried to do this a more efficient/prettier way but ended up pasting values (0) manually so that BON/ESS trade variables reflected overall BES estimates (which were 0...)
-  mutate(pc_imported_all = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_imported_all)) %>%
-  mutate(pc_exported_fad = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_exported_fad)) %>%
-  mutate(pp_ff_over_fad_exp = if_else(alpha_3 %in% c("BON", "ESS"), 0, pp_ff_over_fad_exp)) %>%
-  filter(alpha_3 != "BES")
+#  mutate(pc_imported_all = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_imported_all)) %>%
+#  mutate(pc_exported_fad = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_exported_fad)) %>%
+#  mutate(pp_ff_over_fad_exp = if_else(alpha_3 %in% c("BON", "ESS"), 0, pp_ff_over_fad_exp)) %>%
+#  filter(alpha_3 != "BES")
 
 data_scaled <- social_data %>%
   mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
@@ -249,7 +251,7 @@ data_scaled <- social_data %>%
   mutate(energy_ad = 1 - energy_ad,
          score_govt = reg_strength,
          score_need = (energy_ad + poverty_rate) / 2,
-         score_marketability = ((pc_imported_all + pc_n_tourists)/2 + (pc_exported_fad + pp_ff_over_fad_exp)/2)/2
+         score_marketability = (exported_fad + pc_n_tourists) / 2
         )
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
