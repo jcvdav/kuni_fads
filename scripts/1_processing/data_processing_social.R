@@ -196,18 +196,19 @@ survey_plot <- survey_clean %>%
   group_by(question, category, reg_type) %>%
   mutate(n = sum(count)) %>%
   ungroup() %>%
-  mutate(prop = count / n) %>%
+  mutate(prop = count / n,
+         percent = prop * 100) %>%
   mutate(response = replace_na(response, "Not applicable"),
          category = fct_relevel(category, "Existence", "Enforcement"),
          reg_type = fct_relevel(reg_type, "Setting MFADs", "Rights to use MFADs"))
 
-ggplot(survey_plot, aes(x = category, y = prop, fill = factor(response, levels=c("Not applicable","Not reported","No","Yes" )))) +
+ggplot(survey_plot, aes(x = category, y = percent, fill = factor(response, levels=c("Not applicable","Not reported","No","Yes" )))) +
   geom_col(color = "black") +
   facet_grid(~ reg_type) +
   theme_bw() +
   theme(legend.title = element_blank()) +
   labs(x = "", y = "Response frequency (n = 25)")  +
-  scale_y_continuous(limits = c(0, 1)) +
+  scale_y_continuous(limits = c(0, 100), labels = function(x) paste0(x, "%")) +
   scale_fill_manual(values = c("gray90", "gray60", "orangered", "lightskyblue")) +
   #ggtheme_plot() +
   guides(fill = guide_legend(title = "Response"))
