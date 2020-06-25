@@ -188,8 +188,8 @@ survey_plot <- survey_clean %>%
   select(alpha_3, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
   gather("question", "response", -alpha_3) %>%
   mutate(category = ifelse(grepl("enf", question), "Enforcement", "Existence"),
-         reg_type = ifelse(grepl("set", question), "Setting MFADs",
-                           ifelse(grepl("whofish", question), "Rights to use MFADs", "Practices on MFADs")),
+         reg_type = factor(ifelse(grepl("set", question), "Deployment",
+                           ifelse(grepl("whofish", question), "Access Rights", "Fishing Practices"))),
          response = ifelse(response == "NR", "Not reported", response)
          ) %>%
   group_by(question, category, reg_type, response) %>%
