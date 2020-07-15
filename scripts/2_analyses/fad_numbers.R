@@ -28,12 +28,14 @@ coast <- ne_countries(returnclass = "sf", scale = "large") %>%
                              T ~ adm0_a3))
 
 # Create points form centroids
-mtq_centroid <- tibble(adm0_a3 = "MTQ",
-                       geometry = st_sfc(st_point(c(-61.024694, 14.690912)))) %>% 
+mtq_centroid <- tibble(adm0_a3 = c("MTQ", "GLP"),
+                       geometry = c(st_sfc(st_point(c(-61.024694, 14.690912))),
+                                    st_sfc(st_point(c(-61.66, 16.18))))) %>% 
   st_sf(crs = 4326)
 
 points_before <- coast %>% 
   select(adm0_a3) %>% 
+  filter(!adm0_a3 == "GLP") %>% 
   rbind(mtq_centroid) %>% 
   left_join(fad_data_before, by = c("adm0_a3" = "alpha_3")) %>% 
   filter(n_fads > 0) %>% 
@@ -41,6 +43,7 @@ points_before <- coast %>%
 
 points_now <- coast %>% 
   select(adm0_a3) %>% 
+  filter(!adm0_a3 == "GLP") %>% 
   rbind(mtq_centroid) %>% 
   left_join(fad_data_now, by = c("adm0_a3" = "alpha_3")) %>% 
   filter(n_fads > 0) %>% 
