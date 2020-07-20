@@ -206,7 +206,7 @@ survey_plot <- survey_clean %>%
 
 ggplot(survey_plot, aes(x = category, y = percent, fill = factor(response, levels=c("Not applicable","Not reported","No","Yes" )))) +
   geom_col(color = "black") +
-  facet_grid(~ reg_type) +
+  facet_grid(~ factor(reg_type, levels = c("Deployment", "Access Rights", "Fishing Practices"))) +
   theme_bw() +
   theme(legend.title = element_blank()) +
   labs(x = "", y = "Response frequency (n = 25)")  +
