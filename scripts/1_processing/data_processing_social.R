@@ -106,7 +106,11 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
 exports <- trade_fao %>% 
   filter(flow == "Exports") %>% 
-  select(alpha_3, exported_fad = all_fad) 
+  select(alpha_3, exported_fad = all_fad) %>% 
+  mutate(exported_fad_log = log(exported_fad)) %>% 
+  mutate(ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)) %>% 
+  select("alpha_3","ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)") %>% 
+  rename("exports_log" = "ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)")
 
 # combining with imports flows of interest (all marine)
 #trade <- trade_fao %>% 
@@ -238,7 +242,7 @@ social_data <- iso %>%
   left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   replace(. == "NaN", NA) %>%
-  mutate_all(na_if, "") %>%
+  mutate_all(na_if, "") #%>%
   # tried to do this a more efficient/prettier way but ended up pasting values (0) manually so that BON/ESS trade variables reflected overall BES estimates (which were 0...)
 #  mutate(pc_imported_all = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_imported_all)) %>%
 #  mutate(pc_exported_fad = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_exported_fad)) %>%
@@ -251,7 +255,7 @@ data_scaled <- social_data %>%
   mutate(energy_ad = 1 - energy_ad,
          score_govt = reg_strength,
          score_need = (energy_ad + poverty_rate) / 2,
-         score_marketability = (exported_fad + pc_n_tourists) / 2
+         score_marketability = (exports_log + pc_n_tourists) / 2
         )
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
