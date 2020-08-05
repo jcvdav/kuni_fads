@@ -78,18 +78,18 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   clean_names() %>%
   select(-(c(x_1, x, x_f))) %>% 
   filter(country != "Totals - All") %>% 
-  mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>% 
-  mutate(alpha_3 = countrycode(country, "country.name", "iso3c"),
-         fad_fished = ifelse(commodity %in% fad_fished, 1, 0)) %>%  
+  mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>%
+  mutate(alpha_3 = countrycode(country, "country.name", "iso3c")) %>%
+  #       fad_fished = ifelse(commodity %in% fad_fished, 1, 0)) %>%  
   #       fad_fished_ff = ifelse (commodity %in% fad_fished_ff,1,0)) %>% 
   # calculating total tonnes of every category of commodity per year and country (NAs as zero!)
-  group_by(flow, year, alpha_3, fad_fished) %>% 
+  group_by(flow, year, alpha_3) %>% 
   summarize(tonnes = my_sum(quantity)) %>% 
   ungroup() %>% 
   # generating a variable with type of commodities
 #  mutate(category = ifelse(fad_fished == 0 & fad_fished_ff == 0, 'no_fad_no_ff', ifelse(fad_fished == 1 & fad_fished_ff == 0, 'fad_no_ff', ifelse(fad_fished == 0 & fad_fished_ff == 1, 'no_fad_ff', 'fad_ff')))) %>% 
 #  select(-c(fad_fished, fad_fished_ff)) %>% 
-  filter(fad_fished == "1") %>%
+  #filter(fad_fished == "1") %>%
   # generating a column for each kind of commodity per year, country and type of flow
   #spread(category, tonnes, fill= 0) %>% 
   # calculating all marine, all fad and proportion of freash and frozen fad over all fad (NaN for zero over zero!)
@@ -100,13 +100,25 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   group_by(alpha_3, flow) %>% 
   summarise(all_fad = mean(tonnes))
 #  summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
-  ungroup()
-  
+# ungroup()
+
+#Exporting in order to rename BES as BON and ESS
+write.csv(trade_fao, "raw_data/trade/trade_fao_edit.csv")
+trade_fao_edit <- read.csv("raw_data/trade/trade_fao_edit.csv")
+
+# adding in PR exports, 2014-2016
+trade_pr <- read.csv("raw_data/trade/NOAAFisheries_PR_annual_trade.csv") %>% 
+  mutate(quantity = (0.001*Volume..kg.)) %>% 
+  group_by(Year, alpha_3) %>% 
+  summarize(tonnes = my_sum(quantity)) %>% 
+  group_by(alpha_3) %>% 
+  summarise(exported_fad = mean(tonnes))
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
-exports <- trade_fao %>% 
+exports <- trade_fao_edit %>% 
   filter(flow == "Exports") %>% 
   select(alpha_3, exported_fad = all_fad) %>% 
+  rbind(trade_pr) %>% 
   mutate(exported_fad_log = log(exported_fad)) %>% 
   mutate(ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)) %>% 
   select("alpha_3","ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)") %>% 
@@ -125,6 +137,7 @@ exports <- trade_fao %>%
 #  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
 #  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
 #  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
+
   
 ########################## GOVERNANCE INDICATORS ###############################
 
@@ -236,13 +249,14 @@ survey_summary <- survey_clean %>%
 social_data <- iso %>%
   select(name_govt, alpha_3) %>%
   distinct() %>%
-  left_join(nutrition, by = "alpha_3") %>%  # no BES
-  left_join(poverty, by = "alpha_3") %>%  # no BES
+  left_join(nutrition, by = "alpha_3") %>%  # no BES, no PRI
+  left_join(poverty, by = "alpha_3") %>%  # no BES, no PRI
   left_join(exports, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
   left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   replace(. == "NaN", NA) %>%
-  mutate_all(na_if, "") #%>%
+  mutate_all(na_if, "") %>%
+  filter(alpha_3 != "BES") # Removed BES becuase information has been moved over to ESS and BON.
   # tried to do this a more efficient/prettier way but ended up pasting values (0) manually so that BON/ESS trade variables reflected overall BES estimates (which were 0...)
 #  mutate(pc_imported_all = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_imported_all)) %>%
 #  mutate(pc_exported_fad = if_else(alpha_3 %in% c("BON", "ESS"), 0, pc_exported_fad)) %>%
