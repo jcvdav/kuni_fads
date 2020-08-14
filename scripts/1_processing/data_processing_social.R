@@ -172,9 +172,10 @@ survey_clean <- read.csv(here("raw_data", "survey", "survey_clean.csv"), strings
                              country == "St. Eustatius" ~ "ESS",
                              country == "Saba" ~ "ESS",
                              country == "Saint Martin" ~ "MAF",
-                             TRUE ~ alpha_3)
+                             TRUE ~ alpha_3),
+         nfads = nfads_public + nfads_private
           ) %>%
-  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type)
+  select(country, alpha_3, reg_set_yn, reg_set_enf_yn, reg_set_type, reg_whofish_yn, reg_whofish_enf_yn, reg_whofish_type, reg_howfish_yn, reg_howfish_enf_yn, reg_howfish_type, nfads_public, nfads_private, nfads)
 
 survey_govt <- survey_clean %>% mutate(reg_set_pres = case_when(reg_set_yn == "No" ~ 0,
                                             str_detect(reg_set_type, "Draft") ~ .5,
@@ -192,14 +193,13 @@ survey_govt <- survey_clean %>% mutate(reg_set_pres = case_when(reg_set_yn == "N
   mutate_at(.vars = vars(c(reg_set_enf_yn, reg_whofish_enf_yn, reg_howfish_enf_yn)),
             .funs = ~ case_when(. == "Yes" ~ 1,
                                 . == "No" ~ .5,
-                                is.na(.) ~ 0 # NAs mean no enforcement because no reg presence - don't use this df for graphing responses
+                                is.na(.) ~ .5 # NAs mean no enforcement because no reg presence - don't use this df for graphing responses
             )) %>%
   mutate(reg_strength = 1/3 * reg_set_pres * reg_set_enf_yn + 1/3 * reg_whofish_pres * reg_whofish_enf_yn + 1/3 * reg_howfish_pres * reg_howfish_enf_yn
          ) %>%
-  select(alpha_3, reg_strength) %>%
+  select(alpha_3, reg_strength, nfads_public, nfads_private, nfads) %>%
   group_by(alpha_3) %>%
-  summarise(reg_strength = mean(reg_strength)) # Saba and Eustatia already have the same governance responses
-
+  summarise(reg_strength = mean(reg_strength)) # Combining Saba and Eustatia into ESS - they already have the same governance responses
 
 survey_plot <- survey_clean %>%
   select(alpha_3, reg_set_yn, reg_set_enf_yn, reg_whofish_yn, reg_whofish_enf_yn, reg_howfish_yn, reg_howfish_enf_yn) %>%
