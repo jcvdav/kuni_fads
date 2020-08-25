@@ -1,115 +1,115 @@
-﻿name,alpha_3,year,n_fads,n_public,n_private,project_yn,project_type,source,source_type,notes,
-Anguilla,AIA,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados",
-Antigua and Barbuda,ATG,1989,0,0,0,NA,,Looby 2007 (WECAFC),report,no number - fishers began setting private FADs in 1990s,
-Antigua and Barbuda,ATG,1998,3,0,3,n,,Looby 2007 (WECAFC),report,no number - fishers began setting private FADs in 1990s,
-Antigua and Barbuda,ATG,2001,4,0,4,n,,Looby 2002 (WECAFC),report,"no exact numbers, but 4 fishers are experimenting with FADs",
-Antigua and Barbuda,ATG,2006,3,0,NA,n,,Looby 2007 (WECAFC),report,"no numbers, but some private FADs",
-Antigua and Barbuda,ATG,2012,3,3,NA,y,JICA,CRFM/JICA 2013 ,report,,
-Antigua and Barbuda,ATG,2019,22,2,20,y,JICA,Horesford PC 2019,survey,confirm public FADs are from JICA...?,
-Aruba,ABW,2001,0,0,0,NA,,van Buurt 2007 (WECAFC),report,,
-Aruba,ABW,2002,4,4,,y,NGO (Marcultura Foundation),van Buurt 2007 (WECAFC),report,,
-Aruba,ABW,2019,0,0,0,,,Boekhoudt PC 2019,survey,,
-Bahamas,BHS,2020,0,0,0,,,Deleveaux 2020,survey,,
-Barbados,BRB,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados",
-Barbados,BRB,1988,0,0,0,NA,,Marshall 2007 (WECAFC),report,,
-Barbados,BRB,1989,1,1,0,y,national govt.,Marshall 2007 (WECAFC),report,,
-Barbados,BRB,2006,0,0,0,,,Marshall 2007 (WECAFC),report,,
-Barbados,BRB,2019,0,0,0,,,Valles PC 2019,pers. com.,,
-Bermuda,BMU,2020,0,0,0,,,Pitt PC 2019,survey,,
-Bonaire,BES,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados",
-Bonaire,BES,2001,0,0,0,NA,,van Buurt 2007 (WECAFC),report,,
-Bonaire,BES,2002,6,6,,y,NGO (Marcultura Foundation),van Buurt 2007 (WECAFC),report,,
-Bonaire,BES,2019,6,6,,y,,de Vries PC 2019,survey,*pending,
-Cayman Islands,CYM,2019,0,0,0,,,,survey,,
-Cuba,CUB,2001,3,3,,,national govt,Martin 2001 (WECAFC),report,,
-Cuba,CUB,2006,0,0,0,NA,,Posado Lorigo 2007 (WECAFC),report, ,
-Cuba,CUB,2019,0,0,0,,,Puga PC 2019,survey,,
-Curaçao,CUW,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados",
-Curaçao,CUW,1993,5,5,,y,national govt?,Reynal et al. 2002,report,,
-Curaçao,CUW,2002,14,,,y,NGO (Marcultura Foundation),van Buurt 2007 (WECAFC),report,,
-Curaçao,CUW,2019,20,20,0,y,,Psihoyos PC 2019,pers. com.,,
-Dominica,DMA,1986,0,0,0,NA,,"Sebastian 2002 (WECAFC), Reynal et al. 1999",report,,
-Dominica,DMA,1987,2,2,,y,FAO,"Sebastian 2002 (WECAFC), Reynal et al. 1999",report,"*no specific number, but multiple FADs",
-Dominica,DMA,1990,2,2,,y,FAO,CRFM/JICA 2013 ,report,"*no specific number, but multiple FADs",
-Dominica,DMA,2001,11,0,11,n,,Sebastian 2002 (WECAFC),report,,
-Dominica,DMA,2013,29,7,22,y,IFREMER/JICA/national govt.,"Mathieu et al. 2013, CRFM/JICA 2013 ",report,"7 public described in CRFM report, assuming 22 private based on Mathieu et al. total",
-Dominica,DMA,2019,40,3,37,,,Theophile PC 2019,survey,,
-Dominican Republic,DOM,2018,2500,,2500,n,,Gentner et al. 2018,report,"southeast only, estimated from number of fishers x number of FADs/fisher",
-Grenada,GRD,1989,0,0,0,NA,,Baldeo 2002 (WECAFC),report,first deployed in early 1990s,
-Grenada,GRD,1992,3,3,0,y,national govt; FAO,Baldeo 2002 (WECAFC),report,early 1990s,
-Grenada,GRD,1998,1,1,0,y,national govt,Baldeo 2002 (WECAFC),report,,
-Grenada,GRD,2001,2,2,0,NA,,Baldeo 2002 (WECAFC),report,anchored fishing boats in place of lost FADs,
-Grenada,GRD,2012,1,1,,y,IFREMER,CRFM/JICA 2013 ,report,,
-Grenada,GRD,2018,11,7,4,y,JICA?,Gentner et al. 2018,report,check project,
-Grenada,GRD,2019,8,5,3,y,JICA,Calliste PC 2019,survey,,
-Guadeloupe,GLP,1987,0,0,0,NA,,Reynal et al. 1999,report,,
-Guadeloupe,GLP,1988,1,1,,y,Department of Development and Technical Assistance,"Reynal et al. 1999, Diaz et al. 2002 (WECAFC)",report,,
-Guadeloupe,GLP,1990,2,2,,y,SDAT (Ser-development and technical aid to fishing),Reynal et al. 2002,report,"following loss of 1988 FAD, two more ""developments""",
-Guadeloupe,GLP,1992,30,,30,n,SDAT (Ser-development and technical aid to fishing),Reynal et al. 2002,report,"30-35 identified in fisher surveys, likely more -fishers starting to set private FADs",
-Guadeloupe,GLP,1994,58,10,48,y,"SDAT (Ser-development and technical aid to fishing), ""European Funds""",Reynal et al. 2002,report,non-exhaustive sample identified/marked 48 private FADs,
-Guadeloupe,GLP,2001,200,0,200,n,,Diaz et al. 2002 (WECAFC),report,"minimum estimate, fishery is strictly private at time of writing",
-Guadeloupe,GLP,2012,500,,,n,,Guyader et al. 2017,academic,underestimate,
-Guadeloupe,GLP,2019,608,8,600,n,,Guyader PC 2019,survey,estimated 5-10 public,
-Haiti,HTI,2014,21,21,,y,UNEP/Spanish Cooperation,Valles 2015,academic,"southwest only, check project?",
-Haiti,HTI,2018,14,14,0,y,,Valles PC 2018,pers. com.,southwest only,
-Jamaica,JAM,,,,,,,,,,
-Martinique,MTQ,1981,0,0,0,NA,,Reynal et al. 1999,report,First started in 1982,
-Martinique,MTQ,1983,2,2,,y,national govt,Doray et al. 2002 (WECAFC),report,,
-Martinique,MTQ,1985,2,2,,y,Fidom Department (Investment Fund of the Overseas Departments),Doray et al. 2002 (WECAFC),report,,
-Martinique,MTQ,1989,11,11,,y,national govt,Doray et al. 2002 (WECAFC),report,,
-Martinique,MTQ,1993,16,16,,y,IFREMER,Doray et al. 2002 (WECAFC),report,,
-Martinique,MTQ,1994,22,,,,IFREMER,Doray et al. 2002 (WECAFC),report,,
-Martinique,MTQ,1995,22,22,,y,IFREMER,Doray et al. 2002 (WECAFC),report,1994-1997,
-Martinique,MTQ,1996,44,44,,y,national govt,Doray et al. 2002 (WECAFC),report,,
-Martinique,MTQ,2000,10,10,,y,national govt,Doray et al. 2002 (WECAFC),report,unclear how many of original 44 were still in place…?,
-Martinique,MTQ,2001,,NA,NA,,,Doray et al. 2002 (WECAFC),report,fishers have begun setting their own FADs,
-Martinique,MTQ,2011,50,,,,,Reynal ppt (flight surveys),presentation,mixed public/private,
-Martinique,MTQ,2013,16,,,,,Mathieu et al. 2013,report,doesn't specify public/private,
-Martinique,MTQ,2019,30,10,20,n,,Reynal PC 2019,survey,,
-Montserrat,MSR,,,,,,USAID/GCFI,McIntosh 1984,report,"""pending"" project in the 1980s, not sure if was ever deployed?",
-Montserrat,MSR,2019,3,3,0,,,Ponteen PC 2019,survey,,
-Puerto Rico,PRI,1980,0,0,0,NA,,McIntosh 1984,report,,
-Puerto Rico,PRI,1982,2,,2,n,,McIntosh 1984,report,following success of initial USVI project (no exact date given),
-Puerto Rico,PRI,1986,6,6,,y,NOAA,Feigenbaum et al. 1989,report,,
-Puerto Rico,PRI,2018,8,8,0,y,,Merten et al. 2018,academic,,
-Puerto Rico,PRI,2019,1,1,0,y,,Marcos PC 2019,survey,,
-Saba,BES,1989,0,0,0,NA,,CRFM/JICA 2012,report,"first 12 deployed among Anguilla, Bonaire, Curacao, Barbados, assuming this means none exist in other islands",
-Saba,BES,1995,2,0,2,n,,CRFM/JICA 2013,report,"No numbers, but multiple FADs",
-Saba,BES,2018,7,0,7,n,,Izioka PC 2018,pers. com.,,
-Saba,BES,2019,12,0,12,,,de Vries PC 2019,survey,,
-Saint Barthélemy,BLM,2019,100,0,100,n,,Greaux PC 2019,survey,,
-Saint Kitts and Nevis,KNA,1984,0,0,0,,,Reynal et al. 1999,report,,
-Saint Kitts and Nevis,KNA,1985,20,20,,,USAID/GCFI,"McIntosh 1984, Wilkins & Goodwin 1989",report,pilot project? Can only find actual number of proposed structures; mostly Saint Kitts,
-Saint Kitts and Nevis,KNA,2002,3,0,NA,n,,Heyliger 2002 (WECAFC),report,"""number of fishers deploying their own FADs""",
-Saint Kitts and Nevis,KNA,2006,3,0,NA,n,,Wilkins 2007 (WECAFC),report,fishers still setting private FADs,
-Saint Kitts and Nevis,KNA,2013,19,8,11,y,JICA/IFREMER,CRFM/JICA 2013 ,report,"would like to confirm 4 public in both Nevis and St. Kitts, not combined",
-Saint Lucia,LCA,1995,0,0,0,NA,,Reynal et al. 1999,report,,
-Saint Lucia,LCA,1997,12,,,y,"JICA, French","George 2007 (WECAFC); Reynal et al. 1999, James 2002 (WECAFC)",report,"number based off report of 12 FADs deployed between both projects; unclear from 2007 report if any are still in use, sounds like there is intention to install more",
-Saint Lucia,LCA,2001,1,1,,y,French,James 2002 (WECAFC),report,"as many as 12 FADs until recently, only 1 currently in use",
-Saint Lucia,LCA,2010,10,10,,y,JICA/FAO/EU/national govt./private funds,CRFM/JICA 2013 ,report,*lists 24 set FADs 2008-2013 but likely many did not last until 2013,
-Saint Lucia,LCA,2012,10,10,,y,JICA/FAO/EU/national govt./private funds,CRFM/JICA 2013 ,report,*lists 24 set FADs 2008-2013 but likely many did not last until 2013,
-Saint Lucia,LCA,2019,7,7,9,,,Polius PC 2019; FAO,survey,,
-Saint Martin,MAF,2019,,,,,,,,,
-Saint Vincent and the Grenadines,VCT,1989,0,0,0,NA,,Glynn 2007 (WECAFC),report,First attempted in early 1990s...,
-Saint Vincent and the Grenadines,VCT,1992,3,3,,y,FAO,Glynn 2007 (WECAFC),report,"*no actual numbers given, just says ""these"" FADs…",
-Saint Vincent and the Grenadines,VCT,1997,1,1,,y,JICA?,Johnson 2002 (WECAFC),report,,
-Saint Vincent and the Grenadines,VCT,2010,2,,,,,CRFM/JICA 2013 ,report,,
-Saint Vincent and the Grenadines,VCT,2012,2,,,,IFREMER,CRFM/JICA 2013 ,report,,
-Saint Vincent and the Grenadines,VCT,2019,8,8,0,,,Cruickshank-Howard PC 2019,survey,,
-Sint Eustatius,BES,2017,4,4,,,,Kitson-Walters PC 2018,pers. com.,,
-Sint Eustatius,BES,2018,1,1,,,,Kitson-Walters PC 2018,pers. com.,,
-Sint Eustatius,BES,2019,5,2,3,,,de Vries PC 2019,survey,,
-Sint Maarten,SXM,2019,2,0,2,n,,Meijer zu Schlochtern PC 2019,survey,,
-Trinidad and Tobago,TTO,1998,0,0,0,NA,,Lalla 2002 (WECAFC),report,,
-Trinidad and Tobago,TTO,1999,3,3,,y,JICA + Caribbean Fisheries Training and Development Institute,Lalla 2002 (WECAFC),report,,
-Trinidad and Tobago,TTO,2001,0,0,0,,,Lalla 2002 (WECAFC),report,,
-Trinidad and Tobago,TTO,2002,10,12,,y,JICA + Caribbean Fisheries Training and Development Institute,Lalla 2007 (WECAFC),report,,
-Trinidad and Tobago,TTO,2003,11,11,,y,JICA + Caribbean Fisheries Training and Development Institute,Lalla 2007 (WECAFC),report,presumably still around during time of report (2006),
-Trinidad and Tobago,TTO,2019,100,0,100,n,,Ottley PC 2019,survey,,
-Turks and Caicos Islands,TCA,,,,,,,,,,
-"Virgin Islands, British",VGB,,,,,,,,,,
-"Virgin Islands, U.S.",VIR,1979,0,0,0,NA,,Clavijo & Tobias 1987,report,,
-"Virgin Islands, U.S.",VIR,1981,50,50,0,y,national govt,Clavijo & Tobias 1987,report,,
-"Virgin Islands, U.S.",VIR,1983,60,60,0,y,national govt,Clavijo & Tobias 1987,report,,
-"Virgin Islands, U.S.",VIR,2018,4,4,0,y,national govt,USVI Fish and Wildlife website (2018),report,,
-"Virgin Islands, U.S.",VIR,2019,4,4,0,,,Sabine PC 2019,survey,,
+﻿name,alpha_3,year,n_fads,n_public,n_private,project_yn,project_type,source,source_type,notes
+Anguilla,AIA,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados"
+Antigua and Barbuda,ATG,1989,0,0,0,NA,,Looby 2007 (WECAFC),report,no number - fishers began setting private FADs in 1990s
+Antigua and Barbuda,ATG,1998,3,0,3,n,,Looby 2007 (WECAFC),report,no number - fishers began setting private FADs in 1990s
+Antigua and Barbuda,ATG,2001,4,0,4,n,,Looby 2002 (WECAFC),report,"no exact numbers, but 4 fishers are experimenting with FADs"
+Antigua and Barbuda,ATG,2006,3,0,NA,n,,Looby 2007 (WECAFC),report,"no numbers, but some private FADs"
+Antigua and Barbuda,ATG,2012,3,3,NA,y,JICA,CRFM/JICA 2013 ,report,
+Antigua and Barbuda,ATG,2019,22,2,20,y,JICA,Horesford PC 2019,survey,confirm public FADs are from JICA...?
+Aruba,ABW,2001,0,0,0,NA,,van Buurt 2007 (WECAFC),report,
+Aruba,ABW,2002,4,4,,y,NGO (Marcultura Foundation),van Buurt 2007 (WECAFC),report,
+Aruba,ABW,2019,0,0,0,,,Boekhoudt PC 2019,survey,
+Bahamas,BHS,2020,0,0,0,,,Deleveaux 2020,survey,
+Barbados,BRB,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados"
+Barbados,BRB,1988,0,0,0,NA,,Marshall 2007 (WECAFC),report,
+Barbados,BRB,1989,1,1,0,y,national govt.,Marshall 2007 (WECAFC),report,
+Barbados,BRB,2006,0,0,0,,,Marshall 2007 (WECAFC),report,
+Barbados,BRB,2019,0,0,0,,,Valles PC 2019,pers. com.,
+Bermuda,BMU,2020,0,0,0,,,Pitt PC 2019,survey,
+Bonaire,BES,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados"
+Bonaire,BES,2001,0,0,0,NA,,van Buurt 2007 (WECAFC),report,
+Bonaire,BES,2002,6,6,,y,NGO (Marcultura Foundation),van Buurt 2007 (WECAFC),report,
+Bonaire,BES,2019,0,0,,y,,de Vries PC 2019,survey,*pending
+Cayman Islands,CYM,2019,3,0,3,,,,survey,
+Cuba,CUB,2001,3,3,,,national govt,Martin 2001 (WECAFC),report,
+Cuba,CUB,2006,0,0,0,NA,,Posado Lorigo 2007 (WECAFC),report, 
+Cuba,CUB,2019,0,0,0,,,Puga PC 2019,survey,
+Curaçao,CUW,1968,3,3,,y,UNDP/FAO Fisheries Development Program,Reynal et al. 1999,report,"12 deployed among Anguilla, Bonaire, Curacao, Barbados"
+Curaçao,CUW,1993,5,5,,y,national govt?,Reynal et al. 2002,report,
+Curaçao,CUW,2002,14,,,y,NGO (Marcultura Foundation),van Buurt 2007 (WECAFC),report,
+Curaçao,CUW,2019,24,24,0,y,,Psihoyos PC 2019,pers. com.,
+Dominica,DMA,1986,0,0,0,NA,,"Sebastian 2002 (WECAFC), Reynal et al. 1999",report,
+Dominica,DMA,1987,2,2,,y,FAO,"Sebastian 2002 (WECAFC), Reynal et al. 1999",report,"*no specific number, but multiple FADs"
+Dominica,DMA,1990,2,2,,y,FAO,CRFM/JICA 2013 ,report,"*no specific number, but multiple FADs"
+Dominica,DMA,2001,11,0,11,n,,Sebastian 2002 (WECAFC),report,
+Dominica,DMA,2013,29,7,22,y,IFREMER/JICA/national govt.,"Mathieu et al. 2013, CRFM/JICA 2013 ",report,"7 public described in CRFM report, assuming 22 private based on Mathieu et al. total"
+Dominica,DMA,2019,40,3,37,,,Theophile PC 2019,survey,
+Dominican Republic,DOM,2018,2500,,2500,n,,Gentner et al. 2018,report,"southeast only, estimated from number of fishers x number of FADs/fisher"
+Grenada,GRD,1989,0,0,0,NA,,Baldeo 2002 (WECAFC),report,first deployed in early 1990s
+Grenada,GRD,1992,3,3,0,y,national govt; FAO,Baldeo 2002 (WECAFC),report,early 1990s
+Grenada,GRD,1998,1,1,0,y,national govt,Baldeo 2002 (WECAFC),report,
+Grenada,GRD,2001,2,2,0,NA,,Baldeo 2002 (WECAFC),report,anchored fishing boats in place of lost FADs
+Grenada,GRD,2012,1,1,,y,IFREMER,CRFM/JICA 2013 ,report,
+Grenada,GRD,2018,11,7,4,y,JICA?,Gentner et al. 2018,report,check project
+Grenada,GRD,2019,8,5,3,y,JICA,Calliste PC 2019,survey,
+Guadeloupe,GLP,1987,0,0,0,NA,,Reynal et al. 1999,report,
+Guadeloupe,GLP,1988,1,1,,y,Department of Development and Technical Assistance,"Reynal et al. 1999, Diaz et al. 2002 (WECAFC)",report,
+Guadeloupe,GLP,1990,2,2,,y,SDAT (Ser-development and technical aid to fishing),Reynal et al. 2002,report,"following loss of 1988 FAD, two more ""developments"""
+Guadeloupe,GLP,1992,30,,30,n,SDAT (Ser-development and technical aid to fishing),Reynal et al. 2002,report,"30-35 identified in fisher surveys, likely more -fishers starting to set private FADs"
+Guadeloupe,GLP,1994,58,10,48,y,"SDAT (Ser-development and technical aid to fishing), ""European Funds""",Reynal et al. 2002,report,non-exhaustive sample identified/marked 48 private FADs
+Guadeloupe,GLP,2001,200,0,200,n,,Diaz et al. 2002 (WECAFC),report,"minimum estimate, fishery is strictly private at time of writing"
+Guadeloupe,GLP,2012,500,,,n,,Guyader et al. 2017,academic,underestimate
+Guadeloupe,GLP,2019,608,8,600,n,,Guyader PC 2019,survey,estimated 5-10 public
+Haiti,HTI,2014,21,21,,y,UNEP/Spanish Cooperation,Valles 2015,academic,"southwest only, check project?"
+Haiti,HTI,2018,14,14,0,y,,Valles PC 2018,pers. com.,southwest only
+Jamaica,JAM,,,,,,,,,
+Martinique,MTQ,1981,0,0,0,NA,,Reynal et al. 1999,report,First started in 1982
+Martinique,MTQ,1983,2,2,,y,national govt,Doray et al. 2002 (WECAFC),report,
+Martinique,MTQ,1985,2,2,,y,Fidom Department (Investment Fund of the Overseas Departments),Doray et al. 2002 (WECAFC),report,
+Martinique,MTQ,1989,11,11,,y,national govt,Doray et al. 2002 (WECAFC),report,
+Martinique,MTQ,1993,16,16,,y,IFREMER,Doray et al. 2002 (WECAFC),report,
+Martinique,MTQ,1994,22,,,,IFREMER,Doray et al. 2002 (WECAFC),report,
+Martinique,MTQ,1995,22,22,,y,IFREMER,Doray et al. 2002 (WECAFC),report,1994-1997
+Martinique,MTQ,1996,44,44,,y,national govt,Doray et al. 2002 (WECAFC),report,
+Martinique,MTQ,2000,10,10,,y,national govt,Doray et al. 2002 (WECAFC),report,unclear how many of original 44 were still in place…?
+Martinique,MTQ,2001,,NA,NA,,,Doray et al. 2002 (WECAFC),report,fishers have begun setting their own FADs
+Martinique,MTQ,2011,50,,,,,Reynal ppt (flight surveys),presentation,mixed public/private
+Martinique,MTQ,2013,16,,,,,Mathieu et al. 2013,report,doesn't specify public/private
+Martinique,MTQ,2019,30,10,20,n,,Reynal PC 2019,survey,
+Montserrat,MSR,,,,,,USAID/GCFI,McIntosh 1984,report,"""pending"" project in the 1980s, not sure if was ever deployed?"
+Montserrat,MSR,2019,3,3,0,,,Ponteen PC 2019,survey,
+Puerto Rico,PRI,1980,0,0,0,NA,,McIntosh 1984,report,
+Puerto Rico,PRI,1982,2,,2,n,,McIntosh 1984,report,following success of initial USVI project (no exact date given)
+Puerto Rico,PRI,1986,6,6,,y,NOAA,Feigenbaum et al. 1989,report,
+Puerto Rico,PRI,2018,8,8,0,y,,Merten et al. 2018,academic,
+Puerto Rico,PRI,2019,1,1,0,y,,Marcos PC 2019,survey,
+Saba,BES,1989,0,0,0,NA,,CRFM/JICA 2012,report,"first 12 deployed among Anguilla, Bonaire, Curacao, Barbados, assuming this means none exist in other islands"
+Saba,BES,1995,2,0,2,n,,CRFM/JICA 2013,report,"No numbers, but multiple FADs"
+Saba,BES,2018,7,0,7,n,,Izioka PC 2018,pers. com.,
+Saba,BES,2019,12,0,12,,,de Vries PC 2019,survey,
+Saint Barthélemy,BLM,2019,100,0,100,n,,Greaux PC 2019,survey,
+Saint Kitts and Nevis,KNA,1984,0,0,0,,,Reynal et al. 1999,report,
+Saint Kitts and Nevis,KNA,1985,20,20,,,USAID/GCFI,"McIntosh 1984, Wilkins & Goodwin 1989",report,pilot project? Can only find actual number of proposed structures; mostly Saint Kitts
+Saint Kitts and Nevis,KNA,2002,3,0,NA,n,,Heyliger 2002 (WECAFC),report,"""number of fishers deploying their own FADs"""
+Saint Kitts and Nevis,KNA,2006,3,0,NA,n,,Wilkins 2007 (WECAFC),report,fishers still setting private FADs
+Saint Kitts and Nevis,KNA,2013,22,4,18,y,JICA/IFREMER,CRFM/JICA 2013 ,report,"would like to confirm 4 public in both Nevis and St. Kitts, not combined"
+Saint Lucia,LCA,1995,0,0,0,NA,,Reynal et al. 1999,report,
+Saint Lucia,LCA,1997,12,,,y,"JICA, French","George 2007 (WECAFC); Reynal et al. 1999, James 2002 (WECAFC)",report,"number based off report of 12 FADs deployed between both projects; unclear from 2007 report if any are still in use, sounds like there is intention to install more"
+Saint Lucia,LCA,2001,1,1,,y,French,James 2002 (WECAFC),report,"as many as 12 FADs until recently, only 1 currently in use"
+Saint Lucia,LCA,2010,10,10,,y,JICA/FAO/EU/national govt./private funds,CRFM/JICA 2013 ,report,*lists 24 set FADs 2008-2013 but likely many did not last until 2013
+Saint Lucia,LCA,2012,10,10,,y,JICA/FAO/EU/national govt./private funds,CRFM/JICA 2013 ,report,*lists 24 set FADs 2008-2013 but likely many did not last until 2013
+Saint Lucia,LCA,2019,7,7,0,,,Polius PC 2019; FAO,survey,
+Saint Martin,MAF,2019,,,,,,,,
+Saint Vincent and the Grenadines,VCT,1989,0,0,0,NA,,Glynn 2007 (WECAFC),report,First attempted in early 1990s...
+Saint Vincent and the Grenadines,VCT,1992,3,3,,y,FAO,Glynn 2007 (WECAFC),report,"*no actual numbers given, just says ""these"" FADs…"
+Saint Vincent and the Grenadines,VCT,1997,1,1,,y,JICA?,Johnson 2002 (WECAFC),report,
+Saint Vincent and the Grenadines,VCT,2010,2,,,,,CRFM/JICA 2013 ,report,
+Saint Vincent and the Grenadines,VCT,2012,2,,,,IFREMER,CRFM/JICA 2013 ,report,
+Saint Vincent and the Grenadines,VCT,2019,8,8,0,,,Cruickshank-Howard PC 2019,survey,
+Sint Eustatius,BES,2017,4,4,,,,Kitson-Walters PC 2018,pers. com.,
+Sint Eustatius,BES,2018,1,1,,,,Kitson-Walters PC 2018,pers. com.,
+Sint Eustatius,BES,2019,5,2,3,,,de Vries PC 2019,survey,
+Sint Maarten,SXM,2019,2,0,2,n,,Meijer zu Schlochtern PC 2019,survey,
+Trinidad and Tobago,TTO,1998,0,0,0,NA,,Lalla 2002 (WECAFC),report,
+Trinidad and Tobago,TTO,1999,3,3,,y,JICA + Caribbean Fisheries Training and Development Institute,Lalla 2002 (WECAFC),report,
+Trinidad and Tobago,TTO,2001,0,0,0,,,Lalla 2002 (WECAFC),report,
+Trinidad and Tobago,TTO,2002,10,12,,y,JICA + Caribbean Fisheries Training and Development Institute,Lalla 2007 (WECAFC),report,
+Trinidad and Tobago,TTO,2003,11,11,,y,JICA + Caribbean Fisheries Training and Development Institute,Lalla 2007 (WECAFC),report,presumably still around during time of report (2006)
+Trinidad and Tobago,TTO,2019,100,0,100,n,,Ottley PC 2019,survey,
+Turks and Caicos Islands,TCA,,,,,,,,,
+"Virgin Islands, British",VGB,,,,,,,,,
+"Virgin Islands, U.S.",VIR,1979,0,0,0,NA,,Clavijo & Tobias 1987,report,
+"Virgin Islands, U.S.",VIR,1981,50,50,0,y,national govt,Clavijo & Tobias 1987,report,
+"Virgin Islands, U.S.",VIR,1983,60,60,0,y,national govt,Clavijo & Tobias 1987,report,
+"Virgin Islands, U.S.",VIR,2018,4,4,0,y,national govt,USVI Fish and Wildlife website (2018),report,
+"Virgin Islands, U.S.",VIR,2019,4,4,0,,,Sabine PC 2019,survey,
