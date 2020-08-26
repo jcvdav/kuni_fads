@@ -142,7 +142,7 @@ eez_with_data <- eez %>%
   drop_na()
 
 # Plot the distribution of costs
-(cost_distribution <- ggplot(eez_with_data, aes(y = reorder(ISO_Ter1, travel_cost, FUN = median), x = travel_cost)) +
+(cost_distribution <- ggplot(eez_with_data, aes(y = reorder(ISO_Ter1, croped_cost, FUN = median), x = croped_cost)) +
     ggridges::geom_density_ridges(quantile_lines = T,
                                   quantiles = 2,
                                   panel_scaling = T,
