@@ -111,9 +111,11 @@ trade_pr <- read.csv("raw_data/trade/NOAAFisheries_PR_annual_trade.csv") %>%
   summarise(exported_fad = mean(tonnes))
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
+# adding re-exports to exports
 exports <- trade_fao %>% 
-  filter(flow == "Exports") %>% 
-  select(alpha_3, exported_fad = all_fad) %>% 
+  filter(flow == "Exports" | flow == "Reexports") %>% 
+  group_by(alpha_3) %>% 
+  summarise(exported_fad = sum(all_fad)) %>%
   rbind(trade_pr) %>% 
   mutate(exported_fad_log = log(exported_fad)) %>% 
   mutate(ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)) %>% 
@@ -121,18 +123,18 @@ exports <- trade_fao %>%
   rename("exports_log" = "ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)")
 
 # combining with imports flows of interest (all marine)
-#trade <- trade_fao %>% 
-#  filter(flow == "Imports") %>% 
-#  select(alpha_3, imported_all_marine = all_marine) %>% 
-#  full_join(exports, by = 'alpha_3') %>% 
-#  full_join(pop, by = 'alpha_3') %>% 
-# per capita calculations for ell exported fad-products and all impoerted marine products
-#  mutate(pc_imported_all = imported_all_marine * 1e3, #/mean_pop,
-#         pc_exported_fad = exported_fad * 1e3) %>% #/mean_pop) %>% 
-#  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
-#  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
-#  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
-#  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
+trade <- trade_fao %>% 
+  filter(flow == "Imports") %>% 
+  select(alpha_3, imported_all_marine = all_marine) %>% 
+  full_join(exports, by = 'alpha_3') %>% 
+  full_join(pop, by = 'alpha_3') %>% 
+ per capita calculations for ell exported fad-products and all impoerted marine products
+  mutate(pc_imported_all = imported_all_marine * 1e3, #/mean_pop,
+         pc_exported_fad = exported_fad * 1e3) %>% #/mean_pop) %>% 
+  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
+  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
+  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
+  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
 
   
 ########################## GOVERNANCE INDICATORS ###############################
