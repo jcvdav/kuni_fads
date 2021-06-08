@@ -102,10 +102,6 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
 #  summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
 # ungroup()
 
-#Exporting in order to rename BES as BON and ESS
-write.csv(trade_fao, "raw_data/trade/trade_fao_edit.csv")
-trade_fao_edit <- read.csv("raw_data/trade/trade_fao_edit.csv")
-
 # adding in PR exports, 2014-2016
 trade_pr <- read.csv("raw_data/trade/NOAAFisheries_PR_annual_trade.csv") %>% 
   mutate(quantity = (0.001*Volume..kg.)) %>% 
@@ -115,7 +111,7 @@ trade_pr <- read.csv("raw_data/trade/NOAAFisheries_PR_annual_trade.csv") %>%
   summarise(exported_fad = mean(tonnes))
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
-exports <- trade_fao_edit %>% 
+exports <- trade_fao %>% 
   filter(flow == "Exports") %>% 
   select(alpha_3, exported_fad = all_fad) %>% 
   rbind(trade_pr) %>% 
