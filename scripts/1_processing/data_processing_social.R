@@ -98,43 +98,47 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   #       ff_over_all_fad = fad_ff/all_fad) %>% 
   # calculating the mean over the last three years for each country
   group_by(alpha_3, flow) %>% 
-  summarise(all_fad = mean(tonnes))
+  summarise(all_marine = mean(tonnes))
 #  summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
 # ungroup()
 
-# adding in PR exports, 2014-2016
-trade_pr <- read.csv("raw_data/trade/NOAAFisheries_PR_annual_trade.csv") %>% 
-  mutate(quantity = (0.001*Volume..kg.)) %>% 
-  group_by(Year, alpha_3) %>% 
-  summarize(tonnes = my_sum(quantity)) %>% 
-  group_by(alpha_3) %>% 
-  summarise(exported_fad = mean(tonnes))
+# changing data from long to wide
+trade_fao_wide <- spread(trade_fao, key = flow, value = all_marine) %>% 
+  select(-Production) %>% 
+  mutate_at(c("Reexports"), ~replace(., is.na(.), 0)) %>% 
+  mutate(allExports = sum(Exports,Reexports)) %>% 
+  select(alpha_3, Imports, allExports) %>% 
+  left_join(pop, by = 'alpha_3') %>% 
+  mutate(Imports_percap = Imports/mean_pop) %>% 
+  mutate(Exports_percap = allExports/mean_pop) 
+
+trade <- trade_fao_wide %>% 
+  select(alpha_3, Imports_percap, Exports_percap)
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
 # adding re-exports to exports
-exports <- trade_fao %>% 
-  filter(flow == "Exports" | flow == "Reexports") %>% 
-  group_by(alpha_3) %>% 
-  summarise(exported_fad = sum(all_fad)) %>%
-  rbind(trade_pr) %>% 
-  mutate(exported_fad_log = log(exported_fad)) %>% 
-  mutate(ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)) %>% 
-  select("alpha_3","ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)") %>% 
-  rename("exports_log" = "ifelse(is.infinite(exported_fad_log), 0, exported_fad_log)")
+#exports <- trade_fao %>% 
+#  filter(flow == "Exports" | flow == "Reexports") %>% 
+#  group_by(alpha_3) %>% 
+#  summarise(exported_marine = sum(all_marine)) %>%
+#  mutate(exported_marine_log = log(exported_marine)) %>% 
+#  mutate(ifelse(is.infinite(exported_marine_log), 0, exported_marine_log)) %>% 
+#  select("alpha_3","ifelse(is.infinite(exported_marine_log), 0, exported_marine_log)") %>% 
+#  rename("exports_log" = "ifelse(is.infinite(exported_marine_log), 0, exported_marine_log)")
 
 # combining with imports flows of interest (all marine)
-trade <- trade_fao %>% 
-  filter(flow == "Imports") %>% 
-  select(alpha_3, imported_all_marine = all_marine) %>% 
-  full_join(exports, by = 'alpha_3') %>% 
-  full_join(pop, by = 'alpha_3') %>% 
- per capita calculations for ell exported fad-products and all impoerted marine products
-  mutate(pc_imported_all = imported_all_marine * 1e3, #/mean_pop,
-         pc_exported_fad = exported_fad * 1e3) %>% #/mean_pop) %>% 
-  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
-  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
-  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
-  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
+#trade <- trade_fao %>% 
+#  filter(flow == "Imports") %>% 
+#  select(alpha_3, imported_marine = all_marine) %>% 
+#  full_join(exports, by = 'alpha_3') %>% 
+#  full_join(pop, by = 'alpha_3') %>% 
+ #per capita calculations for all imported and exported marine products
+#  mutate(pc_imported_all = imported_marine * 1e3, #/mean_pop,
+#         pc_exported_fad = exported_marine * 1e3) %>% #/mean_pop) %>% 
+#  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
+#  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
+#  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
+#  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
 
   
 ########################## GOVERNANCE INDICATORS ###############################
