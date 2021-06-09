@@ -112,8 +112,11 @@ trade_fao_wide <- spread(trade_fao, key = flow, value = all_marine) %>%
   mutate(Imports_percap = Imports/mean_pop) %>% 
   mutate(Exports_percap = allExports/mean_pop) 
 
-trade <- trade_fao_wide %>% 
-  select(alpha_3, Imports_percap, Exports_percap)
+trade_exports <- trade_fao_wide %>% 
+  select(alpha_3, Exports_percap)
+
+trade_imports <- trade_fao_wide %>% 
+  select(alpha_3, Imports_percap)
 
 # extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
 # adding re-exports to exports
@@ -253,7 +256,8 @@ social_data <- iso %>%
   distinct() %>%
   left_join(nutrition, by = "alpha_3") %>%  # no BES, no PRI
   left_join(poverty, by = "alpha_3") %>%  # no BES, no PRI
-  left_join(exports, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
+  left_join(trade_exports, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
+  left_join(trade_imports, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
   left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   replace(. == "NaN", NA) %>%
@@ -271,7 +275,7 @@ data_scaled <- social_data %>%
   mutate(energy_ad = 1 - energy_ad,
          score_govt = reg_strength,
          score_need = (energy_ad + poverty_rate) / 2,
-         score_marketability = (exports_log + pc_n_tourists) / 2
+         score_marketability = (Exports_percap + Imports_percap + pc_n_tourists) / 3
         )
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
