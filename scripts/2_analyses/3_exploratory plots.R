@@ -18,6 +18,11 @@ cost_data <- read.csv(here("data", "country_level_cost_summary_statistics.csv"),
   mutate(score_cost = rescale(mean, to = c(0, 1))) %>% 
   select(ISO3, score_cost)
 
+market_data <- read.csv(here("data", "social_data.csv"),
+                      stringsAsFactors = F) %>% 
+  select(name_govt, alpha_3, Exports_percap, Imports_percap, pc_n_tourists) #%>% 
+#  mutate_if(is.numeric, rescale, to = c(0,1))
+
 ## Combine data
 data <- cost_data %>% 
   left_join(scaled_data, by = c("ISO3" = "alpha_3"))
@@ -108,3 +113,12 @@ ggplot(data, aes(x = score_need, y = score_govt)) +
   geom_text(aes(label=ISO3), size = 2) +
   theme_bw()
 
+#Marketability
+
+##More tourists = more imports. Except for Bermuda and Barbados, maybe because of large expat communities?
+ggplot(market_data, aes(x = pc_n_tourists, y = Imports_percap, label = alpha_3)) +
+  geom_point(aes(size = Exports_percap)) +
+  geom_smooth(method = "lm") +
+  xlim(0,10500) +
+  geom_text(size=3, position=position_jitter(width=1,height=1)) +
+  theme_bw() 
