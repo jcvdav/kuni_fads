@@ -13,7 +13,16 @@ iso <- read.csv(here("raw_data", "iso_codes.csv"),
                 fileEncoding = "UTF-8-BOM") %>% 
   clean_names()
 
-############################## NUTRITION  ####################################
+############################# FAD NUMBERS ###################################
+
+fad_numbers <- fao_fs <- read.csv(here("raw_data", "fad_data", "fads_current.csv"), stringsAsFactors = F) %>% 
+  clean_names() %>%
+  select(alpha_3, n_fads, n_private, n_public, vessels_fad, vessels_tot) %>%
+  mutate(fads_per_totvessel = n_fads/vessels_tot,
+         fads_per_fadvessel = n_fads/vessels_fad) %>%
+  filter(alpha_3 != "BES") # not sure what to do with BES yet - have data at island level
+
+############################## NUTRITION ####################################
 
 nutrition <- read.csv(here("raw_data", "nutrition", "fao_fs_indicators.csv"),
                    stringsAsFactors = F,
@@ -260,6 +269,7 @@ social_data <- iso %>%
   left_join(trade_imports, by = "alpha_3") %>%  # data for BES - need to make BON and ESS refer to BES
   left_join(tourism, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
   left_join(survey_govt, by = "alpha_3") %>%  # already separated by Bonaire vs. Saba/Eustatia
+  left_join(wgi, by = "alpha_3") %>%
   replace(. == "NaN", NA) %>%
   mutate_all(na_if, "") %>%
   filter(alpha_3 != "BES") # Removed BES becuase information has been moved over to ESS and BON.
@@ -274,9 +284,12 @@ data_scaled <- social_data %>%
   mutate_if(is.numeric, rescale, to = c(0,1)) %>%
   mutate(energy_ad = 1 - energy_ad,
          score_govt = reg_strength,
+         score_wgi = wgi_mean,
          score_need = (energy_ad + poverty_rate) / 2,
          score_marketability = (Exports_percap + Imports_percap + pc_n_tourists) / 3
-        )
+        ) %>%
+  left_join(fad_numbers, by = "alpha_3") %>%
+  select(score_govt, score_wgi, score_need, score_marketability, fads_per_totvessel)
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
