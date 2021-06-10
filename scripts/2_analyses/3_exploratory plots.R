@@ -20,7 +20,7 @@ cost_data <- read.csv(here("data", "country_level_cost_summary_statistics.csv"),
 
 market_data <- read.csv(here("data", "social_data.csv"),
                       stringsAsFactors = F) %>% 
-  select(name_govt, alpha_3, Exports_percap, Imports_percap, pc_n_tourists) #%>% 
+  select(name_govt, alpha_3, mean_pop, Exports_percap, Imports_percap, pc_n_tourists) #%>%
 #  mutate_if(is.numeric, rescale, to = c(0,1))
 
 ## Combine data
@@ -119,6 +119,6 @@ ggplot(data, aes(x = score_need, y = score_govt)) +
 ggplot(market_data, aes(x = pc_n_tourists, y = Imports_percap, label = alpha_3)) +
   geom_point(aes(size = Exports_percap)) +
   geom_smooth(method = "lm") +
-  xlim(0,10500) +
+  xlim(0,11000) +
   geom_text(size=3, position=position_jitter(width=1,height=1)) +
   theme_bw() 
