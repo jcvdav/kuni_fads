@@ -288,8 +288,7 @@ data_scaled <- social_data %>%
          score_need = (energy_ad + poverty_rate) / 2,
          score_marketability = (Exports_percap + Imports_percap + pc_n_tourists) / 3
         ) %>%
-  left_join(fad_numbers, by = "alpha_3") %>%
-  select(score_govt, score_wgi, score_need, score_marketability, fads_per_totvessel)
+  left_join(fad_numbers, by = "alpha_3")
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
