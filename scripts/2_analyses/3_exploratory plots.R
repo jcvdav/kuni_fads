@@ -24,46 +24,64 @@ data <- cost_data %>%
 
 # Exploring relationships among variables
 
-## Governance indicators - WGI vs. survey data (for islands with both)
+## Preliminary - comparing our 2 governance indicators - WGI vs. survey data (for islands with both)
 ggplot(data, aes(x = score_wgi, y = score_govt)) +
   geom_text(aes(label=ISO3), size = 2) +
   theme_bw()
+# seems mostly positively correlated, except for some countries that don't have FAD regulations bc they don't have FADs (ABW, BHS) but actually have high governance capacity
 
 ## Cost and governance
+
+### WGI ~ cost: somewhat positive relationship?
 ggplot(data, aes(x = score_cost, y = score_wgi)) +
   geom_text(aes(label=ISO3), size = 2) +
+  geom_smooth(method = "lm") +
   theme_bw()
 
+### Govt survey ~ cost: no clear trends (but potentially interesting to look at countries?)
 ggplot(data, aes(x = score_cost, y = score_govt)) +
   geom_text(aes(label=ISO3), size = 2) +
+  geom_smooth(method = "lm") +
   theme_bw()
 
-## FAD numbers
+## FAD numbers (FADs per total number of SSF vessels)
+# note - maybe FADs per km coastline would be more informative...?
+
+### FADs ~ WGI
 ggplot(data, aes(x = score_wgi, y = fads_per_totvessel)) +
   geom_text(aes(label=ISO3), size = 2) +
-  ylim(0,1) +
+  ylim(0,.75) +
   theme_bw() 
 
+### FADs ~ cost
 ggplot(data, aes(x = score_cost, y = fads_per_totvessel)) +
   geom_text(aes(label=ISO3), size = 2) +
-  ylim(0,1) +
+  ylim(0,.75) +
   theme_bw() 
 
+### FADs ~ marketability
 ggplot(data, aes(x = score_marketability, y = fads_per_totvessel)) +
   geom_text(aes(label=ISO3), size = 2) +
-  ylim(0,1) +
+  geom_smooth(method = "lm") +
+  #ylim(0,.75) +
+  theme_bw() 
+
+### FADs ~ need
+ggplot(data, aes(x = score_need, y = fads_per_totvessel)) +
+  geom_text(aes(label=ISO3), size = 2) +
+  ylim(0,.75) +
   theme_bw() 
 
 ## Need 
 
+### Need ~ WGI: interesting somewhat negative correlation?
 ggplot(data, aes(x = score_need, y = score_wgi)) +
   geom_text(aes(label=ISO3), size = 2) +
+  geom_smooth(method = "lm") +
   theme_bw()
 
+### Need ~ govt survey: less clear trends
 ggplot(data, aes(x = score_need, y = score_govt)) +
   geom_text(aes(label=ISO3), size = 2) +
   theme_bw()
 
-ggplot(data, aes(x = score_need, y = score_cost)) +
-  geom_text(aes(label=ISO3), size = 2) +
-  theme_bw()
