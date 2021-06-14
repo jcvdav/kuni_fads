@@ -289,7 +289,13 @@ data_scaled <- social_data %>%
          score_marketability = (Exports_percap + Imports_percap + pc_n_tourists) / 3
         ) %>%
   left_join(fad_numbers, by = "alpha_3")
+
+data_unscaled <- social_data %>%
+  mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
+  left_join(fad_numbers, by = "alpha_3")
+  
          
 write.csv(social_data, here("data", "social_data.csv"), row.names = F)
 write.csv(data_scaled, here("data", "data_scaled.csv"), row.names = F)
+write.csv(data_unscaled, here("data", "data_unscaled.csv"), row.names = F)
     
