@@ -288,6 +288,9 @@ data_scaled <- social_data %>%
          score_need = (energy_ad + poverty_rate) / 2,
          score_marketability = (Exports_percap + Imports_percap + pc_n_tourists) / 3
         ) %>%
+  mutate_at(vars(-c(name_govt, alpha_3)), as.numeric) %>%
+  rescale(score_marketability, to = c(0,1)) %>% # because other final component scores were by default already scaled
+  rescale(score_need, to = c(0,1)) %>%
   left_join(fad_numbers, by = "alpha_3")
 
 data_unscaled <- social_data %>%

@@ -39,9 +39,10 @@ data <- cost_data %>%
 # Exploring relationships among variables
 
 ## Preliminary - comparing our 2 governance indicators - WGI vs. survey data (for islands with both)
-ggplot(data, aes(x = score_wgi, y = score_regs, label = ISO3)) +
+ggplot(filter(data, n_fads != 0), aes(x = score_wgi, y = score_regs, label = ISO3)) +
   geom_point(aes(size = fads_per_totvessel, color = fad_category)) +
   geom_text(size = 3, position = position_jitter(width = .05, height = .05)) +
+  geom_smooth(method = "lm") +
   theme_bw()
 # can see some countries that don't have FAD regulations bc they don't have FADs (ABW, BHS) but actually have high governance capacity
 # no clear link between governance scores and typology
