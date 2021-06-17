@@ -143,3 +143,22 @@ ggplot(market_data, aes(x = pc_n_tourists, y = Imports_percap, label = alpha_3))
   geom_text(size=3, position=position_jitter(width=1,height=1)) +
   theme_bw() 
 
+# Revised biplot (Fig. 2)
+ggplot(filter(data, score_marketability >= 0 & score_cost >= 0), aes(x = score_marketability, y = score_cost, label = ISO3)) +
+  geom_point(aes(size = score_need, color = score_regs)) +
+  geom_text(size=3) +
+  xlim(0,1) +
+  ylim(0,1) +
+  theme_bw() 
+
+# Without cost...
+ggplot(data, aes(x = score_marketability, y = score_regs, label = ISO3)) +
+  geom_point(alpha = 0.5, aes(size = score_need, color = score_need)) +
+  geom_text(size=3) +
+  xlim(0,1) +
+  ylim(0,1) +
+  geom_hline(y = 0) +
+  theme_minimal()
+
+
+
