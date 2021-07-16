@@ -5,6 +5,7 @@
 library(startR)
 library(here)
 library(tidyverse)
+library(scales)
 
 # Load data
 
@@ -100,11 +101,11 @@ ggplot(data, aes(x = score_cost, y = fads_per_totvessel)) +
 #   theme_bw() 
 # 
 # ### FADs ~ need
-# ggplot(data, aes(x = score_need, y = fads_per_totvessel)) +
-#   geom_text(aes(label=ISO3), size = 2) +
-#   geom_smooth(method = "lm") +
-#   ylim(-.25, 1) +
-#   theme_bw() 
+ggplot(data, aes(x = score_need, y = fads_per_totvessel)) +
+  geom_text(aes(label=ISO3), size = 2) +
+  geom_smooth() +
+  ylim(-.25, 1) +
+  theme_bw()
 
 
 ## Governance and public vs. private
@@ -144,12 +145,27 @@ ggplot(market_data, aes(x = pc_n_tourists, y = Imports_percap, label = alpha_3))
   theme_bw() 
 
 # Revised biplot (Fig. 2)
-ggplot(filter(data, score_marketability >= 0 & score_cost >= 0), aes(x = score_marketability, y = score_cost, label = ISO3)) +
-  geom_point(aes(size = score_need, color = score_regs)) +
+ggplot(filter(data, score_regs >= 0 & score_cost >= 0), aes(x = score_regs, y = score_cost, label = ISO3)) +
+  geom_point(aes(size = score_marketability, color = score_need)) +
   geom_text(size=3) +
   xlim(0,1) +
   ylim(0,1) +
   theme_bw() 
+
+# "final" biplot 
+ggplot(data, aes(x = score_regs, y = score_marketability, label = ISO3)) +
+  geom_point(aes(size = score_need, color = score_need)) +
+  geom_text(size=3) +
+  xlim(0,1) +
+  ylim(0,1) +
+  theme_bw() 
+
+# ggplot(data, aes(x = score_cost, y = score_need, label = ISO3)) +
+#   geom_point(aes(color = log(n_fads))) +
+#   #geom_text(size=3) +
+#   xlim(0,1) +
+#   ylim(0,1) +
+#   theme_bw() 
 
 # Without cost...
 ggplot(data, aes(x = score_marketability, y = score_regs, label = ISO3)) +
