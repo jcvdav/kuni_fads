@@ -31,7 +31,9 @@ market_data <- read.csv(here("data", "social_data.csv"),
 iso <- read.csv(here("raw_data", "iso_codes.csv"),
                 stringsAsFactors = F,
                 fileEncoding = "UTF-8-BOM") %>% 
-  clean_names()
+  clean_names() %>%
+  mutate_at("name", str_replace, " and", " &") %>%
+  mutate_at("name", str_replace, "Saint", "St.")
 
 ## Combine data
 data <- cost_data %>% 
@@ -169,7 +171,7 @@ data_all <- rbind(data_complete, data_incomplete)
 ggplot() +
   geom_point(data = data_complete, shape = 16, aes(x = score_regs, y = score_marketability, size = score_need, color = score_need)) +
   geom_point(data = data_incomplete, shape = 1, aes(x = score_regs, y = score_marketability)) +
-  geom_text_repel(data = data_all, size = 3, aes(x = score_regs, y = score_marketability, label = name)) +
+  geom_text_repel(data = data_all, size = 3, force = 30, aes(x = score_regs, y = score_marketability, label = name)) +
   xlim(0,1) +
   ylim(0,1) +
   scale_size_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.25), name = "Social need") +
