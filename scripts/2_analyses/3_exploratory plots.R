@@ -6,6 +6,7 @@ library(startR)
 library(here)
 library(tidyverse)
 library(scales)
+library(ggrepel)
 
 # Load data
 
@@ -24,12 +25,18 @@ cost_data <- read.csv(here("data", "country_level_cost_summary_statistics.csv"),
 
 market_data <- read.csv(here("data", "social_data.csv"),
                       stringsAsFactors = F) %>% 
-  select(name_govt, alpha_3, mean_pop, Exports_percap, Imports_percap, pc_n_tourists) #%>%
+  select(name_govt, alpha_3, Exports_percap, Imports_percap, pc_n_tourists) #%>%
 #  mutate_if(is.numeric, rescale, to = c(0,1))
+
+iso <- read.csv(here("raw_data", "iso_codes.csv"),
+                stringsAsFactors = F,
+                fileEncoding = "UTF-8-BOM") %>% 
+  clean_names()
 
 ## Combine data
 data <- cost_data %>% 
   left_join(scaled_data, by = c("ISO3" = "alpha_3")) %>%
+  left_join(iso, by = c("ISO3" = "alpha_3")) %>%
   mutate(fad_category = case_when(n_fads == 0 ~ "None",
                                   p_private >=.5 ~ "Mostly private",
                                   p_private <.5 ~ "Mostly public",
@@ -152,29 +159,41 @@ ggplot(filter(data, score_regs >= 0 & score_cost >= 0), aes(x = score_regs, y = 
   ylim(0,1) +
   theme_bw() 
 
-# "final" biplot 
+# "final" biplot
+
+## with need NAs as different shape
+data_complete <- data %>% filter(!is.na(score_regs) & !is.na(score_marketability) & !is.na(score_need))
+data_incomplete <- data %>% filter(!is.na(score_regs) & !is.na(score_marketability) & is.na(score_need))
+data_all <- rbind(data_complete, data_incomplete)
+  
+ggplot() +
+  geom_point(data = data_complete, shape = 16, aes(x = score_regs, y = score_marketability, size = score_need, color = score_need)) +
+  geom_point(data = data_incomplete, shape = 1, aes(x = score_regs, y = score_marketability)) +
+  geom_text_repel(data = data_all, size = 3, aes(x = score_regs, y = score_marketability, label = name)) +
+  xlim(0,1) +
+  ylim(0,1) +
+  scale_size_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.25), name = "Social need") +
+  scale_color_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.25), name = "Social need") +
+  guides(color= guide_legend(), size=guide_legend()) +
+  geom_hline(yintercept = 0.5) +
+  geom_vline(xintercept = 0.5) +
+  labs(x = "Regulatory strength", y = "Marketability") +
+  theme_minimal() 
+ggsave(here("img", "biplot.png"))
+
+# with need NAs as no shape
 ggplot(data, aes(x = score_regs, y = score_marketability, label = ISO3)) +
   geom_point(aes(size = score_need, color = score_need)) +
   geom_text(size=3) +
   xlim(0,1) +
   ylim(0,1) +
-  theme_bw() 
+  scale_size_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.2)) +
+  scale_color_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.2)) +
+  guides(color= guide_legend(), size=guide_legend()) +
+  geom_hline(yintercept = 0.5) +
+  geom_vline(xintercept = 0.5) +
+  theme_minimal() 
 
-# ggplot(data, aes(x = score_cost, y = score_need, label = ISO3)) +
-#   geom_point(aes(color = log(n_fads))) +
-#   #geom_text(size=3) +
-#   xlim(0,1) +
-#   ylim(0,1) +
-#   theme_bw() 
-
-# Without cost...
-ggplot(data, aes(x = score_marketability, y = score_regs, label = ISO3)) +
-  geom_point(alpha = 0.5, aes(size = score_need, color = score_need)) +
-  geom_text(size=3) +
-  xlim(0,1) +
-  ylim(0,1) +
-  geom_hline(y = 0) +
-  theme_minimal()
 
 
 
