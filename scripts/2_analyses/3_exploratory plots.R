@@ -168,6 +168,7 @@ data_complete <- data %>% filter(!is.na(score_regs) & !is.na(score_marketability
 data_incomplete <- data %>% filter(!is.na(score_regs) & !is.na(score_marketability) & is.na(score_need))
 data_all <- rbind(data_complete, data_incomplete)
   
+
 ggplot() +
   geom_point(data = data_complete, shape = 16, aes(x = score_regs, y = score_marketability, size = score_need, color = score_need)) +
   geom_point(data = data_incomplete, shape = 1, aes(x = score_regs, y = score_marketability)) +
