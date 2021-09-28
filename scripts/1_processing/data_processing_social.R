@@ -87,6 +87,7 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   clean_names() %>%
   select(-(c(x_1, x, x_f))) %>% 
   filter(country != "Totals - All") %>% 
+  filter(country != "Puerto Rico") %>% 
   mutate(country= ifelse(country == "Netherlands Antilles", "Bonaire, Sint Eustatius and Saba", ifelse(country == "CuraÃ§ao", 'Curaçao', country))) %>%
   mutate(alpha_3 = countrycode(country, "country.name", "iso3c")) %>%
   #       fad_fished = ifelse(commodity %in% fad_fished, 1, 0)) %>%  
@@ -121,37 +122,45 @@ trade_fao_wide <- spread(trade_fao, key = flow, value = all_marine) %>%
   mutate(Imports_percap = Imports/mean_pop) %>% 
   mutate(Exports_percap = allExports/mean_pop) 
 
+###Adding in NOAA data for USVI and PR###
+trade_noaa <- read.csv(here("raw_data/trade/NOAA_annual_trade-year-customs_district.csv"), header = T, stringsAsFactors = F) %>% 
+  clean_names() %>% 
+  select(!"value_usd")
+trade_noaa$volume_kg <- as.numeric(gsub(",","",trade_noaa$volume_kg))
+
+noaa_exports <- trade_noaa %>% 
+  filter(source=="EXP" | source=="REX") %>% 
+  group_by(us_customs_district) %>% 
+  summarize(Exports=my_sum(volume_kg)) %>% 
+  mutate(Exports=(Exports*0.001)) %>% 
+  add_column(alpha_3="PRI") %>% 
+  left_join(pop,by="alpha_3") %>% 
+  mutate(Exports_percap = Exports/mean_pop) %>% 
+  select(!"us_customs_district")
+  
+noaa_imports <- trade_noaa %>% 
+  filter(source=="IMP") %>% 
+  group_by(us_customs_district) %>% 
+  summarize(Imports=my_sum(volume_kg)) %>% 
+  mutate(Imports=(Imports*0.001)) %>% 
+  add_column(alpha_3=c("PRI","VIR")) %>% 
+  left_join(pop,by="alpha_3") %>% 
+  mutate(Imports_percap = Imports/mean_pop) %>% 
+  select(!"us_customs_district")
+
+trade_noaa_wide <- full_join(noaa_exports,noaa_imports, by=c("alpha_3","mean_pop")) %>% 
+  rename(allExports=Exports) %>% 
+  select(alpha_3, Imports, allExports, mean_pop,Imports_percap,Exports_percap)
+
+#Combining NOAA with FAO data
+
 trade_exports <- trade_fao_wide %>% 
+  full_join(trade_noaa_wide) %>% 
   select(alpha_3, Exports_percap)
 
-trade_imports <- trade_fao_wide %>% 
+trade_imports <- trade_fao_wide %>%
+  bind_rows(trade_noaa_wide) %>% 
   select(alpha_3, Imports_percap)
-
-# extracting columns of all fad-products and proportion of ff fad products over all fad products only for export flows
-# adding re-exports to exports
-#exports <- trade_fao %>% 
-#  filter(flow == "Exports" | flow == "Reexports") %>% 
-#  group_by(alpha_3) %>% 
-#  summarise(exported_marine = sum(all_marine)) %>%
-#  mutate(exported_marine_log = log(exported_marine)) %>% 
-#  mutate(ifelse(is.infinite(exported_marine_log), 0, exported_marine_log)) %>% 
-#  select("alpha_3","ifelse(is.infinite(exported_marine_log), 0, exported_marine_log)") %>% 
-#  rename("exports_log" = "ifelse(is.infinite(exported_marine_log), 0, exported_marine_log)")
-
-# combining with imports flows of interest (all marine)
-#trade <- trade_fao %>% 
-#  filter(flow == "Imports") %>% 
-#  select(alpha_3, imported_marine = all_marine) %>% 
-#  full_join(exports, by = 'alpha_3') %>% 
-#  full_join(pop, by = 'alpha_3') %>% 
- #per capita calculations for all imported and exported marine products
-#  mutate(pc_imported_all = imported_marine * 1e3, #/mean_pop,
-#         pc_exported_fad = exported_marine * 1e3) %>% #/mean_pop) %>% 
-#  select(alpha_3, pc_imported_all, pc_exported_fad, pp_ff_over_fad_exp) %>% 
-#  mutate_at(vars(pc_imported_all, pc_exported_fad), log10) %>% 
-#  mutate_at(vars(pc_imported_all, pc_exported_fad), function(x){ifelse(x == -Inf, 0, x)}) %>% 
-#  mutate(pp_ff_over_fad_exp = ifelse(pp_ff_over_fad_exp == 'NaN', 0 , pp_ff_over_fad_exp))
-
   
 ########################## GOVERNANCE INDICATORS ###############################
 
