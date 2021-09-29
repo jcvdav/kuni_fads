@@ -182,7 +182,7 @@ ggplot() +
   geom_vline(xintercept = 0.5) +
   labs(x = "Regulatory strength", y = "Marketability") +
   theme_minimal() 
-ggsave(here("img", "biplot.png"))
+ggsave(here("img", "biplot.png"), width = 6, height = 5)
 
 # with need NAs as no shape
 ggplot(data, aes(x = score_regs, y = score_marketability, label = ISO3)) +
