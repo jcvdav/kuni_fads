@@ -130,18 +130,20 @@ trade_noaa$volume_kg <- as.numeric(gsub(",","",trade_noaa$volume_kg))
 
 noaa_exports <- trade_noaa %>% 
   filter(source=="EXP" | source=="REX") %>% 
+  group_by(year,us_customs_district) %>% 
+  summarize(Exports=my_sum(volume_kg)) %>%
   group_by(us_customs_district) %>% 
-  summarize(Exports=my_sum(volume_kg)) %>% 
-  mutate(Exports=(Exports*0.001)) %>% 
+  summarize(allExports=mean(Exports)) %>% 
+  mutate(allExports=(allExports*0.001)) %>% 
   add_column(alpha_3="PRI") %>% 
   left_join(pop,by="alpha_3") %>% 
-  mutate(Exports_percap = Exports/mean_pop) %>% 
+  mutate(Exports_percap = allExports/mean_pop) %>% 
   select(!"us_customs_district")
   
 noaa_imports <- trade_noaa %>% 
   filter(source=="IMP") %>% 
   group_by(us_customs_district) %>% 
-  summarize(Imports=my_sum(volume_kg)) %>% 
+  summarize(Imports=mean(volume_kg)) %>%
   mutate(Imports=(Imports*0.001)) %>% 
   add_column(alpha_3=c("PRI","VIR")) %>% 
   left_join(pop,by="alpha_3") %>% 
@@ -149,7 +151,6 @@ noaa_imports <- trade_noaa %>%
   select(!"us_customs_district")
 
 trade_noaa_wide <- full_join(noaa_exports,noaa_imports, by=c("alpha_3","mean_pop")) %>% 
-  rename(allExports=Exports) %>% 
   select(alpha_3, Imports, allExports, mean_pop,Imports_percap,Exports_percap)
 
 #Combining NOAA with FAO data
