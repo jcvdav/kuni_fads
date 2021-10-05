@@ -7,6 +7,7 @@ library(here)
 library(tidyverse)
 library(scales)
 library(ggrepel)
+library(janitor)
 
 # Load data
 
@@ -168,11 +169,19 @@ data_complete <- data %>% filter(!is.na(score_regs) & !is.na(score_marketability
 data_incomplete <- data %>% filter(!is.na(score_regs) & !is.na(score_marketability) & is.na(score_need))
 data_all <- rbind(data_complete, data_incomplete)
   
+annotations <- data.frame(
+  xpos = c(-Inf,-Inf,Inf,Inf),
+  ypos =  c(-Inf, Inf,-Inf,Inf),
+  annotateText = c("Bottom Left (h0,v0)","Top Left (h0,v1)"
+                   ,"Bottom Right h1,v0","Top Right h1,v1"),
+  hjustvar = c(0,0,1,1) ,
+  vjustvar = c(0,1,0,1)) #<- adjust
 
 ggplot() +
   geom_point(data = data_complete, shape = 16, aes(x = score_regs, y = score_marketability, size = score_need, color = score_need)) +
   geom_point(data = data_incomplete, shape = 1, aes(x = score_regs, y = score_marketability)) +
   geom_text_repel(data = data_all, size = 3, force = 30, aes(x = score_regs, y = score_marketability, label = name)) +
+  # geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText)) +
   xlim(0,1) +
   ylim(0,1) +
   scale_size_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.25), name = "Social need") +
@@ -184,18 +193,7 @@ ggplot() +
   theme_minimal() 
 ggsave(here("img", "biplot.png"), width = 6, height = 5)
 
-# with need NAs as no shape
-ggplot(data, aes(x = score_regs, y = score_marketability, label = ISO3)) +
-  geom_point(aes(size = score_need, color = score_need)) +
-  geom_text(size=3) +
-  xlim(0,1) +
-  ylim(0,1) +
-  scale_size_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.2)) +
-  scale_color_continuous(limits = c(0, 1), breaks=seq(0, 1, by = 0.2)) +
-  guides(color= guide_legend(), size=guide_legend()) +
-  geom_hline(yintercept = 0.5) +
-  geom_vline(xintercept = 0.5) +
-  theme_minimal() 
+
 
 
 
