@@ -65,7 +65,7 @@ pop <- pop %>%
 my_sum <- function(x) {
   # If all values are NA, return NA
   if(sum(is.na(x)) == length(x)) {
-    res <- 0
+    res <- NA
   } else {
     # If they are not, do the calculation
     res <- sum(x, na.rm = T)
@@ -108,7 +108,7 @@ trade_fao <- read.csv(here("raw_data/trade/AllMarineFish.tidy.csv"), header = T,
   #       ff_over_all_fad = fad_ff/all_fad) %>% 
   # calculating the mean over the last three years for each country
   group_by(alpha_3, flow) %>% 
-  summarise(all_marine = mean(tonnes))
+  summarise(all_marine = mean(tonnes), na.rm=TRUE)
 #  summarise(all_marine = mean(all_marine), all_fad = mean(all_fad), ff_over_all_fad = mean(ff_over_all_fad)) %>% 
 # ungroup()
 
@@ -133,7 +133,7 @@ noaa_exports <- trade_noaa %>%
   group_by(year,us_customs_district) %>% 
   summarize(Exports=my_sum(volume_kg)) %>%
   group_by(us_customs_district) %>% 
-  summarize(allExports=mean(Exports)) %>% 
+  summarize(allExports=mean(Exports), na.rm=TRUE) %>% 
   mutate(allExports=(allExports*0.001)) %>% 
   add_column(alpha_3="PRI") %>% 
   left_join(pop,by="alpha_3") %>% 
@@ -143,7 +143,7 @@ noaa_exports <- trade_noaa %>%
 noaa_imports <- trade_noaa %>% 
   filter(source=="IMP") %>% 
   group_by(us_customs_district) %>% 
-  summarize(Imports=mean(volume_kg)) %>%
+  summarize(Imports=mean(volume_kg), na.rm=TRUE) %>%
   mutate(Imports=(Imports*0.001)) %>% 
   add_column(alpha_3=c("PRI","VIR")) %>% 
   left_join(pop,by="alpha_3") %>% 
