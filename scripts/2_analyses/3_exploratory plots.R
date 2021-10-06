@@ -46,6 +46,10 @@ data <- cost_data %>%
                                   ISO3 == "DOM" ~ "Mostly private",
                                   ISO3 == "HTI" ~ "Mostly public"))
 
+results <- data %>%
+  select(State = name, "Biophysical suitibility & cost" = score_cost, "MFAD regulatory strength" = score_regs, "Social need" = score_need, "Catch marketability" = score_marketability)
+write.csv(results, here("data", "results_table.csv"), row.names = F)
+
 
 # Exploring relationships among variables
 
