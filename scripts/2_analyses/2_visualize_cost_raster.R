@@ -8,6 +8,7 @@ library(raster)
 library(sf)
 library(rnaturalearth)
 library(cowplot)
+library(ggsflabel)
 library(tidyverse)
 
 # Load data
@@ -15,6 +16,7 @@ library(tidyverse)
 ## EEZ vector
 eez <- st_read(here("data", "caribbean_eez.gpkg"))  %>% 
   arrange(ISO_Ter1) %>% 
+  st_make_valid() %>% 
   mutate(ID = group_indices(., ISO_Ter1),
          area = st_area(.))
 
@@ -38,6 +40,7 @@ travel_cost <- raster(here("data", "travel_cost.tif")) %>%
 
 ## Coastline cropped to the extent of the cost raster
 coast <- ne_countries(scale = "medium", returnclass = "sf") %>% 
+  st_make_valid() %>% 
   st_crop(y = extent(croped_cost))
 
 # Convert the rasters to a data.frames
@@ -99,15 +102,14 @@ summarized_values_by_country <- raster::extract(croped_cost,
     geom_sf(data = eez, fill = "transparent") +
     geom_sf(aes(fill = croped_cost)) +
     geom_sf(data = coast) +
+    geom_sf_label_repel(aes(label = ISO_Ter1), force = 50, seed = 1, size = 2, nudge_x = 10) +
     ggtheme_map() +
     scale_fill_gradientn(colours = colorRamps::matlab.like(100)) +
     guides(fill = guide_colorbar(title = "Costs ($USD)",
                                  ticks.colour = "black",
                                  frame.colour = "black")) +
     theme(legend.justification = c(0, 0),
-          legend.position = c(0, 0)) +
-    scale_x_continuous(expand = c(0 ,0)) +
-    scale_y_continuous(expand = c(0 ,0)))
+          legend.position = c(0, 0)))
 
 
 subplots <- plot_grid(deployment_costs,
