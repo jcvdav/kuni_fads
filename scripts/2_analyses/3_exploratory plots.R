@@ -184,7 +184,7 @@ annotations <- data.frame(
 ggplot() +
   geom_point(data = data_complete, shape = 16, aes(x = score_regs, y = score_marketability, size = score_need, color = score_need)) +
   geom_point(data = data_incomplete, shape = 1, aes(x = score_regs, y = score_marketability)) +
-  geom_text_repel(data = data_all, size = 3, force = 30, aes(x = score_regs, y = score_marketability, label = name)) +
+  # geom_text_repel(data = data_all, size = 3, force = 10, aes(x = score_regs, y = score_marketability, label = ISO3)) +
   # geom_text(data=annotations,aes(x=xpos,y=ypos,hjust=hjustvar,vjust=vjustvar,label=annotateText)) +
   xlim(0,1) +
   ylim(0,1) +
@@ -195,7 +195,7 @@ ggplot() +
   geom_vline(xintercept = 0.5) +
   labs(x = "Regulatory strength", y = "Marketability") +
   theme_minimal() 
-ggsave(here("img", "biplot.png"), width = 6, height = 5)
+ggsave(here("img", "biplot_blank.png"), width = 6, height = 5)
 
 
 
