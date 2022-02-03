@@ -129,6 +129,11 @@ ggsave(plot = plot,
        height = 7.5,
        width = 5)
 
+ggsave(plot = plot,
+       filename = here("img", "cost_map.eps"),
+       height = 7.5,
+       width = 5)
+
 
 ## Country-level stats
 # Extract all values by EEZ (for analyses)
