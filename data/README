@@ -1,8 +1,0 @@
-# CONTENTS
-
-# Raster data
-croped_cost.tif	- Raster file with total costs of FADs (deployment + travel)
-
-# Tabluar data
-data_scaled.csv - Scaled socioeconomic indicators used for figure 3
-country_level_cost_summary_statistics.csv - Spatial summary statistics for the raster file
