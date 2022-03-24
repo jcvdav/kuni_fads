@@ -127,30 +127,30 @@ DATA-SPECIFIC INFORMATION FOR: country_level_cost_summary_statistics.csv
 3. Variable List: 
     - name_govt : Country name
     - alpha_3 : Standard 3-letter code for each country
-    - energy_ad : 
-    - poverty_rate : 
-    - Exports_percap : 
-    - Imports_percap : 
-    - pc_n_tourists : 
-    - reg_strength : 
+    - energy_ad : Energy adequacy
+    - poverty_rate : Poverty rate
+    - Exports_percap : Per capita seafood exports
+    - Imports_percap : Per capita seafood imports
+    - pc_n_tourists : Per capita annual number of tourists
+    - reg_strength : Mean regulatory strength for FAD deployment, FAD access, and FAD fishing practices generated from survey responses
     - wgi_corrupt : World Governance Index for corruption (unitless)
-    - wgi_goveff : 
-    - wgi_polstab : 
-    - wgi_regqual : 
-    - wgi_rulelaw : 
-    - wgi_account : 
-    - wgi_mean : 
-    - score_govt : 
-    - score_wgi : 
-    - score_need : 
-    - score_marketability : 
+    - wgi_goveff : World Governance Index for government effectiveness (unitless)
+    - wgi_polstab : World Governance Index for political stability (unitless)
+    - wgi_regqual : World Governance Index for regulatory quality (unitless)
+    - wgi_rulelaw : World Governance Index for rule of law (unitless)
+    - wgi_account : World Governance Index for accountability (unitless)
+    - wgi_mean : Mean of all six World Governance Index scores
+    - score_govt : Regulatory strength
+    - score_wgi : Mean of all six World Governance Index scores
+    - score_need : Mean of energy adequacy and poverty rate
+    - score_marketability : Mean of per capita imports, exports, and annual tourists
     - n_fads : Number of FADs
     - n_private : Number of FADs reported as private
     - n_public : Number of FADs reported as public
-    - vessels_fad : 
-    - vessels_tot : 
-    - fads_per_totvessel : 
-    - fads_per_fadvessel : 
+    - vessels_fad : Number of fishing vessels utilizing FADs
+    - vessels_tot : Total number of fishing vessels
+    - fads_per_totvessel : Number of FADs per vessel
+    - fads_per_fadvessel : Number of FADs per FAD-fishing vessel
 
 4. Missing data codes: 
 Missing values are represented with 'NA'
