@@ -49,7 +49,6 @@ data_scaled.csv - Scaled socioeconomic indicators used for figure 3
 
 2. Relationship between files, if important: 
 - cropped_coast.tif is spatially intersected with country exclusive economic zones to produce zonal stats stored in country_level_cost_summary_statistics.csv
-- country_level_cost_summary_statistics.csv is then used to generate data_scaled.csv
 
 3. Additional related data collected that was not included in the current data package: 
 
@@ -88,7 +87,7 @@ DATA-SPECIFIC INFORMATION FOR: cropped_coast.tif
         names      : croped_cost 
         values     : 2509.035, 18257.31  (min, max)
 
-3. Variable List: croped_cost
+3. Variable List: croped_cost (Cost of deploying and opperating a Fish Aggregating Device, in US dollars)
 
 4. Missing data codes: 
 NA
@@ -102,19 +101,19 @@ DATA-SPECIFIC INFORMATION FOR: country_level_cost_summary_statistics.csv
 2. Number of cases/rows: 30
 
 3. Variable List: 
-    ISO3   Length:30          Class :character   Mode  :character                                                     
-     mean  Min.   : 3841      1st Qu.: 7064      Median : 8435      Mean   : 8117    3rd Qu.: 9083    Max.   :11166   
-    median Min.   : 4355      1st Qu.: 6669      Median : 7833      Mean   : 7785    3rd Qu.: 9016    Max.   :11493   
-      sd   Min.   : 983.7     1st Qu.:2866.1     Median :3957.6     Mean   :3519.7   3rd Qu.:4184.6   Max.   :4475.0  
-     min   Min.   :2509       1st Qu.:2617       Median :2673       Mean   :2713     3rd Qu.:2772     Max.   :3276    
-     max   Min.   : 4836      1st Qu.:14229      Median :17193      Mean   :15528    3rd Qu.:17608    Max.   :18152   
-    pct10  Min.   :2770       1st Qu.:3089       Median :3420       Mean   :3605     3rd Qu.:4015     Max.   :5482    
-    pct25  Min.   :2850       1st Qu.:4506       Median :4924       Mean   :5185     3rd Qu.:5735     Max.   :8271    
-    pct75  Min.   : 4448      1st Qu.: 9205      Median :11662      Mean   :10861    3rd Qu.:12561    Max.   :14262   
-    pct09  Min.   : 4681      1st Qu.:11108      Median :14155      Mean   :13052    3rd Qu.:15206    Max.   :16061
+      - ISO3 : Standard 3-letter code for each country
+      - mean : Mean cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - median : Median cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - sd : Standard Deviation cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - min : Minimum cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - max : Maximum cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - pct10 : 10th percentile of cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - pct25 : 25th percentile of cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD) 
+      - pct75 : 75th percentile of cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
+      - pct09 : 90th percentile of cost of deploying and opperating a Fish Aggregating Device within a country's Exlcusive Economic Zone (in USD)
 
 4. Missing data codes: 
-NA
+Missing values are represented with 'NA'
 
 5. Specialized formats or other abbreviations used: 
 
@@ -126,35 +125,34 @@ DATA-SPECIFIC INFORMATION FOR: country_level_cost_summary_statistics.csv
 2. Number of cases/rows: 30
 
 3. Variable List: 
-
-     name_govt          Length:30          Class :character   Mode  :character                                                                        
-      alpha_3           Length:30          Class :character   Mode  :character                                                                        
-      energy_ad         Min.   :0.0000     1st Qu.:0.5000     Median :0.6923     Mean   :0.6552     3rd Qu.:0.8558     Max.   :1.0000     NA's   :16  
-     poverty_rate       Min.   :0.0000     1st Qu.:0.1941     Median :0.2846     Mean   :0.3314     3rd Qu.:0.4126     Max.   :1.0000     NA's   :15  
-    Exports_percap      Min.   :0.000000   1st Qu.:0.000430   Median :0.001183   Mean   :0.062371   3rd Qu.:0.005284   Max.   :1.000000   NA's   :12  
-    Imports_percap      Min.   :0.0000     1st Qu.:0.1276     Median :0.2885     Mean   :0.3395     3rd Qu.:0.4189     Max.   :1.0000     NA's   :9   
-    pc_n_tourists       Min.   :0.00000    1st Qu.:0.03879    Median :0.07305    Mean   :0.15832    3rd Qu.:0.22667    Max.   :1.00000                
-     reg_strength       Min.   :0.0000     1st Qu.:0.1667     Median :0.3333     Mean   :0.3715     3rd Qu.:0.5000     Max.   :1.0000     NA's   :6   
-     wgi_corrupt        Min.   :0.0000     1st Qu.:0.5345     Median :0.6730     Mean   :0.6453     3rd Qu.:0.8953     Max.   :1.0000     NA's   :13  
-      wgi_goveff        Min.   :0.0000     1st Qu.:0.5628     Median :0.6760     Mean   :0.6911     3rd Qu.:0.8798     Max.   :1.0000     NA's   :13  
-     wgi_polstab        Min.   :0.0000     1st Qu.:0.6418     Median :0.7521     Mean   :0.6893     3rd Qu.:0.8230     Max.   :1.0000     NA's   :13  
-     wgi_regqual        Min.   :0.0000     1st Qu.:0.5817     Median :0.7064     Mean   :0.6630     3rd Qu.:0.8606     Max.   :1.0000     NA's   :13  
-     wgi_rulelaw        Min.   :0.0000     1st Qu.:0.3996     Median :0.6281     Mean   :0.5836     3rd Qu.:0.7076     Max.   :1.0000     NA's   :13  
-     wgi_account        Min.   :0.0000     1st Qu.:0.7041     Median :0.7823     Mean   :0.7014     3rd Qu.:0.8427     Max.   :1.0000     NA's   :16  
-       wgi_mean         Min.   :0.0000     1st Qu.:0.6524     Median :0.7356     Mean   :0.6775     3rd Qu.:0.8400     Max.   :1.0000     NA's   :13  
-      score_govt        Min.   :0.0000     1st Qu.:0.1667     Median :0.3333     Mean   :0.3715     3rd Qu.:0.5000     Max.   :1.0000     NA's   :6   
-      score_wgi         Min.   :0.0000     1st Qu.:0.6524     Median :0.7356     Mean   :0.6775     3rd Qu.:0.8400     Max.   :1.0000     NA's   :13  
-      score_need        Min.   :0.0000     1st Qu.:0.1559     Median :0.2549     Mean   :0.3330     3rd Qu.:0.4384     Max.   :1.0000     NA's   :17  
-    score_marketability Min.   :0.0000     1st Qu.:0.1083     Median :0.2619     Mean   :0.3516     3rd Qu.:0.5078     Max.   :1.0000     NA's   :12  
-        n_fads          Min.   :   0.0     1st Qu.:   1.5     Median :   8.0     Mean   : 152.2     3rd Qu.:  27.0     Max.   :2500.0     NA's   :7   
-      n_private         Min.   :  0        1st Qu.:  0        Median :  0        Mean   : 43        3rd Qu.: 20        Max.   :600        NA's   :9   
-       n_public         Min.   : 0.000     1st Qu.: 0.000     Median : 2.000     Mean   : 3.762     3rd Qu.: 5.000     Max.   :24.000     NA's   :9   
-     vessels_fad        Min.   :  0.00     1st Qu.:  3.75     Median : 26.00     Mean   : 85.72     3rd Qu.:128.50     Max.   :450.00     NA's   :12  
-     vessels_tot        Min.   :   27      1st Qu.:  120      Median :  332      Mean   : 1347      3rd Qu.:  650      Max.   :10700      NA's   :13  
-    fads_per_totvessel  Min.   :0.00000    1st Qu.:0.03333    Median :0.10000    Mean   :0.34167    3rd Qu.:0.13750    Max.   :3.03030    NA's   :13  
-    fads_per_fadvessel  Min.   :0.006329   1st Qu.:0.145455   Median :0.200000   Mean   :0.750582   3rd Qu.:0.222222   Max.   :4.545455   NA's   :17  
+    - name_govt : Country name
+    - alpha_3 : Standard 3-letter code for each country
+    - energy_ad : 
+    - poverty_rate : 
+    - Exports_percap : 
+    - Imports_percap : 
+    - pc_n_tourists : 
+    - reg_strength : 
+    - wgi_corrupt : World Governance Index for corruption (unitless)
+    - wgi_goveff : 
+    - wgi_polstab : 
+    - wgi_regqual : 
+    - wgi_rulelaw : 
+    - wgi_account : 
+    - wgi_mean : 
+    - score_govt : 
+    - score_wgi : 
+    - score_need : 
+    - score_marketability : 
+    - n_fads : Number of FADs
+    - n_private : Number of FADs reported as private
+    - n_public : Number of FADs reported as public
+    - vessels_fad : 
+    - vessels_tot : 
+    - fads_per_totvessel : 
+    - fads_per_fadvessel : 
 
 4. Missing data codes: 
-NA
+Missing values are represented with 'NA'
 
 5. Specialized formats or other abbreviations used: 
